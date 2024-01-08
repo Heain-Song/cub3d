@@ -6,10 +6,11 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:02:06 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/08 16:28:05 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:39:28 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
+
 int	file_error(char *str)
 {
 	ft_putstrfd("Error\n", 2);
