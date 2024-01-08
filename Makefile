@@ -9,7 +9,8 @@ M_PATH	= ./minilibx-linux
 
 INCLUDES	= -I ${I_PATH}
 
-SRCS	= ./srcs/main.c
+SRCS	=	srcs/main.c				\
+			srcs/utils/ft_strcmp.c	\
 
 OBJS	= ${SRCS:.c=.o}
 

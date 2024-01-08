@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2023/12/16 07:55:56 by hesong           ###   ########.fr       */
+/*   Updated: 2024/01/08 14:47:25 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-
+int ft_strcmp(const char *s1, const char *s2);
 
 #endif
