@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:02:06 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/08 16:39:28 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/08 17:25:16 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -24,7 +24,7 @@ int	check_file_name(char *file_name)
 		file_name++;
 	if (!file_name)
 		return (-1);
-	if (ft_strcmp(file_name, ".ber"))
+	if (ft_strcmp(file_name, ".cub"))
 		return (-1);
 	return (0);
 }
