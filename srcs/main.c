@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/08 16:04:34 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:05:32 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@
 
 int	main(int argc, char **argv)
 {
+	int	fd;
+
 	if (argc == 2)
 	{
-		file_checker(argv[1]);
+		fd = file_checker(argv[1]);
+		basic_gnl(fd);
 	}
 	else
 		ft_putstrfd("Argc Error. \n", 2);
