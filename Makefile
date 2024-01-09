@@ -1,7 +1,7 @@
 NAME	= cub3D
 
 CC	= gcc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -ggdb
 RM	= rm -f
 
 I_PATH	= ./includes
@@ -13,6 +13,7 @@ SRCS	=	srcs/main.c					\
 			srcs/utils/str_utils_1.c	\
 			srcs/checks/file_checks.c	\
 			srcs/file_reader/basic_gnl.c\
+			srcs/list_manage/textures.c	\
 
 OBJS	= ${SRCS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:02:02 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/09 14:47:32 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:12:13 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ char	*basic_gnl(int fd)
 		return (NULL);
 	while (read(fd, &c, 1) && c != '\n')
 		str = add_char_to_str(str, c);
+	if (!str)
+		return (NULL);
 	ft_putstrfd(str, 1);
 	free(str);
 	return (NULL);
