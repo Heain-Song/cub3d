@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/09 17:16:24 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:46:45 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		fd = file_checker(argv[1]);
-		basic_gnl(fd);
 		textures = make_text_id();
 		head = textures;
+		textures = element_reader(fd, textures);
 		while (textures)
 		{
 			ft_putstrfd(textures->id, 1);
+			ft_putstrfd(" ", 1);
+			ft_putstrfd(textures->path, 1);
 			ft_putstrfd("\n", 1);
 			textures = textures->next;
 		}

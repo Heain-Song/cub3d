@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/09 16:52:17 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:34:38 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CUB3D_H
@@ -33,4 +33,8 @@ int			ft_strlen(char *str);
 char		*ft_strcpy(char *src, char *dest);
 t_textures	*make_text_id(void);
 void		free_t_textures(t_textures *textures);
+char		*ft_strdup(char *str);
+int			ft_strncmp(const char *s1, const char *s2, unsigned int n);
+t_textures	*element_reader(int fd, t_textures *textures);
+
 #endif

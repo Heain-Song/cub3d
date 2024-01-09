@@ -9,11 +9,13 @@ M_PATH	= ./minilibx-linux
 
 INCLUDES	= -I ${I_PATH}
 
-SRCS	=	srcs/main.c					\
-			srcs/utils/str_utils_1.c	\
-			srcs/checks/file_checks.c	\
-			srcs/file_reader/basic_gnl.c\
-			srcs/list_manage/textures.c	\
+SRCS	=	srcs/main.c							\
+			srcs/utils/str_utils_1.c			\
+			srcs/utils/str_utils_2.c    		\
+			srcs/checks/file_checks.c			\
+			srcs/file_reader/basic_gnl.c		\
+			srcs/list_manage/textures.c			\
+			srcs/file_reader/element_reader.c	\
 
 OBJS	= ${SRCS:.c=.o}
 

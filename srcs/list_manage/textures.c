@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:15:46 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/09 17:21:50 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:47:59 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	free_t_textures(t_textures *textures)
 	temp = textures->next;
 	while (textures)
 	{
+		free(textures->path);
 		free(textures);
 		textures = temp;
 		if (textures)
