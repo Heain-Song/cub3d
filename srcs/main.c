@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/09 18:46:45 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/09 19:41:36 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	main(int argc, char **argv)
 		textures = make_text_id();
 		head = textures;
 		textures = element_reader(fd, textures);
+		if (!textures)
+			return (-1);
 		while (textures)
 		{
 			ft_putstrfd(textures->id, 1);
