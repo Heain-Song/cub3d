@@ -6,17 +6,19 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/10 09:35:55 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/10 09:49:21 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-t_textures	*error_node(t_textures *node)
+t_textures	*error_node(t_textures *node, t_textures *head, char *temp)
 {
 	ft_putstrfd("Error\n", 2);
 	ft_putstrfd(node->id, 2);
 	ft_putstrfd(" has two textures\n", 2);
+	free_t_textures(head);
+	free(temp);
 	return (NULL);
 }
 
@@ -63,7 +65,7 @@ t_textures	*element_reader(int fd, t_textures *textures)
 		{
 			node = which_elem(textures, temp);
 			if (node->path)
-				return (error_node(node));
+				return (error_node(node, textures, temp));
 			if (!node)
 				return (textures);
 			node->path = make_path(temp);
