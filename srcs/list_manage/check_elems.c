@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   elems.c                                            :+:      :+:    :+:   */
+/*   check_elems.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 09:51:56 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/10 10:09:31 by ede-siga         ###   ########.fr       */
+/*   Created: 2024/01/10 10:10:42 by ede-siga          #+#    #+#             */
+/*   Updated: 2024/01/10 10:21:09 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <cub3d.h>
 
-t_elems	init_elems(void)
+int	all_textures(t_textures *textures)
 {
-	t_elems	struct_elem;
-	int		i;
-
-	i = 0;
-	while (i < 3)
+	while (textures)
 	{
-		struct_elem.f_colors[i] = -1;
-		struct_elem.c_colors[i] = -1;
-		i++;
+		if (!textures->path)
+			return (0);
+		textures = textures->next;
 	}
-	struct_elem.map = NULL;
-	struct_elem.is_full = 0;
-	struct_elem.error = 0;
-	return (struct_elem);
+	return (1);
+}
+
+t_elems	check_elems(t_elems elems_list)
+{
+	if (!all_textures(elems_list.textures))
+		return (elems_list);
+	elems_list.is_full = 1;
+	return (elems_list);
 }

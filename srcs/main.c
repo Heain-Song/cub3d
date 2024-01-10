@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/10 09:34:05 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:18:45 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,23 @@
 
 int	main(int argc, char **argv)
 {
-	int			fd;
-	t_textures	*textures;
-	t_textures	*head;
+	int		fd;
+	t_elems	elem_list;
+//	t_textures	*textures;
 
 	if (argc == 2)
 	{
+		elem_list = init_elems();
 		fd = file_checker(argv[1]);
-		textures = make_text_id();
-		head = textures;
-		textures = element_reader(fd, textures);
-		if (!textures)
+		elem_list.textures = make_text_id();
+		elem_list.textures = element_reader(fd, elem_list);
+		if (!elem_list.textures)
 			return (-1);
-		while (textures)
-		{
-			ft_putstrfd(textures->id, 1);
-			ft_putstrfd(" ", 1);
-			ft_putstrfd(textures->path, 1);
-			ft_putstrfd("\n", 1);
-			textures = textures->next;
-		}
+		display_textures_list(elem_list.textures); //debug function
 		close(fd);
-		free_t_textures(head);
+		free_t_textures(elem_list.textures);
 	}
 	else
-		ft_putstrfd("Argc Error. \n", 2);
+		ft_putstrfd("Error need a map file\n", 2);
 	return (0);
 }

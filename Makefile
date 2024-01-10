@@ -17,6 +17,8 @@ SRCS	=	srcs/main.c							\
 			srcs/list_manage/textures.c			\
 			srcs/file_reader/element_reader.c	\
 			srcs/list_manage/elems.c			\
+			srcs/list_manage/check_elems.c		\
+			debug/display_textures_list.c		\
 
 OBJS	= ${SRCS:.c=.o}
 

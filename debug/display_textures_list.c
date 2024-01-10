@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   elems.c                                            :+:      :+:    :+:   */
+/*   display_textures_list.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 09:51:56 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/10 10:09:31 by ede-siga         ###   ########.fr       */
+/*   Created: 2024/01/10 10:00:16 by ede-siga          #+#    #+#             */
+/*   Updated: 2024/01/10 10:04:39 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <cub3d.h>
 
-t_elems	init_elems(void)
+void	display_textures_list (t_textures *textures)
 {
-	t_elems	struct_elem;
-	int		i;
-
-	i = 0;
-	while (i < 3)
+	while (textures)
 	{
-		struct_elem.f_colors[i] = -1;
-		struct_elem.c_colors[i] = -1;
-		i++;
+		ft_putstrfd(textures->id, 1);
+		ft_putstrfd(" ", 1);
+		ft_putstrfd(textures->path, 1);
+		ft_putstrfd("\n", 1);
+		textures = textures->next;
 	}
-	struct_elem.map = NULL;
-	struct_elem.is_full = 0;
-	struct_elem.error = 0;
-	return (struct_elem);
 }

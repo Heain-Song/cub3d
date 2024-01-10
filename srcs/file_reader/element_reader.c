@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/10 09:49:21 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:18:57 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*make_path(char *str)
 	return (temp);
 }
 
-t_textures	*element_reader(int fd, t_textures *textures)
+t_textures	*element_reader(int fd, t_elems elems)
 {
 	int			i;
 	char		*temp;
@@ -58,20 +58,21 @@ t_textures	*element_reader(int fd, t_textures *textures)
 	if (fd <= 0)
 		return (NULL);
 	i = 0;
-	while (i < 4) // to change
+	while (!elems.is_full) // to change
 	{
 		temp = basic_gnl(fd);
 		if (temp)
 		{
-			node = which_elem(textures, temp);
+			node = which_elem(elems.textures, temp);
 			if (node->path)
-				return (error_node(node, textures, temp));
+				return (error_node(node, elems.textures, temp));
 			if (!node)
-				return (textures);
+				return (elems.textures);
 			node->path = make_path(temp);
 			free(temp);
+			elems = check_elems(elems);
 			i++;
 		}
 	}
-	return (textures);
+	return (elems.textures);
 }
