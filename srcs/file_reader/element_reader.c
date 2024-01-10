@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/10 10:18:57 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:26:51 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,12 @@ t_textures	*element_reader(int fd, t_elems elems)
 		if (temp)
 		{
 			node = which_elem(elems.textures, temp);
-			if (node->path)
+			if (node && node->path)
 				return (error_node(node, elems.textures, temp));
-			if (!node)
-				return (elems.textures);
-			node->path = make_path(temp);
+			//if (!node)
+			//	return (elems.textures);
+			if (node)
+				node->path = make_path(temp);
 			free(temp);
 			elems = check_elems(elems);
 			i++;
