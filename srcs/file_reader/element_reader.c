@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/09 19:41:11 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/10 09:35:55 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_textures	*which_elem(t_textures *textures, char *temp)
 	while (textures)
 	{
 		if (!ft_strncmp(textures->id, temp, 2))
-			return(textures);
+			return (textures);
 		textures = textures->next;
 	}
 	return (textures);
@@ -36,7 +36,7 @@ char	*make_path(char *str)
 {
 	char	*temp;
 
-	while(str && *str != ' ')
+	while (str && *str != ' ')
 		str++;
 	if (!str)
 		return (NULL);
@@ -49,7 +49,7 @@ char	*make_path(char *str)
 
 t_textures	*element_reader(int fd, t_textures *textures)
 {
-	int 		i;
+	int			i;
 	char		*temp;
 	t_textures	*node;
 
@@ -61,7 +61,6 @@ t_textures	*element_reader(int fd, t_textures *textures)
 		temp = basic_gnl(fd);
 		if (temp)
 		{
-			//ft_putstrfd(temp, 1);
 			node = which_elem(textures, temp);
 			if (node->path)
 				return (error_node(node));

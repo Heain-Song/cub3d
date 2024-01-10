@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/09 19:41:36 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/10 09:34:05 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 
 int	main(int argc, char **argv)
 {
-	int	fd;
-	t_textures *textures;
-	t_textures *head;
-	
+	int			fd;
+	t_textures	*textures;
+	t_textures	*head;
+
 	if (argc == 2)
 	{
 		fd = file_checker(argv[1]);
