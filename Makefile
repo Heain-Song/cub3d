@@ -16,6 +16,7 @@ SRCS	=	srcs/main.c							\
 			srcs/file_reader/basic_gnl.c		\
 			srcs/list_manage/textures.c			\
 			srcs/file_reader/element_reader.c	\
+			srcs/list_manage/elems.c			\
 
 OBJS	= ${SRCS:.c=.o}
 
