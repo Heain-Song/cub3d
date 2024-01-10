@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:49:50 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/10 09:34:42 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/10 09:41:10 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -33,7 +33,7 @@ char	*ft_strdup(char *str)
 
 	i = 0;
 	size = ft_strlen(str);
-	dest = malloc(sizeof(char) * size);
+	dest = malloc(sizeof(char) * size + 1);
 	while (str[i])
 	{
 		dest[i] = str[i];
