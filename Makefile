@@ -19,6 +19,7 @@ SRCS	=	srcs/main.c							\
 			srcs/list_manage/elems.c			\
 			srcs/list_manage/check_elems.c		\
 			srcs/file_reader/element_chose.c	\
+			srcs/utils/ft_atoi.c				\
 			debug/display_textures_list.c		\
 
 OBJS	= ${SRCS:.c=.o}

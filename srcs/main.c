@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/10 10:18:45 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:08:33 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ int	main(int argc, char **argv)
 		elem_list = init_elems();
 		fd = file_checker(argv[1]);
 		elem_list.textures = make_text_id();
-		elem_list.textures = element_reader(fd, elem_list);
+		elem_list = element_reader(fd, elem_list);
 		if (!elem_list.textures)
 			return (-1);
 		display_textures_list(elem_list.textures); //debug function
+		printf("c_color = r%d,g%d,b%d\n", elem_list.c_colors[0], elem_list.c_colors[1], elem_list.c_colors[2]);
+		printf("f_color = r%d,g%d,b%d\n", elem_list.f_colors[0], elem_list.f_colors[1], elem_list.f_colors[2]);
 		close(fd);
 		free_t_textures(elem_list.textures);
 	}

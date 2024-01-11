@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:10:42 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/10 10:21:09 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/11 09:59:59 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	all_textures(t_textures *textures)
 t_elems	check_elems(t_elems elems_list)
 {
 	if (!all_textures(elems_list.textures))
+		return (elems_list);
+	if (elems_list.did_c == 0 || elems_list.did_f == 0)
 		return (elems_list);
 	elems_list.is_full = 1;
 	return (elems_list);
