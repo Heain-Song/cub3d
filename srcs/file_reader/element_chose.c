@@ -6,18 +6,46 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:12:20 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/11 12:35:06 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:05:10 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+t_elems	check_colors(t_elems elems, int type, int color[3])
+{
+	int	i;
+
+	i = 0;
+	while (i < 3)
+	{
+		if (color[i] > 255 || color[i] < 0)
+		{
+			ft_putstrfd("Error\n", 2);
+			if (type == 4)
+				ft_putstrfd("Ceiling ", 2);
+			else
+				ft_putstrfd("Floor ", 2);
+			ft_putstrfd("color is not between 0 and 255\n",2);
+			elems.error = 1;
+		}
+		i++;
+	}
+	return (elems);
+}
 
 t_elems	assign_which_elem(char *str, int nb, t_elems elems)
 {
 	if (nb < 4)
 		elems = gt_str_atrib(elems, str);
 	else
+	{
 		elems = get_nbr_atribs(elems, str);
+		if (nb == 4)
+			elems = check_colors(elems, 4, elems.c_colors);
+		else
+			elems = check_colors(elems, 5, elems.f_colors);
+	}
 	return (elems);
 }
 

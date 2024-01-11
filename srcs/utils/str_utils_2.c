@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:49:50 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/11 12:45:19 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:10:47 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -37,7 +37,11 @@ char	*skip_and_getnb(char *str, int *nb)
 		return (NULL);
 	while (*str && (*str < '0' || *str > '9'))
 		 str++;
+	if (*(str - 1) == '-')
+		str--;
 	*nb = ft_atoi(str);
+	if (*str == '-')
+		str++;
 	while (*str && (*str >= '0' && *str <= '9'))
 		str++;
 	return (str);
