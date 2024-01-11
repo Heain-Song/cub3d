@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 09:51:56 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/11 10:00:54 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:59:13 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -29,6 +29,17 @@ t_elems	make_names(t_elems struct_elem)
 	struct_elem.did_c = 0;
 	struct_elem.did_f = 0;
 	return (struct_elem);
+}
+
+void	free_elems(t_elems elems)
+{
+	int	i;
+
+	i = 0;
+	while (elems.elem_names[i])
+		free(elems.elem_names[i++]);
+	free(elems.elem_names);
+	free_t_textures(elems.textures);
 }
 
 t_elems	init_elems(void)

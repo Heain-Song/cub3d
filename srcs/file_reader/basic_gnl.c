@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:02:02 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/09 18:45:43 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:03:32 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*add_char_to_str(char *dest, char c)
 	return (temp);
 }
 
-char	*basic_gnl(int fd)
+char	*basic_gnl(int fd, int *read_ammount)
 {
 	char	c;
 	char	*str;
@@ -47,8 +47,11 @@ char	*basic_gnl(int fd)
 	str = NULL;
 	if (fd <= 0)
 		return (NULL);
-	while (read(fd, &c, 1) && c != '\n')
-		str = add_char_to_str(str, c);
+	while ((*read_ammount = read(fd, &c, 1)) && c != '\n')
+	{
+		if (*read_ammount > 0)
+			str = add_char_to_str(str, c);
+	}
 	if (!str)
 		return (NULL);
 	return (str);

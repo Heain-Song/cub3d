@@ -6,18 +6,19 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:12:20 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/10 18:19:32 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:07:41 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-t_elem	assign_which_elem(char *str, int nb, t_elem elems)
+t_elems	assign_which_elem(char *str, int nb, t_elems elems)
 {
-	if (nb < 5)
-		elems = gt_str_atrib(elems, str, nb);
+	if (nb < 4)
+		elems = gt_str_atrib(elems, str);
 	else
-		get_nbr_atrib(elems, str);
+		elems = get_nbr_atribs(elems, str);
+	return (elems);
 }
 
 int	elem_type(char *temp, char **str)

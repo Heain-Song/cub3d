@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/11 10:06:16 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:12:02 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,37 +107,30 @@ t_elems	get_nbr_atribs(t_elems elems, char *str)
 
 t_elems	element_reader(int fd, t_elems elems)
 {
-	int			i;
 	char		*temp;
-	//t_textures	*node;
-
-	int	test;
+	int			read_ammount;
+	int			type;
 
 	if (fd <= 0)
 	{
 		elems.error = 1;
 		return (elems);
 	}
-	i = 0;
-	//while (!elems.is_full)// to change
 	while (!elems.is_full)
 	{
-		temp = basic_gnl(fd);
+		temp = basic_gnl(fd, &read_ammount);
 		if (temp)
 		{
-			test =  elem_type(temp, elems.elem_names);
-			if (test >= 0)
-				printf("elem name = %s\n", elems.elem_names[test]);
-			elems = assign_which_elem(temp, test, elems);
-/*			node = which_elem(elems.textures, temp);
-			if (node && node->path)
-				return (error_node(node, elems.textures, temp));
-			if (node)
-				node->path = make_path(temp);
-			free(temp);
-*/
+			type =  elem_type(temp, elems.elem_names);
+			elems = assign_which_elem(temp, type, elems);
 			elems = check_elems(elems);
-			i++;
+			free(temp);
+		}
+		if (read_ammount <= 0 && !elems.is_full)
+		{
+			ft_putstrfd("Error\n not enough element in file" ,2);
+			elems.error = 1;
+			return (elems);
 		}
 	}
 	return (elems);
