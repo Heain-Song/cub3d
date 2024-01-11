@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/11 11:12:02 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:25:39 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,13 @@ t_elems	element_reader(int fd, t_elems elems)
 		if (temp)
 		{
 			type =  elem_type(temp, elems.elem_names);
+			if (type == -1)
+			{
+				free(temp);
+				ft_putstrfd("Error\n invalid info in between elements\n" ,2);
+				elems.error = 1;
+				return (elems);
+			}
 			elems = assign_which_elem(temp, type, elems);
 			elems = check_elems(elems);
 			free(temp);
