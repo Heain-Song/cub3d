@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/11 11:25:39 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/11 12:43:23 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,44 +64,30 @@ t_elems	gt_str_atrib(t_elems elems, char *str)
 
 t_elems	get_nbr_atribs(t_elems elems, char *str)
 {
-	int	r;
-	int	g;
-	int	b;
-	int	i;
-
-	i = 0;
+	if (str_check_num_ammount(str) != 3)
+	{
+		ft_putstrfd("Error\nNot enough colors for ", 2);
+		if (str[0] == 'C')
+			ft_putstrfd("Ceiling\n", 2);
+		else
+			ft_putstrfd("Floor\n", 2);
+		elems.error = 1;
+		return (elems);
+	}
 	if (str[0] == 'C')
-		i = 1;
+	{
+		str = skip_and_getnb(str, &elems.c_colors[0]);
+		str = skip_and_getnb(str, &elems.c_colors[1]);
+		str = skip_and_getnb(str, &elems.c_colors[2]);
+		elems.did_c = 1;
+	}
 	if (str[0] == 'F')
-		i = 2;
-	//can be made into a skip to next number func
-	while (*str < '0' || *str > '9')
-		str++;
-	r = ft_atoi(str);
-	while (*str >= '0' && *str <= '9')
-		str++;
-	while (*str < '0' || *str > '9')
-		str++;
-	g = ft_atoi(str);
-	 while (*str >= '0' && *str <= '9')
-		 str++;
-	 while (*str < '0' || *str > '9')
-		 str++;
-	 b = ft_atoi(str);
-	 if (i == 2)
-	 {
-		 elems.f_colors[0] = r;
-		 elems.f_colors[1] = g;
-		 elems.f_colors[2] = b;
-		 elems.did_f = 1;
-	 }
-	 else
-	 {
-		 elems.c_colors[0] = r;
-		 elems.c_colors[1] = g;
-		 elems.c_colors[2] = b;
-		 elems.did_c = 1;
-	 }
+	{
+		str =skip_and_getnb(str, &elems.f_colors[0]);
+		str =skip_and_getnb(str, &elems.f_colors[1]);
+		str =skip_and_getnb(str, &elems.f_colors[2]);
+		elems.did_f = 1;
+	}
 	 return (elems);
 }
 
@@ -130,15 +116,19 @@ t_elems	element_reader(int fd, t_elems elems)
 				return (elems);
 			}
 			elems = assign_which_elem(temp, type, elems);
-			elems = check_elems(elems);
+			//elems = check_elems(elems);
 			free(temp);
 		}
+		if (elems.error)
+			return (elems);
+		elems = check_elems(elems);
 		if (read_ammount <= 0 && !elems.is_full)
 		{
 			ft_putstrfd("Error\n not enough element in file" ,2);
 			elems.error = 1;
 			return (elems);
 		}
+		//elems = check_elems(elems);
 	}
 	return (elems);
 }

@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 09:51:56 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/11 10:59:13 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/11 12:35:20 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -23,8 +23,8 @@ t_elems	make_names(t_elems struct_elem)
 	struct_elem.elem_names[1] = ft_strdup("SO");
 	struct_elem.elem_names[2] = ft_strdup("WE");
 	struct_elem.elem_names[3] = ft_strdup("EA");
-	struct_elem.elem_names[4] = ft_strdup("C ");
-	struct_elem.elem_names[5] = ft_strdup("F ");
+	struct_elem.elem_names[4] = ft_strdup("C");
+	struct_elem.elem_names[5] = ft_strdup("F");
 	struct_elem.elem_names[6] = NULL;
 	struct_elem.did_c = 0;
 	struct_elem.did_f = 0;

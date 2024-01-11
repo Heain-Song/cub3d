@@ -6,10 +6,39 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:49:50 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/10 09:41:10 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/11 12:41:53 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
+
+int		str_check_num_ammount(char *str)
+{
+	int	nb;
+	int	auth;
+
+	nb = 0;
+	auth = 0;
+	while (*str)
+	{
+		if (*str >= '0' && *str <= '9' && auth == 1)
+			nb++;
+		if (*str == ',')
+			auth = 0;
+		str++;
+	}
+	return (nb);
+}
+char	*skip_and_getnb(char *str, int *nb)
+{
+	if (!str)
+		return (NULL);
+	while (*str && (*str < '0' || *str > '9'))
+		 str++;
+	*nb = ft_atoi(str);
+	while (*str && (*str >= '0' && *str <= '9'))
+		str++;
+	return (str);
+}
 
 int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 {
