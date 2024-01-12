@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 09:51:56 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/11 12:35:20 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:10:29 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -28,6 +28,7 @@ t_elems	make_names(t_elems struct_elem)
 	struct_elem.elem_names[6] = NULL;
 	struct_elem.did_c = 0;
 	struct_elem.did_f = 0;
+	struct_elem.map = NULL;
 	return (struct_elem);
 }
 

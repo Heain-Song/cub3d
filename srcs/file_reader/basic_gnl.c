@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:02:02 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/11 11:03:32 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:34:22 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char	*basic_gnl(int fd, int *read_ammount)
 	char	c;
 	char	*str;
 
+	//maybe add option to add \n to str and clean after?
 	c = 0;
 	str = NULL;
 	if (fd <= 0)

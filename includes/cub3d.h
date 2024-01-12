@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/11 12:42:19 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:36:05 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CUB3D_H
@@ -59,7 +59,9 @@ t_elems		assign_which_elem(char *str, int nb, t_elems elems);
 void		free_elems(t_elems elems);
 char		*skip_and_getnb(char *str, int *nb);
 int			str_check_num_ammount(char *str);
-						//debug//
-void display_textures_list (t_textures *head);
-
+t_elems		start_reading_map(int fd, t_elems elems);
+char		**add_to_table(char *str, char **table);
+//debug//
+void		display_textures_list (t_textures *head);
+void		print_map(char **map);
 #endif

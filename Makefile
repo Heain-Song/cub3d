@@ -20,7 +20,10 @@ SRCS	=	srcs/main.c							\
 			srcs/list_manage/check_elems.c		\
 			srcs/file_reader/element_chose.c	\
 			srcs/utils/ft_atoi.c				\
+			srcs/utils/2d_add.c					\
+			srcs/file_reader/map_reader.c		\
 			debug/display_textures_list.c		\
+			debug/print_map.c					\
 
 OBJS	= ${SRCS:.c=.o}
 
