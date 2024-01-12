@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:07:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/12 15:37:59 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:48:35 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* **********************************************************************
 **** */
@@ -14,41 +14,38 @@
 
 #include <cub3d.h>
 
+t_elems	error_reading(char *temp, char *error, t_elems elems)
+{
+	if (temp)
+		free(temp);
+	ft_putstrfd("Error\n", 2);
+	ft_putstrfd(error, 2);
+	elems.error = 1;
+	return (elems);
+	
+}
+
 t_elems	start_reading_map(int fd, t_elems elems)
 {
 	char	*temp;
-	int		read_ammount;
+	int		read;
 
-	read_ammount = 0;
-	temp = basic_gnl(fd, &read_ammount);
-	if (read_ammount == 0)
-	{
-		ft_putstrfd("Error\n map not found\n", 2);
-		elems.error = 1;
-		return (elems);
-	}
-	if (temp && read_ammount != 1)
-	{
-		free(temp);
-		elems.error = 1;
-		ft_putstrfd("Error\nMap should be serparated by a \\n\n", 2);
-		return (elems);
-	}
+	temp = NULL;
+	read = 0;
+	temp = basic_gnl(fd, &read);
+	if (read == 0)
+		return (error_reading(temp, "Error\n map not found\n", elems));
+	if (temp && read != 1)
+		return (error_reading(temp, "Error\nMap should be serparated by a \\n\n", elems));
 	free(temp);
-	temp = basic_gnl(fd, &read_ammount);
+	temp = basic_gnl(fd, &read);
 	//printf("read = %d\n", read_ammount);
-	if (!temp) //needs to check if there is a map
+	if (!temp) //needs to check if there is a map_reader
+		return (error_reading(temp, "Error\nMap serparated by multiple \\n\n", elems));
+	read = 1;
+	while (read)
 	{
-		if (temp)
-			free(temp);
-		elems.error = 1;
-		ft_putstrfd("Error\nMap separated by multiple \\n\n", 2);
-		return(elems);
-	}
-	read_ammount = 1;
-	while (read_ammount)
-	{
-		temp = basic_gnl(fd, &read_ammount);
+		temp = basic_gnl(fd, &read);
 		if (temp)
 		{
 			elems.map = add_to_table(temp, elems.map);
@@ -56,6 +53,6 @@ t_elems	start_reading_map(int fd, t_elems elems)
 		}
 	}
 	return (elems);
-	//read one line;
+//read one line;
 	
 }
