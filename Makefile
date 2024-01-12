@@ -22,6 +22,7 @@ SRCS	=	srcs/main.c							\
 			srcs/utils/ft_atoi.c				\
 			srcs/utils/2d_add.c					\
 			srcs/file_reader/map_reader.c		\
+			srcs/file_reader/map_parser.c		\
 			debug/display_textures_list.c		\
 			debug/print_map.c					\
 
