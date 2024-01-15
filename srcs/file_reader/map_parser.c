@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:23 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/15 11:47:15 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:23:52 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,32 @@
 
 //check if two coords for player
 
-t_elems	check_spaces(char **str, t_elems elems)
+t_elems	check_around(char d, t_elems elems)
+{
+	if (d != ' ' && d != '1' && d != '\n' && d)
+		elems.error = 1;
+	return (elems);
+}
+
+t_elems	check_single_space(char **str, unsigned int i, unsigned int j, t_elems elems)
+{
+	char	c;
+
+	c = str[i][j];
+	if (c == ' ')
+	{
+		elems = check_around(str[i][j + 1], elems);
+		if (j > 0)
+			elems = check_around(str[i][j - 1], elems);
+		if (i > 0)
+			elems = check_around(str[i - 1][j], elems);
+		if (str[i + 1] && str[i + 1][j])
+			elems = check_around(str[i + 1][j], elems);
+	}
+	return (elems);
+}
+
+t_elems	check_all_spaces(char **str, t_elems elems)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -29,12 +54,7 @@ t_elems	check_spaces(char **str, t_elems elems)
 				elems.error = 1;
 			if (j == 0 && str[i][j] != ' '  && str[i][j] !=  '1')
 				elems.error = 1;
-			if (str[i][j + 1])
-				if (str[i][j] == ' ' && str[i][j + 1] != ' ' && str[i] [j + 1] != '1' && str[i][j + 1] != '\n')
-					elems.error = 1;
-			if (j > 0)
-				if (str[i][j] == ' ' && str[i][j - 1] != ' ' && str[i] [j - 1] != '1')
-					elems.error = 1;
+			elems = check_single_space(str, i, j, elems);
 			if (!str[i + 1])
 				if (str[i][j] != ' ' && str[i][j] != '1')
 					elems.error = 1;
@@ -87,7 +107,7 @@ t_elems	check_map(t_elems elems, char **map)
 	if (elems.error == 1)
 		return (elems);
 	i = 0;
-	elems = check_spaces(map, elems);
+	elems = check_all_spaces(map, elems);
 	while (map[i] && elems.error == 0)
 	{
 		elems = line_checker(map[i], elems);
