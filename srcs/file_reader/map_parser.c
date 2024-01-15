@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:23 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/15 10:50:57 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:47:15 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,31 @@ t_elems	check_spaces(char **str, t_elems elems)
 	unsigned int	j;
 
 	i = 0;
-	j = 0;
 	while (str[i])
 	{
-		while (str[i][j] && str[i][j] == ' ')
-			j++;
-		if (str[i][0] != '\n')
-		{
-			if (str[i][j] != '1')
-			{
-				printf("fucked up line = %s\ni value = %d", str[i], i);
-				elems.error = 1;
-			}
-		}
-		i++;
 		j = 0;
+		while (str[i][j] && str[i][j] != '\n')
+		{
+			if (i == 0 && str[i][j] != ' ' && str[i][j] != '1')
+				elems.error = 1;
+			if (j == 0 && str[i][j] != ' '  && str[i][j] !=  '1')
+				elems.error = 1;
+			if (str[i][j + 1])
+				if (str[i][j] == ' ' && str[i][j + 1] != ' ' && str[i] [j + 1] != '1' && str[i][j + 1] != '\n')
+					elems.error = 1;
+			if (j > 0)
+				if (str[i][j] == ' ' && str[i][j - 1] != ' ' && str[i] [j - 1] != '1')
+					elems.error = 1;
+			if (!str[i + 1])
+				if (str[i][j] != ' ' && str[i][j] != '1')
+					elems.error = 1;
+			j++;
+		}
+		if (str[i][j - 1] != ' ' && str[i][j - 1] != '1')
+			elems.error = 1;
+		i++;
 	}
-	if (elems.error == 1)
+	if (elems.error)
 		ft_putstrfd("Error\nMap not enclosed by walls\n", 2);
 	return (elems);
 }
