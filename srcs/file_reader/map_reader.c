@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:07:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/12 16:44:05 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:49:58 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* **********************************************************************
 **** */
@@ -32,20 +32,25 @@ t_elems	start_reading_map(int fd, t_elems elems)
 
 	temp = NULL;
 	read = 0;
-	temp = basic_gnl(fd, &read);
+	temp = basic_gnl(fd, &read, 1);
 	if (read == 0)
 		return (error_reading(temp, "Error\n map not found\n", elems));
-	if (temp && read != 1)
-		return (error_reading(temp, "Error\nMap should be serparated by a \\n\n", elems));
+	while (!ft_strcmp(temp, "\n"))
+	{
+		free(temp);
+		temp = basic_gnl(fd, &read, 1);
+	}
+	elems.map = add_to_table(temp, elems.map);
 	free(temp);
-	temp = basic_gnl(fd, &read);
-	//printf("read = %d\n", read_ammount);
-	//if (!temp) //needs to check if there is a map_reader
-	//	return (error_reading(temp, "Error\nMap serparated by multiple \\n\n", elems));
 	read = 1;
 	while (read)
 	{
-		temp = basic_gnl(fd, &read);
+		temp = basic_gnl(fd, &read, 1);
+		if (temp && (!ft_strcmp(temp, "\n")))
+		{
+			free(temp);
+			return (elems);
+		}
 		if (temp)
 		{
 			elems.map = add_to_table(temp, elems.map);

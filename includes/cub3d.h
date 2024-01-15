@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/12 16:19:37 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:25:12 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CUB3D_H
@@ -42,7 +42,7 @@ typedef struct s_elems
 int			ft_strcmp(const char *s1, const char *s2);
 void		ft_putstrfd(char *str, int fd);
 int			file_checker(char *str);
-char		*basic_gnl(int fd, int *read_ammount);
+char		*basic_gnl(int fd, int *read_ammount, int keep_nl);
 int			ft_strlen(char *str);
 char		*ft_strcpy(char *src, char *dest);
 t_textures	*make_text_id(void);

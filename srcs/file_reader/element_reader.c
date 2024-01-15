@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/11 12:43:23 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:25:48 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ t_elems	element_reader(int fd, t_elems elems)
 	}
 	while (!elems.is_full)
 	{
-		temp = basic_gnl(fd, &read_ammount);
+		temp = basic_gnl(fd, &read_ammount, 0);
 		if (temp)
 		{
 			type =  elem_type(temp, elems.elem_names);

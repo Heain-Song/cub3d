@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:31:20 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/12 15:38:42 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:26:49 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void	print_map(char **map)
 	if (!map)
 		return;
 	while (map[i])
-		printf("%s\n", map[i++]);
+		printf("%s", map[i++]);
 }
