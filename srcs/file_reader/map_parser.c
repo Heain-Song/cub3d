@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:23 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/15 12:23:52 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:37:31 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ t_elems	check_around(char d, t_elems elems)
 	return (elems);
 }
 
-t_elems	check_single_space(char **str, unsigned int i, unsigned int j, t_elems elems)
+t_elems	check_single_space(char **str, size_t i, size_t j, t_elems elems)
 {
 	char	c;
 
 	c = str[i][j];
+	if (i == 0)
+		return (elems = check_around(c, elems));
 	if (c == ' ')
 	{
 		elems = check_around(str[i][j + 1], elems);
@@ -41,8 +43,8 @@ t_elems	check_single_space(char **str, unsigned int i, unsigned int j, t_elems e
 
 t_elems	check_all_spaces(char **str, t_elems elems)
 {
-	unsigned int	i;
-	unsigned int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	while (str[i])
@@ -50,9 +52,7 @@ t_elems	check_all_spaces(char **str, t_elems elems)
 		j = 0;
 		while (str[i][j] && str[i][j] != '\n')
 		{
-			if (i == 0 && str[i][j] != ' ' && str[i][j] != '1')
-				elems.error = 1;
-			if (j == 0 && str[i][j] != ' '  && str[i][j] !=  '1')
+			if (j == 0 && str[i][j] != ' ' && str[i][j] != '1')
 				elems.error = 1;
 			elems = check_single_space(str, i, j, elems);
 			if (!str[i + 1])
@@ -115,6 +115,4 @@ t_elems	check_map(t_elems elems, char **map)
 	}
 	return (elems);
 }
-
-
 //need to check for path I guess and check if two players

@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:40:18 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/12 15:07:05 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:21:58 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**init_table(char *str, char **table)
 		return (NULL);
 	table[1] = NULL;
 	return (table);
-}	
+}
 
 char	**add_to_table(char *str, char **table)
 {

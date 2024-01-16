@@ -6,12 +6,12 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:49:50 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/11 16:10:47 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:21:29 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
 
-int		str_check_num_ammount(char *str)
+int	str_check_num_ammount(char *str)
 {
 	int	nb;
 	int	auth;
@@ -31,12 +31,13 @@ int		str_check_num_ammount(char *str)
 	}
 	return (nb);
 }
+
 char	*skip_and_getnb(char *str, int *nb)
 {
 	if (!str)
 		return (NULL);
 	while (*str && (*str < '0' || *str > '9'))
-		 str++;
+		str++;
 	if (*(str - 1) == '-')
 		str--;
 	*nb = ft_atoi(str);

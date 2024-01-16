@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/15 10:25:12 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:28:00 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CUB3D_H
@@ -55,7 +55,7 @@ t_elems		check_elems(t_elems elems_list);
 int			elem_type(char *temp, char **str);
 int			ft_atoi(const char *str);
 t_elems		get_nbr_atribs(t_elems elems, char *str);
-t_elems		gt_str_atrib(t_elems elems, char *str);
+t_elems		get_str_atrib(t_elems elems, char *str);
 t_elems		assign_which_elem(char *str, int nb, t_elems elems);
 void		free_elems(t_elems elems);
 char		*skip_and_getnb(char *str, int *nb);
@@ -64,6 +64,6 @@ t_elems		start_reading_map(int fd, t_elems elems);
 char		**add_to_table(char *str, char **table);
 t_elems		check_map(t_elems elems, char **map);
 //debug//
-void		display_textures_list (t_textures *head);
+void		display_textures_list(t_textures *head);
 void		print_map(char **map);
 #endif

@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:12:20 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/11 16:05:10 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:27:45 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_elems	check_colors(t_elems elems, int type, int color[3])
 				ft_putstrfd("Ceiling ", 2);
 			else
 				ft_putstrfd("Floor ", 2);
-			ft_putstrfd("color is not between 0 and 255\n",2);
+			ft_putstrfd("color is not between 0 and 255\n", 2);
 			elems.error = 1;
 		}
 		i++;
@@ -37,7 +37,7 @@ t_elems	check_colors(t_elems elems, int type, int color[3])
 t_elems	assign_which_elem(char *str, int nb, t_elems elems)
 {
 	if (nb < 4)
-		elems = gt_str_atrib(elems, str);
+		elems = get_str_atrib(elems, str);
 	else
 	{
 		elems = get_nbr_atribs(elems, str);
