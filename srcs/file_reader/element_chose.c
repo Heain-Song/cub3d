@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:12:20 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/16 17:27:45 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/16 21:43:59 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ t_elems	assign_which_elem(char *str, int nb, t_elems elems)
 	else
 	{
 		elems = get_nbr_atribs(elems, str);
+		if (elems.error == 1)
+			return (elems);
 		if (nb == 4)
 			elems = check_colors(elems, 4, elems.c_colors);
 		else

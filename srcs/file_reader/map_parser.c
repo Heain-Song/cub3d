@@ -6,20 +6,13 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:23 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/16 17:37:31 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/16 21:49:05 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
 //check if two coords for player
-
-t_elems	check_around(char d, t_elems elems)
-{
-	if (d != ' ' && d != '1' && d != '\n' && d)
-		elems.error = 1;
-	return (elems);
-}
 
 t_elems	check_single_space(char **str, size_t i, size_t j, t_elems elems)
 {
