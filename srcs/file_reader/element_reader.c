@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/15 10:25:48 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:25:57 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_textures	*which_elem(t_textures *textures, char *temp)
 		textures = textures->next;
 	}
 	return (textures);
-	//element not found?
 }
 
 char	*make_path(char *str)
@@ -50,7 +49,7 @@ char	*make_path(char *str)
 	return (temp);
 }
 
-t_elems	gt_str_atrib(t_elems elems, char *str)
+t_elems	get_str_atrib(t_elems elems, char *str)
 {
 	t_textures	*node;
 
@@ -83,12 +82,12 @@ t_elems	get_nbr_atribs(t_elems elems, char *str)
 	}
 	if (str[0] == 'F')
 	{
-		str =skip_and_getnb(str, &elems.f_colors[0]);
-		str =skip_and_getnb(str, &elems.f_colors[1]);
-		str =skip_and_getnb(str, &elems.f_colors[2]);
+		str = skip_and_getnb(str, &elems.f_colors[0]);
+		str = skip_and_getnb(str, &elems.f_colors[1]);
+		str = skip_and_getnb(str, &elems.f_colors[2]);
 		elems.did_f = 1;
 	}
-	 return (elems);
+	return (elems);
 }
 
 t_elems	element_reader(int fd, t_elems elems)
@@ -107,16 +106,15 @@ t_elems	element_reader(int fd, t_elems elems)
 		temp = basic_gnl(fd, &read_ammount, 0);
 		if (temp)
 		{
-			type =  elem_type(temp, elems.elem_names);
+			type = elem_type(temp, elems.elem_names);
 			if (type == -1)
 			{
 				free(temp);
-				ft_putstrfd("Error\n invalid info in between elements\n" ,2);
+				ft_putstrfd("Error\n invalid info in between elements\n", 2);
 				elems.error = 1;
 				return (elems);
 			}
 			elems = assign_which_elem(temp, type, elems);
-			//elems = check_elems(elems);
 			free(temp);
 		}
 		if (elems.error)
@@ -124,11 +122,10 @@ t_elems	element_reader(int fd, t_elems elems)
 		elems = check_elems(elems);
 		if (read_ammount <= 0 && !elems.is_full)
 		{
-			ft_putstrfd("Error\n not enough element in file" ,2);
+			ft_putstrfd("Error\n not enough element in file", 2);
 			elems.error = 1;
 			return (elems);
 		}
-		//elems = check_elems(elems);
 	}
 	return (elems);
 }
