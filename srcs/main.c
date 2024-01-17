@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/17 11:30:35 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:34:59 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		//debug checking 
 		loop_debug(elems);
 		//end debug
-		free_elems(elems); 
+		free_elems(elems);
 	}
 	else
 		ft_putstrfd("Error need a map file\n", 2);
