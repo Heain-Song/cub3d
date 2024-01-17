@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/17 11:02:02 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:27:30 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CUB3D_H
@@ -72,4 +72,5 @@ t_elems		check_around(char d, t_elems elems);
 //debug//
 void		display_textures_list(t_textures *head);
 void		print_map(char **map);
+void		loop_debug(t_elems elems);
 #endif

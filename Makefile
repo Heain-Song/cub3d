@@ -28,6 +28,7 @@ SRCS	=	srcs/main.c								\
 			srcs/file_reader/map_parser_utils.c		\
 			debug/display_textures_list.c			\
 			debug/print_map.c						\
+			debug/loop.c							\
 
 OBJS	=	${SRCS:.c=.o}
 
