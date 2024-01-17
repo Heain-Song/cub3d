@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/16 21:50:33 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:02:02 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CUB3D_H
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <fcntl.h>
+# include <mlx.h>
 
 typedef struct s_textures
 {
