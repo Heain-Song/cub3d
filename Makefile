@@ -1,11 +1,12 @@
 NAME	= cub3D
 
-CC	= gcc
-CFLAGS	= -Wall -Wextra -Werror -ggdb
-RM	= rm -f
+CC			= gcc
+CFLAGS 		= -Wall -Wextra -Werror -I ./include -I minilibx
+MLXFLAGS	= -Lminilibx -lm -lmlx -lXext -lX11 -lz
+RM			= rm -f
 
-I_PATH	= ./includes
-M_PATH	= ./minilibx-linux
+I_PATH		= ./includes
+M_PATH		= ./minilibx
 
 INCLUDES	= -I ${I_PATH}
 
@@ -28,25 +29,26 @@ SRCS	=	srcs/main.c								\
 			debug/display_textures_list.c			\
 			debug/print_map.c						\
 
-OBJS	= ${SRCS:.c=.o}
+OBJS	=	${SRCS:.c=.o}
 
-all: ${NAME}
+all:		${NAME}
 
-%.o: %.c
-	${CC} ${CFLAGS} ${INCLUDES} -c $< -o $@
+%.o:		%.c
+			${CC} ${CFLAGS} ${INCLUDES} -c $< -o $@
 
-${NAME}	: ${OBJS} ${SRCS}
-	${CC} ${CFLAGS} ${OBJS} ${INCLUDES} -o ${NAME}
+${NAME}	:	${OBJS} ${SRCS}
+			make -C ${M_PATH}
+			${CC} ${CFLAGS} ${OBJS} ${MLXFLAGS} ${INCLUDES} -o ${NAME}
 
 clean:
-	${RM} ./*.o
-	${RM} ./*/*.o
-	${RM} ./*/*/*.o
-	${RM} ./*/*/*/*.o
+			${RM} ./*.o
+			${RM} ./*/*.o
+			${RM} ./*/*/*.o
+			${RM} ./*/*/*/*.o
 
-fclean: clean
-	${RM} ${NAME}
+fclean:		clean
+			${RM} ${NAME}
 
-re: clean all
+re:			clean all
 
-.PHONY: all clean fclean re
+.PHONY:		all clean fclean re
