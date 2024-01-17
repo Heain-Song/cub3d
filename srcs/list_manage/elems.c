@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 09:51:56 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/12 16:20:08 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:42:45 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -19,6 +19,7 @@ t_elems	make_names(t_elems struct_elem)
 		struct_elem.error = 1;
 		return (struct_elem);
 	}
+	struct_elem.textures = NULL;
 	struct_elem.elem_names[0] = ft_strdup("NO");
 	struct_elem.elem_names[1] = ft_strdup("SO");
 	struct_elem.elem_names[2] = ft_strdup("WE");
