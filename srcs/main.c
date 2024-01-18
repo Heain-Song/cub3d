@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/18 10:24:11 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/18 12:02:09 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		elems = file_parsing(argv[1]);
-		if (elems.error != 0)
+		if (elems.error == 0)
 		{
 			elems = init_mlx(elems);
+			sleep(5); //debug purposes to see window
 			//elems = check_textures(elems);
 			if (!elems.error)
 				clean_mlx(elems.mlx_info);
