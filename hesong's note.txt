@@ -1,0 +1,77 @@
+<CUB3D CHECK LIST>
+
+I. Parsing
+
+[1] open & read the .cub map file
+
+[2] Validate the map file
+
+1. check the file extension(.cub) - done
+
+2. verify valid characters
+	2.1 verify the existance of obligatory characters(NSWE)
+		- no_player
+		- missing_NO
+		- missing_SO
+		- missing_WE
+		- missing_EA
+	2.1 check if there are invalid characters
+		- invalid_char_in_plan
+		-
+	2.2 duplicate of characters
+		- two_players
+		- four_players
+		- multiverse
+		-
+	2.3 multiple players among N,S,E,W
+	2.3 multiverse
+	2.4 no player/missing player
+	2.5 player is stuck -> ?
+	2.6 verify identifiers
+
+3. color
+	3.1 verify the existance of F, C
+		- no F
+		- no C
+	3.2 check duplicates
+		- two_F
+		- two_C
+	3.3 verify the identifiers of F, C
+		- FCC
+		- FFC
+		- not C
+		- not F
+	3.4 verify the existance of RGB values
+		- F_missing_R
+		- F_missing_G
+		- F_missing_B
+		- C_missing_R
+		- C_missing_G
+		- C_missing_B
+
+	3.5 check the format
+		- F_no_comma
+		- F_no_comma_2
+		- F_RGB_four_values
+		- C_no_comma
+		- C_no_comma_2
+		- C_RGB_four_values
+
+	3.6 verify the range of RGB color (less than 0 or greater than 255)
+		- F_less_than_zero
+		- F_over_255
+		- C_less_than_zero
+		- C_over_255
+
+	3.7 same color
+		- same_color
+
+4. file_name
+5. order
+6. plan
+7. texture
+
+
+* what do we do with multiple plans/map contents?
+* if the player is stuck in walls, is it a playable map?
+
