@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:48:30 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/16 21:48:53 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/21 09:47:25 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 t_elems	check_around(char d, t_elems elems)
 {
-	if (d != ' ' && d != '1' && d != '\n' && d)
+	if (d && d != ' ' && d != '1' && d != '\n')
+	{
 		elems.error = 1;
+	}
 	return (elems);
 }

@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:23 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/16 21:49:05 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/21 09:43:41 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,16 @@ t_elems	check_all_spaces(char **str, t_elems elems)
 		{
 			if (j == 0 && str[i][j] != ' ' && str[i][j] != '1')
 				elems.error = 1;
-			elems = check_single_space(str, i, j, elems);
-			if (!str[i + 1])
+			else if (!str[i + 1])
+			{
 				if (str[i][j] != ' ' && str[i][j] != '1')
 					elems.error = 1;
+			}
+			else
+				elems = check_single_space(str, i, j, elems);
 			j++;
 		}
-		if (str[i][j - 1] != ' ' && str[i][j - 1] != '1')
+		if (j > 0 && str[i][j - 1] != ' ' && str[i][j - 1] != '1')
 			elems.error = 1;
 		i++;
 	}
