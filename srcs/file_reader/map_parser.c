@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:23 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/21 09:43:41 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/21 13:41:14 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_elems	check_all_spaces(char **str, t_elems elems)
 		{
 			if (j == 0 && str[i][j] != ' ' && str[i][j] != '1')
 				elems.error = 1;
-			else if (!str[i + 1])
+			else if (!str[i + 1] || (int)j > ft_strlen(str[i + 1]))
 			{
 				if (str[i][j] != ' ' && str[i][j] != '1')
 					elems.error = 1;
@@ -109,6 +109,8 @@ t_elems	check_map(t_elems elems, char **map)
 		elems = line_checker(map[i], elems);
 		i++;
 	}
+	if (elems.found_player == 0)
+		return (basic_error(elems, "Player not found\n", NULL, NULL));
 	return (elems);
 }
 //need to check for path I guess and check if two players
