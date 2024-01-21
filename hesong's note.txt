@@ -7,71 +7,136 @@ I. Parsing
 [2] Validate the map file
 
 1. check the file extension(.cub) - done
+	Invalid:
+		- wrong_filename,cub - checked
+		- wrong_filename. cub - checked
+		- wrong_filename.ber - checked
+		- wrong_filename.ccub - checked
+		- wrong_filename.cuub - checked
+		- wrong_filename.cubb - checked
 
 2. verify valid characters
 	2.1 verify the existance of obligatory characters(NSWE)
-		- no_player
-		- missing_NO
-		- missing_SO
-		- missing_WE
-		- missing_EA
+		Invalid:
+			- no_player
+			- missing_NO
+			- missing_SO
+			- missing_WE
+			- missing_EA
 	2.1 check if there are invalid characters
-		- invalid_char_in_plan
-		-
-	2.2 duplicate of characters
-		- two_players
-		- four_players
-		- multiverse
-		-
-	2.3 multiple players among N,S,E,W
-	2.3 multiverse
-	2.4 no player/missing player
-	2.5 player is stuck -> ?
+		Invalid:
+			- invalid_char_in_plan
+			- random_char_outside
+	2.2 duplicate of characters(NSWE)
+		Invalid:
+			- two_players
+			- two_NN
+			- three_players
+			- four_players
+			- multiverse
+	2.4 no player/misplaced player
+		Invalid:
+			- player_is_outside
+			- player_is_outside_2
+		Valid:
+			- 
 	2.6 verify identifiers
+		Invalid:
+			- wrong_identifier_N
+			- wrong_identifier_S
+			- wrong_identifier_W
+			- wrong_identifier_E
+		Valid:
+			- 
 
-3. color
+3. verify the RGB color of F, C
 	3.1 verify the existance of F, C
-		- no F
-		- no C
-	3.2 check duplicates
-		- two_F
-		- two_C
+		Invalid:
+			- no_F
+			- no_C
+		Valid:
+			- 
+	3.2 check duplicates of F, C
+		Invalid:
+			- two_F
+			- two_C
+		Valid:
+			-
 	3.3 verify the identifiers of F, C
-		- FCC
-		- FFC
-		- not C
-		- not F
+		Invalid:
+			- FCC
+			- FFC
+			- not_C
+			- not_F
+		Valid:
+			- 
 	3.4 verify the existance of RGB values
-		- F_missing_R
-		- F_missing_G
-		- F_missing_B
-		- C_missing_R
-		- C_missing_G
-		- C_missing_B
+		Invalid:
+			- F_missing_R
+			- F_missing_G
+			- F_missing_B
+			- C_missing_R
+			- C_missing_G
+			- C_missing_B
+		Valid:
+			- 
 
 	3.5 check the format
-		- F_no_comma
-		- F_no_comma_2
-		- F_RGB_four_values
-		- C_no_comma
-		- C_no_comma_2
-		- C_RGB_four_values
+		Invalid:
+			- F_no_comma
+			- F_no_comma_2
+			- F_RGB_four_values
+			- C_no_comma
+			- C_no_comma_2
+			- C_RGB_four_values
+		Valid:
+			-  
 
 	3.6 verify the range of RGB color (less than 0 or greater than 255)
-		- F_less_than_zero
-		- F_over_255
-		- C_less_than_zero
-		- C_over_255
+		Invalid:
+			- F_less_than_zero
+			- F_over_255
+			- C_less_than_zero
+			- C_over_255
+		Valid:
+			- same_color
 
-	3.7 same color
-		- same_color
+4. verify the order(the map content always should be the last)
+	Invalid:
+		- plan_first.cub
+		- texture_after_plan.cub
 
-4. file_name
-5. order
-6. plan
-7. texture
+5. verify the map content/plan
+	5.1 verify the existance of plan
+		Invalid:
+			- no_plan
+	5.2 verify the wall closure
+		Invalid:
+			- not_closed_first.cub
+			- not_closed_first_2.cub
+			- not_closed_last.cub
+			- not_closed_last_2.cub
+			- not_closed_middle.cub
+			- space_ in_ area.cub
+	
+6. verify the texture element
+	6.1 check the existance of identifiers (NO,SO,WE,EA)
+		Invalid:
+			- empty_north.cub
+			- empty_south.cub
+			- empty_west.cub
+			- empty_est.cub
+	6.2 check if there are duplicates of identifiers(NO,SO,WE,EA)
+		Invalid:
+			- duplicate_north.cub
+			- duplicate _south.cub
+			- duplicate_west.cub
+			- duplicate_est.cub
+	6.3 check the extension (.xpm)
+		Invalid:
+			- not_xpm.cub
 
-
-* what do we do with multiple plans/map contents?
-* if the player is stuck in walls, is it a playable map?
+	6.4 verify if .xpm file is empty file or not
+		Invalid:
+			- non_exist_texture.cub
 
