@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:24:27 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 13:03:57 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:09:09 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_elems	save_error(t_elems elems)
 
 t_elems	error_node(t_textures *node, t_elems elems)
 {
+	if (elems.error == 1)
+		return (elems);
 	ft_putstrfd("Error\n", 2);
 	ft_putstrfd(node->id, 2);
 	ft_putstrfd(" has two textures\n", 2);
@@ -31,6 +33,8 @@ t_elems	error_node(t_textures *node, t_elems elems)
 
 t_elems	basic_error(t_elems elems, char *error, char *attrib, char *to_free)
 {
+	if (elems.error == 1)
+		return (elems);
 	ft_putstrfd("Error\n", 2);
 	ft_putstrfd(error, 2);
 	if (attrib)

@@ -1,7 +1,7 @@
 NAME	= cub3D
 
 CC			= gcc
-CFLAGS 		= -Wall -Wextra -Werror -I ./include -I minilibx
+CFLAGS 		= -Wall -Wextra -Werror -I ./include -I minilibx -ggdb
 MLXFLAGS	= -Lminilibx -lm -lmlx -lXext -lX11 -lz
 RM			= rm -f
 
@@ -28,6 +28,7 @@ SRCS	=	srcs/main.c								\
 			srcs/file_reader/map_parser_utils.c		\
 			srcs/mlx_manage/mlx_init.c				\
 			srcs/mlx_manage/mlx_cleaner.c			\
+			srcs/file_reader/textures.c				\
 			debug/display_textures_list.c			\
 			debug/print_map.c						\
 			debug/loop.c							\

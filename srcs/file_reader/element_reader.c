@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 13:04:56 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:07:52 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ t_elems	get_str_atrib(t_elems elems, char *str)
 	if (node && node->path)
 		return (error_node(node, elems));
 	if (node)
+	{
 		node->path = make_path(str);
+		elems = check_textures(elems, node->path);
+	}
 	return (elems);
 }
 
@@ -96,7 +99,7 @@ t_elems	element_reader(int fd, t_elems elems)
 		if (temp)
 		{
 			type = elem_type(temp, elems.elem_names);
-			if (type == -1)
+			if (type == -1 && elems.error)
 				return (basic_error(elems, "invalid info in between elements\n",
 						NULL, temp));
 			elems = assign_which_elem(temp, type, elems);
