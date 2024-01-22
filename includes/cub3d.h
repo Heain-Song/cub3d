@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/22 15:59:42 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:44:44 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CUB3D_H
@@ -79,7 +79,7 @@ t_elems		check_around(char d, t_elems elems);
 int			is_player(char c);
 t_elems		find_player(char **map, t_elems elems);
 t_elems		error_reading(char *temp, char *error, t_elems elems);
-t_elems		check_textures(t_elems elems, char *str);
+t_elems		check_textures(t_elems elems, char *str, char *node);
 //debug//
 void		display_textures_list(t_textures *head);
 void		print_map(char **map);
