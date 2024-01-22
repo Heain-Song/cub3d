@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:23 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 12:28:35 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:53:29 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ t_elems	check_map(t_elems elems, char **map)
 	while (map[i] && elems.error == 0)
 	{
 		elems = line_checker(map[i], elems);
+		elems = check_empty_line(map, i, elems);
 		i++;
 	}
 	elems = find_player(map, elems);

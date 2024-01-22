@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:48:30 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 12:45:37 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:54:14 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,18 @@ t_elems	find_player(char **map, t_elems elems)
 	}
 	return (elems);
 }
-
+t_elems	check_empty_line(char **map, size_t i, t_elems elems)
+{
+	if (map[i][0] == '\n')
+	{
+		while (map[i] && map[i][0] == '\n')
+			i++;
+		if (map[i])
+			return (error_reading(NULL, "Empty line in map\n", elems));
+		return (elems);
+	}
+	return (elems);
+}
 t_elems	check_around(char d, t_elems elems)
 {
 	if (elems.error == 0)

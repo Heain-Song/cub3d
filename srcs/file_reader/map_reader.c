@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:07:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 12:09:19 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:56:23 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -55,11 +55,6 @@ t_elems	start_reading_map(int fd, t_elems elems)
 	while (read)
 	{
 		temp = basic_gnl(fd, &read, 1);
-		if (temp && (!ft_strcmp(temp, "\n")))
-		{
-			free(temp);
-			return (elems);
-		}
 		if (temp)
 		{
 			elems.map = add_to_table(temp, elems.map);
