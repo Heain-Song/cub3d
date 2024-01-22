@@ -1,10 +1,10 @@
-NO . . / . . / t e x t u r e s / n _ w a l l . x p m
-SO ../../textures/wall_2.xpm
-WE ../../textures/wall_3.xpm
-EA ../../textures/wall_4.xpm
+NOtextures/wall_1.xpm
+SOtextures/wall_2.xpm
+WEtextures/wall_3.xpm
+EAtextures/wall_4.xpm
 
-F 220,100,0
-C 225,30,0
+F220,100,0
+C225,30,0
 
         1111111111111111111111111
         1000000000110000000000001

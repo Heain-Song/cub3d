@@ -1,7 +1,7 @@
-NO ../../textures/test.jpg
-SO ../../textures/test.xpn
-WE ../../textures/test.png
-EA ../../textures/test.gif
+NO textures/test.jpg
+SO textures/test.xpn
+WE textures/test.png
+EA textures/test.gif
 
 F 220,100,0
 C 225,30,0
