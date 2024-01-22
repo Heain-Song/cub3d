@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/18 10:24:37 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 13:04:19 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CUB3D_H
@@ -71,11 +71,14 @@ int			str_check_num_ammount(char *str);
 t_elems		start_reading_map(int fd, t_elems elems);
 char		**add_to_table(char *str, char **table);
 t_elems		check_map(t_elems elems, char **map);
-t_elems		error_node(t_textures *node, t_elems elems, char *temp);
+t_elems		error_node(t_textures *node, t_elems elems);
 t_elems		basic_error(t_elems elems, char *error,
 				char *attrib, char *to_free);
 t_elems		save_error(t_elems elems);
 t_elems		check_around(char d, t_elems elems);
+int			is_player(char c);
+t_elems		find_player(char **map, t_elems elems);
+t_elems		error_reading(char *temp, char *error, t_elems elems);
 //debug//
 void		display_textures_list(t_textures *head);
 void		print_map(char **map);
