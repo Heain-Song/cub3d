@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/21 13:29:22 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 08:45:39 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ char	*make_path(char *str)
 {
 	char	*temp;
 
-	while (str && *str != ' ')
+	if (!str)
+		return (NULL);
+	while (*str && *str != ' ')
 		str++;
 	if (!str)
 		return (NULL);
-	while (str && *str == ' ')
+	while (*str && *str == ' ')
 		str++;
 	if (str)
 		temp = ft_strdup(str);
@@ -56,21 +58,21 @@ t_elems	get_nbr_atribs(t_elems elems, char *str)
 {
 	if (str_check_num_ammount(str) != 3)
 	{
-		if (str[0] == 'C')
+		if (str[0] == 'C' && elems.did_c == 0)
 			return (basic_error(elems, "Not enough colors for ",
 					"Ceiling\n", NULL));
-		else
+		if (str[0] == 'F' && elems.did_c == 0)
 			return (basic_error(elems, "Not enough colors for ",
 					"Floor\n", NULL));
 	}
-	if (str[0] == 'C')
+	if (str[0] == 'C' && elems.did_c == 0)
 	{
 		str = skip_and_getnb(str, &elems.c_colors[0]);
 		str = skip_and_getnb(str, &elems.c_colors[1]);
 		str = skip_and_getnb(str, &elems.c_colors[2]);
 		elems.did_c = 1;
 	}
-	if (str[0] == 'F')
+	if (str[0] == 'F' && elems.did_f == 0)
 	{
 		str = skip_and_getnb(str, &elems.f_colors[0]);
 		str = skip_and_getnb(str, &elems.f_colors[1]);

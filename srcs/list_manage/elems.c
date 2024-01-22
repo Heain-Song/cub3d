@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 09:51:56 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/21 13:34:54 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 08:50:03 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -42,7 +42,15 @@ void	free_elems(t_elems elems)
 	while (elems.elem_names[i])
 		free(elems.elem_names[i++]);
 	free(elems.elem_names);
+	i = 0;
+	if (elems.map)
+	{
+		while (elems.map[i])
+			free(elems.map[i++]);
+		free(elems.map);
+	}
 	free_t_textures(elems.textures);
+	
 }
 
 t_elems	init_elems(void)

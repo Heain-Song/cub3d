@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:12:20 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/21 13:34:18 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 08:54:52 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	elem_type(char *temp, char **str)
 	int	i;
 	int	length;
 
-	length = 2;
+	length = 3;
 	i = 0;
 	while (str[i])
 	{
@@ -64,7 +64,7 @@ int	elem_type(char *temp, char **str)
 			return (i);
 		i++;
 		if (i == 4)
-			length = 1;
+			length = 2;
 	}
 	return (-1);
 }
