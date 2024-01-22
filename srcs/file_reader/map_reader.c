@@ -6,13 +6,15 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:07:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/16 18:18:11 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:09:19 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
 
 t_elems	error_reading(char *temp, char *error, t_elems elems)
 {
+	if (elems.error == 1)
+		return (elems);
 	if (temp)
 		free(temp);
 	ft_putstrfd("Error\n", 2);
@@ -46,7 +48,7 @@ t_elems	start_reading_map(int fd, t_elems elems)
 
 	temp = skip_to_map(fd);
 	if (temp == NULL)
-		return (error_reading(temp, "Error\n map not found\n", elems));
+		return (error_reading(temp, "Map not found\n", elems));
 	elems.map = add_to_table(temp, elems.map);
 	free(temp);
 	read = 1;

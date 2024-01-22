@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:23 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 11:17:33 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:28:35 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ t_elems	check_single_space(char **str, size_t i, size_t j, t_elems elems)
 {
 	char	c;
 
+	if (elems.error == 1)
+		return (elems);
 	c = str[i][j];
 	if (is_player(c))
-		return(elems);
-	if (i == 0)
+		return (elems);
+	if (i == 0 || j == 0)
+		return (elems = check_around(c, elems));
+	if (ft_strlen(str[i - 1]) < (int) j)
 		return (elems = check_around(c, elems));
 	if (c == ' ')
 	{
@@ -45,40 +49,23 @@ t_elems	check_all_spaces(char **str, t_elems elems)
 	while (str[i])
 	{
 		j = 0;
-		while (str[i][j] && str[i][j] != '\n')
+		while (str[i][j] && str[i][j] != '\n' && elems.error != 1)
 		{
-			if (j == 0 && str[i][j] != ' ' && str[i][j] != '1' && !is_player(str[i][j]))
-				elems.error = 1;
-			else if (!str[i + 1] || (int)j > ft_strlen(str[i + 1]))
-			{
-				if (str[i][j] != ' ' && str[i][j] != '1' && !is_player(str[i][j]))
-					elems.error = 1;
-			}
-			else
-				elems = check_single_space(str, i, j, elems);
+			elems = check_single_space(str, i, j, elems);
 			j++;
 		}
-		if (j > 0 && str[i][j - 1] != ' ' && str[i][j - 1] != '1' && !is_player(str[i][j - 1]))
-			elems.error = 1;
+		if (j > 0 && str[i][j - 1] != ' ' && str[i][j - 1] != '1'
+			&& !is_player(str[i][j - 1]))
+			return (error_reading(NULL, "Map not enclosed by walls\n", elems));
 		i++;
 	}
-	if (elems.error)
-		ft_putstrfd("Error\nMap not enclosed by walls\n", 2);
 	return (elems);
 }
 
 t_elems	coord_check(char c, t_elems elems)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-	{
-		/*if (elems.found_player == 1)
-		{
-			ft_putstrfd("Error\n multiple staring positions\n", 2);
-			elems.error = 1;
-		}
-		elems.found_player = 1;*/
 		return (elems);
-	}
 	ft_putstrfd("Error\nInvalid char in map", 2);
 	elems.error = 1;
 	return (elems);

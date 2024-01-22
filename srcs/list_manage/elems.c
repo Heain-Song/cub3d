@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 09:51:56 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 08:50:03 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:46:37 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -50,7 +50,6 @@ void	free_elems(t_elems elems)
 		free(elems.map);
 	}
 	free_t_textures(elems.textures);
-	
 }
 
 t_elems	init_elems(void)

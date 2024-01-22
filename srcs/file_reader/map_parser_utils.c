@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:48:30 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 11:20:22 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:45:37 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,33 +19,45 @@ int	is_player(char c)
 	return (0);
 }
 
-t_elems check_around_player(size_t i, size_t j, char **map, t_elems elems)
+t_elems	error_player(t_elems elems)
+{
+	return (basic_error(elems, "Multiple players found\n", NULL, NULL));
+}
+
+t_elems	check_around_player(size_t i, size_t j, char **map, t_elems elems)
 {
 	int	j_int;
 
 	j_int = j;
 	if (elems.found_player == 1)
-		return(basic_error(elems, "Multiple players found\n", NULL, NULL));
+		return (error_player(elems));
 	if (i == 0)
-		return(basic_error(elems, "Invalid starting position\n", NULL, NULL));
+		return (error_player(elems));
 	if (!map[i + 1] || j_int > ft_strlen(map[i]))
-		return(basic_error(elems, "Invalid starting position\n", NULL, NULL));
-	if (map[i][j + 1] != '0' && map[i][j + 1] != '1' && !is_player(map[i][j + 1]))
-		return(basic_error(elems, "Invalid starting position\n", NULL, NULL));
-	if (map[i][j - 1] != '0' && map[i][j - 1] != '1' && !is_player(map[i][j - 1]))
-		return(basic_error(elems, "Invalid starting position\n", NULL, NULL));
-	if (map[i + 1][j] != '0' && map[i + 1][j] != '1' && !is_player(map[i + 1][j]))
-		return(basic_error(elems, "Invalid starting position\n", NULL, NULL));
-	if (map[i - 1][j] != '0' && map[i - 1][j] != '1' && !is_player(map[i - 1][j]))
-		return(basic_error(elems, "Invalid starting position\n", NULL, NULL));
+		return (error_player(elems));
+	if (map[i][j + 1] != '0' && map[i][j + 1] != '1' &&
+		!is_player(map[i][j + 1]))
+		return (error_player(elems));
+	if (map[i][j - 1] != '0' && map[i][j - 1] != '1' &&
+		!is_player(map[i][j - 1]))
+		return (error_player(elems));
+	if (map[i + 1][j] != '0' && map[i + 1][j] != '1' &&
+		!is_player(map[i + 1][j]))
+		return (error_player(elems));
+	if (map[i - 1][j] != '0' && map[i - 1][j] != '1' &&
+		!is_player(map[i - 1][j]))
+		return (error_player(elems));
 	elems.found_player = 1;
-	return (elems);	
+	return (elems);
 }
+
 t_elems	find_player(char **map, t_elems elems)
 {
 	size_t	i;
 	size_t	j;
 
+	if (elems.error == 1)
+		return (elems);
 	i = 0;
 	while (map[i] && elems.error == 0)
 	{
@@ -63,7 +75,10 @@ t_elems	find_player(char **map, t_elems elems)
 
 t_elems	check_around(char d, t_elems elems)
 {
-	if (d && d != ' ' && d != '1' && d != '\n')
-		elems.error = 1;
+	if (elems.error == 0)
+	{
+		if (d && d != ' ' && d != '1' && d != '\n')
+			return (error_reading(NULL, "Map not enclosed by walls\n", elems));
+	}
 	return (elems);
 }

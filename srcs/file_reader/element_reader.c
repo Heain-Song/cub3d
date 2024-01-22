@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 08:45:39 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:38:29 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ t_elems	element_reader(int fd, t_elems elems)
 	char		*temp;
 	int			read_ammount;
 	int			type;
-	int			i;
 
 	if (fd <= 0)
 		return (save_error(elems));
@@ -96,14 +95,11 @@ t_elems	element_reader(int fd, t_elems elems)
 		temp = basic_gnl(fd, &read_ammount, 0);
 		if (temp)
 		{
-			i = 0;
-				while (temp[i] == ' ')
-					i++;
-			type = elem_type(temp + i, elems.elem_names);
+			type = elem_type(temp, elems.elem_names);
 			if (type == -1)
 				return (basic_error(elems, "invalid info in between elements\n",
 						NULL, temp));
-			elems = assign_which_elem(temp + i, type, elems);
+			elems = assign_which_elem(temp, type, elems);
 			free(temp);
 		}
 		elems = check_elems(elems);

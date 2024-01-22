@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:12:20 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 08:54:52 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:34:32 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ t_elems	check_colors(t_elems elems, int type, int color[3])
 
 t_elems	assign_which_elem(char *str, int nb, t_elems elems)
 {
+	while (*str && *str == ' ')
+		str++;
 	if (nb < 4)
 		elems = get_str_atrib(elems, str);
 	else
@@ -58,6 +60,8 @@ int	elem_type(char *temp, char **str)
 
 	length = 3;
 	i = 0;
+	while (*temp && *temp == ' ')
+		temp++;
 	while (str[i])
 	{
 		if (!ft_strncmp(str[i], temp, length))
