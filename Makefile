@@ -50,6 +50,7 @@ clean:
 			${RM} ./*/*/*/*.o
 
 fclean:		clean
+			make clean -C ${M_PATH} 
 			${RM} ${NAME}
 
 re:			clean all
