@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 16:45:44 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 23:04:07 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,17 @@ t_elems	get_str_atrib(t_elems elems, char *str)
 
 t_elems	get_nbr_atribs(t_elems elems, char *str)
 {
-	if (str_check_num_ammount(str) != 3)
-	{
-		if (str[0] == 'C' && elems.did_c == 0)
-			return (basic_error(elems, "Not enough colors for ",
-					"Ceiling\n", NULL));
-		if (str[0] == 'F' && elems.did_c == 0)
-			return (basic_error(elems, "Not enough colors for ",
-					"Floor\n", NULL));
-	}
-	if (str[0] == 'C' && elems.did_c == 0)
+	elems = color_checker(elems, str);
+	if (elems.error == 1)
+		return (elems);
+	if (str[0] == 'C' && str[1] == ' ' && elems.did_c == 0)
 	{
 		str = skip_and_getnb(str, &elems.c_colors[0]);
 		str = skip_and_getnb(str, &elems.c_colors[1]);
 		str = skip_and_getnb(str, &elems.c_colors[2]);
 		elems.did_c = 1;
 	}
-	if (str[0] == 'F' && elems.did_f == 0)
+	if (str[0] == 'F' && str[1] == ' ' && elems.did_f == 0)
 	{
 		str = skip_and_getnb(str, &elems.f_colors[0]);
 		str = skip_and_getnb(str, &elems.f_colors[1]);
@@ -99,7 +93,7 @@ t_elems	element_reader(int fd, t_elems elems)
 		if (temp)
 		{
 			type = elem_type(temp, elems.elem_names);
-			if (type == -1 && elems.error)
+			if (type == -1)
 				return (basic_error(elems, "invalid info in between elements\n",
 						NULL, temp));
 			elems = assign_which_elem(temp, type, elems);
@@ -107,8 +101,8 @@ t_elems	element_reader(int fd, t_elems elems)
 		}
 		elems = check_elems(elems);
 		if (read_ammount <= 0 && !elems.is_full)
-			return (basic_error(elems, "Error\n not enough element in file",
-					NULL, NULL));
+			return (error_reading(NULL, "not enough element in file\n",
+					elems));
 	}
 	return (elems);
 }

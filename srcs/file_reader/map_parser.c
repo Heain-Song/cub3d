@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:23 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 17:53:29 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 23:07:07 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_elems	check_single_space(char **str, size_t i, size_t j, t_elems elems)
 			elems = check_around(str[i][j - 1], elems);
 		if (i > 0)
 			elems = check_around(str[i - 1][j], elems);
-		if (str[i + 1] && str[i + 1][j])
+		if (str[i + 1] && ft_strlen(str[i + 1]) > (int) j)
 			elems = check_around(str[i + 1][j], elems);
 	}
 	return (elems);
@@ -66,9 +66,7 @@ t_elems	coord_check(char c, t_elems elems)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (elems);
-	ft_putstrfd("Error\nInvalid char in map", 2);
-	elems.error = 1;
-	return (elems);
+	return (error_reading(NULL, "Invalid char in map\n", elems));
 }
 
 t_elems	line_checker(char *str, t_elems elems)
@@ -89,6 +87,9 @@ t_elems	check_map(t_elems elems, char **map)
 {
 	unsigned int	i;
 
+	if (!map || !map[0][0])
+		return (basic_error(elems, "Map not found\n", NULL, NULL));
+	elems = check_type_in_map(map, elems);
 	if (elems.error == 1)
 		return (elems);
 	i = 0;

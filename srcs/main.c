@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/22 15:49:56 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 23:23:04 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,10 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		//elems = init_mlx(elems);
 		elems = file_parsing(argv[1]);
-		//elems = init_mlx(elems);
 		if (elems.error == 0)
-		{
-			//elems = init_mlx(elems);
-			sleep(1); //debug purposes to see window
-			//elems = check_textures(elems);
-			if (!elems.error)
-				clean_mlx(elems.mlx_l);
-		}
-		//debug checking 
-		loop_debug(elems);
-		//end debug
+			ft_putstrfd("\033[0;32mGood\n\033[0m", 1);
+		clean_mlx(elems.mlx_l);
 		free_elems(elems);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:12:20 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 12:34:32 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 22:30:37 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_elems	check_colors(t_elems elems, int type, int color[3])
 	i = 0;
 	while (i < 3)
 	{
-		if (color[i] > 255 || color[i] < 0)
+		if ((color[i] > 255 || color[i] < 0) && !elems.error)
 		{
 			ft_putstrfd("Error\n", 2);
 			if (type == 4)

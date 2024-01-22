@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:07:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 17:56:23 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 22:06:44 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -28,12 +28,9 @@ char	*skip_to_map(int fd)
 	char	*temp;
 	int		read;
 
-	temp = NULL;
-	read = 0;
-	temp = basic_gnl(fd, &read, 1);
-	if (read == 0)
-		return (NULL);
-	while (!ft_strcmp(temp, "\n"))
+	temp = ft_strdup("\n");
+	read = 1;
+	while (!ft_strcmp(temp, "\n") && read > 0)
 	{
 		free(temp);
 		temp = basic_gnl(fd, &read, 1);

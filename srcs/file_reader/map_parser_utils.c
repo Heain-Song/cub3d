@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:48:30 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 17:54:14 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 22:22:05 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,13 @@ int	is_player(char c)
 	return (0);
 }
 
-t_elems	error_player(t_elems elems)
-{
-	return (basic_error(elems, "Multiple players found\n", NULL, NULL));
-}
-
 t_elems	check_around_player(size_t i, size_t j, char **map, t_elems elems)
 {
 	int	j_int;
 
 	j_int = j;
 	if (elems.found_player == 1)
-		return (error_player(elems));
+		return (error_reading(NULL, "Multiple player found\n", elems));
 	if (i == 0)
 		return (error_player(elems));
 	if (!map[i + 1] || j_int > ft_strlen(map[i]))
@@ -72,18 +67,20 @@ t_elems	find_player(char **map, t_elems elems)
 	}
 	return (elems);
 }
+
 t_elems	check_empty_line(char **map, size_t i, t_elems elems)
 {
 	if (map[i][0] == '\n')
 	{
 		while (map[i] && map[i][0] == '\n')
 			i++;
-		if (map[i])
+		if (map[i] && map[i][0])
 			return (error_reading(NULL, "Empty line in map\n", elems));
 		return (elems);
 	}
 	return (elems);
 }
+
 t_elems	check_around(char d, t_elems elems)
 {
 	if (elems.error == 0)

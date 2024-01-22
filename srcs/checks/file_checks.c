@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:02:06 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/08 17:27:23 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/22 23:29:49 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -36,7 +36,6 @@ int	check_open(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd <= 0)
 		return (file_error("Can't open file\n"));
-	ft_putstrfd("opened file\n", 1);
 	return (fd);
 }
 

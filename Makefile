@@ -29,6 +29,8 @@ SRCS	=	srcs/main.c								\
 			srcs/mlx_manage/mlx_init.c				\
 			srcs/mlx_manage/mlx_cleaner.c			\
 			srcs/file_reader/textures.c				\
+			srcs/file_reader/type_in_map.c			\
+			srcs/file_reader/color_parsing.c		\
 			debug/display_textures_list.c			\
 			debug/print_map.c						\
 			debug/loop.c							\
