@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:19:42 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 21:21:29 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:09:07 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 t_elems	init_mlx(t_elems elems)
 {
-	t_num_mlx	mlx_l;
+	t_num_mlx	mlx;
 
-	mlx_l.server = NULL;
-	mlx_l.window = NULL;
-	mlx_l.server = mlx_init();
-	if (!mlx_l.server)
+	mlx.server = NULL;
+	mlx.window = NULL;
+	mlx.server = mlx_init();
+	if (!mlx.server)
 		return (error_reading(NULL, "mlx server failed to create\n", elems));
-	elems.mlx_l = mlx_l;
+	elems.mlx = mlx;
 	return (elems);
 }

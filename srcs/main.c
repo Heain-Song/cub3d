@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/22 23:23:04 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:08:24 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		elems = file_parsing(argv[1]);
 		if (elems.error == 0)
 			ft_putstrfd("\033[0;32mGood\n\033[0m", 1);
-		clean_mlx(elems.mlx_l);
+		clean_mlx(elems.mlx);
 		free_elems(elems);
 	}
 	else

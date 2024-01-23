@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/22 22:59:20 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:08:09 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CUB3D_H
@@ -44,7 +44,7 @@ typedef struct s_elems
 	int			did_c;
 	int			did_f;
 	int			found_player;
-	t_num_mlx	mlx_l;
+	t_num_mlx	mlx;
 }	t_elems;
 
 int			ft_strcmp(const char *s1, const char *s2);
