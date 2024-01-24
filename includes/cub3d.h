@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/23 11:08:09 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/01/24 11:09:31 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef CUB3D_H
@@ -84,6 +84,7 @@ t_elems		check_empty_line(char **map, size_t i, t_elems elems);
 t_elems		error_player(t_elems elems);
 t_elems		check_type_in_map(char **str, t_elems elems);
 t_elems		color_checker(t_elems elems, char *str);
+t_elems		start_window_loop(t_elems elems);
 //debug//
 void		display_textures_list(t_textures *head);
 void		print_map(char **map);
