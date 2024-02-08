@@ -34,9 +34,11 @@ SRCS	=	srcs/main.c								\
 			srcs/visuals/main_loop.c				\
 			srcs/visuals/draw.c						\
 			srcs/visuals/maths.c					\
+			srcs/raycasting/start.c					\
 			debug/display_textures_list.c			\
 			debug/print_map.c						\
 			debug/loop.c							\
+			srcs/raycasting/test_untextured.c		\
 
 OBJS	=	${SRCS:.c=.o}
 
@@ -56,7 +58,7 @@ clean:
 			${RM} ./*/*/*/*.o
 
 fclean:		clean
-			make clean -C ${M_PATH} 
+			make clean -C ${M_PATH}
 			${RM} ${NAME}
 
 re:			clean all

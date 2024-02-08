@@ -39,7 +39,7 @@ I. Parsing
 			- player_is_outside
 			- player_is_outside_2
 		Valid:
-			- 
+			-
 	2.6 verify identifiers
 		Invalid:
 			- wrong_identifier_N
@@ -47,7 +47,7 @@ I. Parsing
 			- wrong_identifier_W
 			- wrong_identifier_E
 		Valid:
-			- 
+			-
 
 3. verify the RGB color of F, C
 	3.1 verify the existance of F, C
@@ -55,7 +55,7 @@ I. Parsing
 			- no_F
 			- no_C
 		Valid:
-			- 
+			-
 	3.2 check duplicates of F, C
 		Invalid:
 			- two_F
@@ -69,7 +69,7 @@ I. Parsing
 			- not_C
 			- not_F
 		Valid:
-			- 
+			-
 	3.4 verify the existance of RGB values
 		Invalid:
 			- F_missing_R
@@ -79,7 +79,7 @@ I. Parsing
 			- C_missing_G
 			- C_missing_B
 		Valid:
-			- 
+			-
 
 	3.5 check the format
 		Invalid:
@@ -90,7 +90,7 @@ I. Parsing
 			- C_no_comma_2
 			- C_RGB_four_values
 		Valid:
-			-  
+			-
 
 	3.6 verify the range of RGB color (less than 0 or greater than 255)
 		Invalid:
@@ -118,7 +118,7 @@ I. Parsing
 			- not_closed_last_2.cub
 			- not_closed_middle.cub
 			- space_ in_ area.cub
-	
+
 6. verify the texture element
 	6.1 check the existance of identifiers (NO,SO,WE,EA)
 		Invalid:
@@ -140,3 +140,13 @@ I. Parsing
 		Invalid:
 			- non_exist_texture.cub
 
+II. Raycasting && DDA
+
+[1] initialize values
+[2] mlx
+[3] raycasting
+	- find the player position and direction
+	- shoot the ray and check if it hits the wall (DDA)
+	- when the wall is hit, calculate the distance
+	- display the wall accordingly
+[4] free

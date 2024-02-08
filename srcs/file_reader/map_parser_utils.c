@@ -3,20 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
+/*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:48:30 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 22:22:05 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/08 21:59:38 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	is_player(char c)
+int	is_player(char c, t_elems elems)
 {
+	(void)elems;
 	if (c == 'W' || c == 'S' || c == 'N' || c == 'E')
+	{
+		if (c == 'W')
+			elems.player_dir = 'W';
+		else if (c == 'S')
+			elems.player_dir = 'S';
+		else if (c == 'N')
+			elems.player_dir = 'N';
+		else
+			elems.player_dir = 'E';
 		return (1);
-	return (0);
+	}
+	else
+		return (0);
 }
 
 t_elems	check_around_player(size_t i, size_t j, char **map, t_elems elems)
@@ -31,16 +43,16 @@ t_elems	check_around_player(size_t i, size_t j, char **map, t_elems elems)
 	if (!map[i + 1] || j_int > ft_strlen(map[i]))
 		return (error_player(elems));
 	if (map[i][j + 1] != '0' && map[i][j + 1] != '1' &&
-		!is_player(map[i][j + 1]))
+		!is_player(map[i][j + 1], elems))
 		return (error_player(elems));
 	if (map[i][j - 1] != '0' && map[i][j - 1] != '1' &&
-		!is_player(map[i][j - 1]))
+		!is_player(map[i][j - 1], elems))
 		return (error_player(elems));
 	if (map[i + 1][j] != '0' && map[i + 1][j] != '1' &&
-		!is_player(map[i + 1][j]))
+		!is_player(map[i + 1][j], elems))
 		return (error_player(elems));
 	if (map[i - 1][j] != '0' && map[i - 1][j] != '1' &&
-		!is_player(map[i - 1][j]))
+		!is_player(map[i - 1][j], elems))
 		return (error_player(elems));
 	elems.found_player = 1;
 	return (elems);
@@ -59,7 +71,7 @@ t_elems	find_player(char **map, t_elems elems)
 		j = 0;
 		while (map[i][j] && elems.error == 0)
 		{
-			if (is_player(map[i][j]))
+			if (is_player(map[i][j], elems))
 				elems = check_around_player(i, j, map, elems);
 			j++;
 		}

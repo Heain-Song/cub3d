@@ -6,9 +6,10 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/01/24 17:24:09 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/08 23:01:23 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -18,6 +19,31 @@
 # include <stdbool.h>
 # include <fcntl.h>
 # include <mlx.h>
+# include <math.h>
+
+/*****************MACROS*****************/
+
+//# define WIDTH 1920 // too big for testing
+//# define HEIGHT 1080 // too big for testing
+
+//# define mapWidth 24 //untextured testing
+//# define mapHeight 24 //untextured testing
+
+# define WIDTH 640
+# define HEIGHT 480
+# define PROG_NAME "cub3D"
+
+/***************STRUCTURES***************/
+
+typedef struct s_vector{
+	double	x;
+	double	y;
+}	t_vector;
+
+typedef struct s_player{
+	int		x;
+	int		y;
+}	t_player;
 
 typedef struct	s_data {
 	void	*img;
@@ -25,13 +51,15 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}t_data;
+}	t_data;
 
 typedef struct	s_num_mlx
 {
 	void	*server;
 	void	*window;
-}t_num_mlx;
+	void	*img;
+	int		*addr;
+}	t_num_mlx;
 
 typedef struct s_textures
 {
@@ -55,7 +83,21 @@ typedef struct s_elems
 	t_num_mlx	mlx;
 	t_data		floor;
 	t_data		ceiling;
+	char		player_dir;
+
+	//untextured_raycaster
+	t_vector	pos;
+	t_vector	dir;
+	t_vector	plane;
+	double		time;
+	double		old_time;
+	double		move_speed;
+	double		rotate_speed;
+
+
 }	t_elems;
+
+/****************FUNCTIONS***************/
 
 int			ft_strcmp(const char *s1, const char *s2);
 void		ft_putstrfd(char *str, int fd);
@@ -86,7 +128,7 @@ t_elems		basic_error(t_elems elems, char *error,
 				char *attrib, char *to_free);
 t_elems		save_error(t_elems elems);
 t_elems		check_around(char d, t_elems elems);
-int			is_player(char c);
+int			is_player(char c, t_elems elems);
 t_elems		find_player(char **map, t_elems elems);
 t_elems		error_reading(char *temp, char *error, t_elems elems);
 t_elems		check_textures(t_elems elems, char *str, char *node);
@@ -97,10 +139,28 @@ t_elems		color_checker(t_elems elems, char *str);
 t_elems		start_window_loop(t_elems elems);
 int			get_colors(int t, int r, int g, int b);
 t_elems		make_background(t_elems elems);
+
+//visuals
+int			window_destroyer(t_num_mlx *mlx);
+int			ft_close_win(int keycode, t_num_mlx *mlx);
+int			hook_event(t_num_mlx *mlx);
+
+//raycasting//
+t_elems		start_raycasting(t_elems elems);
+
+
+
 //debug//
 void		display_textures_list(t_textures *head);
 void		print_map(char **map);
 void		loop_debug(t_elems elems);
 t_elems		init_mlx(t_elems elems);
 void		clean_mlx(t_num_mlx mlx_info);
+
+
+//untextured_testing
+int		main_loop(t_elems *elems);
+void	verLine(t_elems *elems, int x, int y1, int y2, int color);
+void	calc(t_elems *elems);
+
 #endif
