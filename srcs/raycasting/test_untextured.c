@@ -4,7 +4,7 @@
 int	main_loop(t_elems *elems)
 {
 	calc(elems);
-	//mlx_put_image_to_window(mlx->server, mlx->window, mlx->img, 0, 0);
+	mlx_put_image_to_window(elems->mlx.server, elems->mlx.window, elems->mlx.img, 0, 0);
 	return (0);
 
 }
@@ -26,103 +26,137 @@ void	calc(t_elems *elems)
 	int	x;
 
 	x = 0;
-	while (x < WIDTH)
+	while (x++ < WIDTH)
 	{
-		double cameraX = 2 * x / (double)WIDTH - 1;
-		double rayDirX = elems->dir.x + elems->plane.x * cameraX;
-		double rayDirY = elems->dir.y + elems->plane.y * cameraX;
+		printf("\nx: %d\n", x);
+		elems->cameraX = 2 * x / (double)WIDTH - 1;
+		//printf("cameraX: %f\n", elems->cameraX);
+		elems->rayDirX = elems->dirX + elems->planeX * elems->cameraX;
+		printf("rayDirX: %f\n", elems->rayDirX);
+		elems->rayDirY = elems->dirY + elems->planeY * elems->cameraX;
+		printf("rayDirY: %f\n", elems->rayDirY);
 
-		int mapX = (int)elems->pos.x;
-		int mapY = (int)elems->pos.y;
+		elems->mapX = (int)elems->posX;
+		printf("mapX: %d\n", elems->mapX);
+		elems->mapY = (int)elems->posY;
+		printf("mapY: %d\n", elems->mapY);
 
 		//length of ray from current position to next x or y-side
-		double sideDistX;
-		double sideDistY;
+		//elems->sideDistX;
+		//elems->sideDistY;
 
 		 //length of ray from one x or y-side to next x or y-side
-		double deltaDistX = fabs(1 / rayDirX);
-		double deltaDistY = fabs(1 / rayDirY);
-		double perpWallDist;
+		elems->deltaDistX = fabs(1 / elems->rayDirX);
+		printf("deltaDistX: %f\n", elems->deltaDistX);
+		elems->deltaDistY = fabs(1 / elems->rayDirY);
+		printf("deltaDistY: %f\n", elems->deltaDistY);
+		//elems->perpWallDist;
 
 		//what direction to step in x or y-direction (either +1 or -1)
-		int stepX;
-		int stepY;
+		//elems->stepX;
+		//elems->stepY;
 
-		int hit = 0; //was there a wall hit?
-		int side; //was a NS or a EW wall hit?
-
-		if (rayDirX < 0)
+		elems->hit = 0; // initializing hit flag, this is to know if a wall is hit.
+		//elems->side; //was a NS or a EW wall hit?
+		if (elems->rayDirX < 0)
 		{
-			stepX = -1;
-			sideDistX = (elems->pos.x - mapX) * deltaDistX;
+			elems->stepX = -1;
+			printf("Because rayDirX is %f, current stepX is %d\n", elems->rayDirX, elems->stepX);
+			elems->sideDistX = (elems->posX - elems->mapX) * elems->deltaDistX;
+			printf("sideDistX: %f\n", elems->sideDistX);
 		}
 		else
 		{
-			stepX = 1;
-			sideDistX = (mapX + 1.0 - elems->pos.x) * deltaDistX;
+			elems->stepX = 1;
+			printf("Because rayDirX is %f, current stepX is %d\n", elems->rayDirX, elems->stepX);
+			elems->sideDistX = (elems->mapX + 1.0 - elems->posX) * elems->deltaDistX;
+			printf("sideDistX: %f\n", elems->sideDistX);
 		}
-		if (rayDirY < 0)
+		if (elems->rayDirY < 0)
 		{
-			stepY = -1;
-			sideDistY = (elems->pos.y - mapY) * deltaDistY;
+			elems->stepY = -1;
+			printf("Because rayDirY is %f, current stepY is %d\n", elems->rayDirY, elems->stepY);
+			elems->sideDistY = (elems->posY - elems->mapY) * elems->deltaDistY;
+			printf("sideDistY: %f\n", elems->sideDistY);
 		}
 		else
 		{
-			stepY = 1;
-			sideDistY = (mapY + 1.0 - elems->pos.y) * deltaDistY;
-		}
+			elems->stepY = 1;
+			printf("Because rayDirY is %f, current stepY is %d\n", elems->rayDirY, elems->stepY);
+			elems->sideDistY = (elems->mapY + 1.0 - elems->posY) * elems->deltaDistY;
+			printf("sideDistY: %f\n", elems->sideDistY);
 
-		while (hit == 0)
+		}
+		printf("hit: %d\n", elems->hit);
+		while (elems->hit == 0)
 		{
-			//jump to next map square, OR in x-direction, OR in y-direction
-			if (sideDistX < sideDistY)
+			/*****Jump to next map square, OR in x-direction, OR in y-direction*****/
+			if (elems->sideDistX < elems->sideDistY)
 			{
-				sideDistX += deltaDistX;
-				mapX += stepX;
-				side = 0;
+				printf("sideDistX: %f\n", elems->sideDistX);
+				elems->sideDistX += elems->deltaDistX;
+				printf("sideDistX + deltaDistX: %f\n", elems->sideDistX);
+				printf("mapX: %d\n", elems->mapX);
+				elems->mapX += elems->stepX;
+				printf("mapX + stepX: %d\n", elems->mapX);
+				elems->side = 0;
 			}
 			else
 			{
-				sideDistY += deltaDistY;
-				mapY += stepY;
-				side = 1;
+				printf("sideDistY: %f\n", elems->sideDistY);
+				printf("deltaDistY: %f\n", elems->deltaDistY);
+				elems->sideDistY += elems->deltaDistY;
+				printf("sideDistY + deltaDistY: %f\n", elems->sideDistY);
+				printf("mapY: %d\n", elems->mapY);
+				printf("stepY: %d\n", elems->stepY);
+				elems->mapY += elems->stepY;
+				printf("mapY + stepY = %d\n", elems->mapY);
+				elems->side = 1;
+				printf("side: %d\n", elems->side);
 			}
-			//Check if ray has hit a wall
-			if (elems->map[mapX][mapY] > 0) hit = 1;
+
+			//**********Check if ray has hit a wall**********//
+			//print_elems_map(elems); //debug
+			printf("map[%d][%d]:%c\n", elems->mapX, elems->mapY, elems->map[elems->mapX][elems->mapY]);
+			//segfault when mapX, mapY is outside of the map. So we need to check before.
+			if ((elems->mapX < WIDTH) && (elems->mapY < HEIGHT) && (elems->map[elems->mapX][elems->mapY]== '1'))
+				elems->hit = 1;
 		}
-		if (side == 0)
-			perpWallDist = (mapX - elems->pos.x + (1 - stepX) / 2) / rayDirX;
+		if (elems->side == 0) //HORIZONTAL
+			elems->perpWallDist = (elems->mapX - elems->posX + (1 - elems->stepX) / 2) / elems->rayDirX;
 		else
-			perpWallDist = (mapY - elems->pos.y + (1 - stepY) / 2) / rayDirY;
+			elems->perpWallDist = (elems->mapY - elems->posY + (1 - elems->stepY) / 2) / elems->rayDirY;
 
-		//Calculate height of line to draw on screen
-		int lineHeight = (int)(HEIGHT / perpWallDist);
+		/*****Calculate height of line to draw on screen*****/
+		elems->line_height = (int)(HEIGHT / elems->perpWallDist);
 
-		//calculate lowest and highest pixel to fill in current stripe
-		int drawStart = -lineHeight / 2 + HEIGHT / 2;
-		if(drawStart < 0)
-			drawStart = 0;
-		int drawEnd = lineHeight / 2 + HEIGHT / 2;
-		if(drawEnd >= HEIGHT)
-			drawEnd = HEIGHT - 1;
+		/*****Calculate lowest and highest pixel to fill in current stripe*****/
+		elems->draw_start = -(elems->line_height) / 2 + HEIGHT / 2;
+		printf("draw_start: %d\n", elems->draw_start);
+		if(elems->draw_start < 0)
+			elems->draw_start = 0;
+		elems->draw_end = elems->line_height / 2 + HEIGHT / 2;
+		printf("draw_end: %d\n", elems->draw_end);
+		if(elems->draw_end >= HEIGHT)
+			elems->draw_end = HEIGHT - 1;
 
-		int	color;
-		if (elems->map[mapY][mapX] == 1)
-			color = 0xFF0000;
-		else if (elems->map[mapY][mapX] == 2)
-			color = 0x00FF00;
-		else if (elems->map[mapY][mapX] == 3)
-			color = 0x0000FF;
-		else if (elems->map[mapY][mapX] == 4)
-			color = 0xFFFFFF;
+		/*****Coloring time****/
+		printf("map[%d][%d]:%c\n", elems->mapX, elems->mapY, elems->map[elems->mapX][elems->mapY]);
+		if (elems->map[elems->mapY][elems->mapX] == 1)
+			elems->color = 0xFF0000; //RED
+		else if (elems->map[elems->mapY][elems->mapX] == 2)
+			elems->color = 0x00FF00; //GREEN
+		else if (elems->map[elems->mapY][elems->mapX] == 3)
+			elems->color = 0x0000FF; //BLUE
+		else if (elems->map[elems->mapY][elems->mapX] == 4)
+			elems->color = 0xFFFFFF; //WHITE
 		else
-			color = 0xFFFF00;
+			elems->color = 0xFFFFFF; //YELLOW
 
-		if (side == 1)
-			color = color / 2;
-
-		verLine(elems, x, drawStart, drawEnd, color);
-
-		x++;
+		if (elems->side == 1)
+			elems->color = elems->color / 2;
+		verLine(elems, x, elems->draw_start, elems->draw_end, elems->color);
+		//x++;
+		printf("\n");
 	}
 }

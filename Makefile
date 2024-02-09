@@ -38,6 +38,7 @@ SRCS	=	srcs/main.c								\
 			debug/display_textures_list.c			\
 			debug/print_map.c						\
 			debug/loop.c							\
+			debug/print_elems_map.c					\
 			srcs/raycasting/test_untextured.c		\
 
 OBJS	=	${SRCS:.c=.o}

@@ -144,6 +144,8 @@ II. Raycasting && DDA
 
 [1] initialize values
 [2] mlx
+	- mlx_init is in file_parsing()
+	-
 [3] raycasting
 	- find the player position and direction
 	- shoot the ray and check if it hits the wall (DDA)

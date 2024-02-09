@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/08 23:01:23 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/09 20:41:18 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 //# define WIDTH 1920 // too big for testing
 //# define HEIGHT 1080 // too big for testing
 
-//# define mapWidth 24 //untextured testing
-//# define mapHeight 24 //untextured testing
+# define mapWidth 24 //untextured testing
+# define mapHeight 24 //untextured testing
 
-# define WIDTH 640
-# define HEIGHT 480
+# define WIDTH 64 //untextured testing
+# define HEIGHT 48 //untextured testing
 # define PROG_NAME "cub3D"
 
 /***************STRUCTURES***************/
@@ -86,13 +86,36 @@ typedef struct s_elems
 	char		player_dir;
 
 	//untextured_raycaster
-	t_vector	pos;
-	t_vector	dir;
-	t_vector	plane;
+	//We need to initialize and make sure there's no trash value inside before execute raycasting
+	double		posX;
+	double		posY;
+	double		dirX;
+	double		dirY;
+	double		planeX;
+	double		planeY;
 	double		time;
 	double		old_time;
 	double		move_speed;
 	double		rotate_speed;
+	double		cameraX;
+	double		rayDirX;
+	double		rayDirY;
+	int			mapX;
+	int			mapY;
+	double		sideDistX;
+	double		sideDistY;
+	double		deltaDistX;
+	double		deltaDistY;
+	double		perpWallDist;
+	int			stepX;
+	int			stepY;
+	int			hit;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	int			color;
+
 
 
 }	t_elems;
@@ -147,6 +170,7 @@ int			hook_event(t_num_mlx *mlx);
 
 //raycasting//
 t_elems		start_raycasting(t_elems elems);
+void		init_before_raycasting(t_elems *elems);
 
 
 
@@ -156,7 +180,7 @@ void		print_map(char **map);
 void		loop_debug(t_elems elems);
 t_elems		init_mlx(t_elems elems);
 void		clean_mlx(t_num_mlx mlx_info);
-
+void		print_elems_map(t_elems *elems);
 
 //untextured_testing
 int		main_loop(t_elems *elems);
