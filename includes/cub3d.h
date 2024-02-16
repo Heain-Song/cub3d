@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/09 20:41:18 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/16 18:28:05 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # define mapWidth 24 //untextured testing
 # define mapHeight 24 //untextured testing
 
-# define WIDTH 64 //untextured testing
-# define HEIGHT 48 //untextured testing
+# define WIDTH 800 //untextured testing
+# define HEIGHT 800 //untextured testing
 # define PROG_NAME "cub3D"
 
 /***************STRUCTURES***************/
@@ -79,6 +79,8 @@ typedef struct s_elems
 	char		**elem_names;
 	int			did_c;
 	int			did_f;
+	int			player_x;
+	int			player_y;
 	int			found_player;
 	t_num_mlx	mlx;
 	t_data		floor;

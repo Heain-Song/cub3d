@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:48:30 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/08 21:59:38 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/16 18:27:34 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ t_elems	check_around_player(size_t i, size_t j, char **map, t_elems elems)
 		!is_player(map[i - 1][j], elems))
 		return (error_player(elems));
 	elems.found_player = 1;
+	elems.player_x = j;
+	elems.player_y = i;
 	return (elems);
 }
 
