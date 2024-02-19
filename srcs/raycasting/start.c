@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/19 16:46:18 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/19 17:00:51 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,20 @@
 
 void	init_texture_to_buffer(t_elems *elems)
 {
-	elems->texture_int_array[0] = xpm_to_img(elems, elems->textures->id->path..? );
-	elems->texture_int_array[1] = xpm_to_img(elems, );
-	elems->texture_int_array[2] = xpm_to_img(elems,);
-	elems->texture_int_array[3] = xpm_to_img(elems,);
+	unsigned int	i;
+	int				x;
+	int				y;
+	t_textures		*textures;
+
+	textures = elems->textures;
+	i = 0;
+	while (textures)
+	{
+		elems->texture_int_array[i] = mlx_xpm_file_to_image(elems->mlx.server,
+				textures->path, &x, &y);
+		i++;
+		
+	}
 }
 
 void	get_plane(t_elems *elems)
