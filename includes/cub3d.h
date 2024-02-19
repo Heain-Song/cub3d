@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/16 18:28:05 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/18 18:02:07 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,18 @@
 
 /*****************MACROS*****************/
 
-//# define WIDTH 1920 // too big for testing
-//# define HEIGHT 1080 // too big for testing
-
+# define WIDTH 800
+# define HEIGHT 800
 # define mapWidth 24 //untextured testing
 # define mapHeight 24 //untextured testing
+# define PROG_NAME "cub3d"
+# define FORWARD 119
+# define BACK 115
+# define RIGHT 100
+# define LEFT 97
+# define ROTATE_RIGHT 65363
+# define ROTATE_LEFT 65361
 
-# define WIDTH 800 //untextured testing
-# define HEIGHT 800 //untextured testing
-# define PROG_NAME "cub3D"
 
 /***************STRUCTURES***************/
 
@@ -79,8 +82,8 @@ typedef struct s_elems
 	char		**elem_names;
 	int			did_c;
 	int			did_f;
-	int			player_x;
-	int			player_y;
+	double		player_x;
+	double		player_y;
 	int			found_player;
 	t_num_mlx	mlx;
 	t_data		floor;
@@ -117,6 +120,12 @@ typedef struct s_elems
 	int			draw_start;
 	int			draw_end;
 	int			color;
+	bool		w;
+	bool		s;
+	bool		a;
+	bool		d;
+	bool		rotate_left;
+	bool		rotate_right;
 
 
 
@@ -173,6 +182,8 @@ int			hook_event(t_num_mlx *mlx);
 //raycasting//
 t_elems		start_raycasting(t_elems elems);
 void		init_before_raycasting(t_elems *elems);
+void		get_dir(t_elems *elems);
+void		get_plane(t_elems *elems);
 
 
 
@@ -188,5 +199,15 @@ void		print_elems_map(t_elems *elems);
 int		main_loop(t_elems *elems);
 void	verLine(t_elems *elems, int x, int y1, int y2, int color);
 void	calc(t_elems *elems);
+
+//key_hooks
+int		key_press(int keycode, t_elems *elems);
+int		key_release(int keycode, t_elems *elems);
+int		is_wall(char c);
+bool	key_w(t_elems *elems, bool reload);
+bool	key_s(t_elems *elems, bool reload);
+bool	key_d(t_elems *elems, bool reload);
+bool	key_a(t_elems *elems, bool reload);
+int		move(t_elems *elems);
 
 #endif

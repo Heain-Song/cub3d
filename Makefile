@@ -1,7 +1,7 @@
 NAME	= cub3D
 
 CC			= gcc
-CFLAGS 		= -Wall -Wextra -Werror -I ./include -I minilibx -ggdb
+CFLAGS 		= -Wall -Wextra -Werror -I ./include -I minilibx -ggdb #-fsanitize=address
 MLXFLAGS	= -Lminilibx -lm -lmlx -lXext -lX11 -lz
 RM			= rm -f
 
@@ -40,6 +40,8 @@ SRCS	=	srcs/main.c								\
 			debug/loop.c							\
 			debug/print_elems_map.c					\
 			srcs/raycasting/test_untextured.c		\
+			srcs/key_hooks/keys.c					\
+			srcs/key_hooks/move.c					\
 
 OBJS	=	${SRCS:.c=.o}
 
