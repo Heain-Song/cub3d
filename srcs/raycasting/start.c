@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/19 10:48:29 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/19 11:11:51 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ t_elems	start_raycasting(t_elems elems)
 	mlx.server = elems.mlx.server;
 	init_before_raycasting(&elems);
 	elems.mlx.window = mlx_new_window(mlx.server, WIDTH, HEIGHT, PROG_NAME);
-	mlx_hook(elems.mlx.window, 2, 1L << 0, ft_close_win, &elems.mlx);
-	mlx_hook(elems.mlx.window, 2, 1L << 0, key_press, &elems);
-	mlx_hook(elems.mlx.window, 3, 1L << 1, key_release, &elems);
+	//mlx_hook(elems.mlx.window, 2, 1L << 0, ft_close_win, &elems.mlx);
+	mlx_hook(elems.mlx.window, 2, 1L << 0, pressed_key, &elems.mlx);
+	//mlx_hook(elems.mlx.window, 3, 1L << 1, key_release, &elems);
 	mlx_hook(elems.mlx.window, 33, 1L << 3, window_destroyer, &elems.mlx);
 	mlx_loop_hook(mlx.server, &main_loop, &elems);
 	mlx_loop(mlx.server);

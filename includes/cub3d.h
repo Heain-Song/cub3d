@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/18 18:02:07 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/19 11:07:18 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,5 +209,7 @@ bool	key_s(t_elems *elems, bool reload);
 bool	key_d(t_elems *elems, bool reload);
 bool	key_a(t_elems *elems, bool reload);
 int		move(t_elems *elems);
+
+int pressed_key(int keycode, t_num_mlx *mlx);
 
 #endif
