@@ -6,11 +6,19 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/19 11:11:51 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:46:18 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	init_texture_to_buffer(t_elems *elems)
+{
+	elems->texture_int_array[0] = xpm_to_img(elems, elems->textures->id->path..? );
+	elems->texture_int_array[1] = xpm_to_img(elems, );
+	elems->texture_int_array[2] = xpm_to_img(elems,);
+	elems->texture_int_array[3] = xpm_to_img(elems,);
+}
 
 void	get_plane(t_elems *elems)
 {
@@ -85,6 +93,20 @@ t_elems	start_raycasting(t_elems elems)
 	mlx.server = elems.mlx.server;
 	init_before_raycasting(&elems);
 	elems.mlx.window = mlx_new_window(mlx.server, WIDTH, HEIGHT, PROG_NAME);
+
+	elems.textures = calloc(1, sizeof(t_textures)); //ft_calloc
+	if (!elems.textures)
+	{
+		elems.error = 1;
+		return (elems);
+	}
+	elems.texture_int_array = calloc(5, sizeof(int *)); //ft_calloc
+	if (!elems.texture_int_array)
+	{
+		elems.error = 1;
+		return (elems);
+	}
+
 	//mlx_hook(elems.mlx.window, 2, 1L << 0, ft_close_win, &elems.mlx);
 	mlx_hook(elems.mlx.window, 2, 1L << 0, pressed_key, &elems.mlx);
 	//mlx_hook(elems.mlx.window, 3, 1L << 1, key_release, &elems);
