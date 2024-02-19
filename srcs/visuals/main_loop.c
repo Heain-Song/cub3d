@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:04:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/09 16:19:34 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/19 11:03:09 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,18 @@ int	window_destroyer(t_num_mlx *mlx)
 	return (-1);
 }
 
-int	ft_close_win(int keycode, t_num_mlx *mlx)
+int	pressed_key(int keycode, t_num_mlx *mlx)
 {
+	/*
+	if (keycode == 65364 || keycode == 115)
+		//back function
+	if (keycode == 65362 || keycode == 119)
+		//forward function
+	if (keycode == 65361 || keycode == 97)
+		//left function
+	if (keycode == 65363 || keycode == 100)
+		//right function
+		*/
 	if (keycode == 65307)
 	{
 		window_destroyer(mlx);
@@ -43,7 +53,7 @@ t_elems	start_window_loop(t_elems elems)
 	mlx.server = elems.mlx.server;
 	elems.mlx.window = mlx_new_window(mlx.server, 800, 800, "Cub3D");
 	elems = make_background(elems);
-	mlx_hook(elems.mlx.window, 2, 1L << 0, ft_close_win, &elems.mlx);
+	mlx_hook(elems.mlx.window, 2, 1L << 0, pressed_key, &elems.mlx);
 	mlx_hook(elems.mlx.window, 33, 1L << 3, window_destroyer, &elems.mlx);
 	mlx_loop_hook(elems.mlx.server, hook_event, &elems.mlx);
 	mlx_loop(elems.mlx.server);
