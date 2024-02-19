@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/19 17:00:51 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:02:02 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_texture_to_buffer(t_elems *elems)
 		elems->texture_int_array[i] = mlx_xpm_file_to_image(elems->mlx.server,
 				textures->path, &x, &y);
 		i++;
-		
+		textures = textures->next;
 	}
 }
 
