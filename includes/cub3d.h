@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/19 12:00:42 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:04:27 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ typedef struct s_elems
 	bool		d;
 	bool		rotate_left;
 	bool		rotate_right;
+	int			*texture_int_array;
 
 
 
