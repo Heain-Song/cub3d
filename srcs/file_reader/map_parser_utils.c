@@ -6,27 +6,16 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:48:30 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/19 10:43:26 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/19 12:00:15 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	is_player(char c, t_elems elems)
+int	is_player(char c)
 {
-	(void)elems;
 	if (c == 'W' || c == 'S' || c == 'N' || c == 'E')
-	{
-		if (c == 'W')
-			elems.player_dir = 'W';
-		else if (c == 'S')
-			elems.player_dir = 'S';
-		else if (c == 'N')
-			elems.player_dir = 'N';
-		else
-			elems.player_dir = 'E';
 		return (1);
-	}
 	else
 		return (0);
 }
@@ -43,16 +32,16 @@ t_elems	check_around_player(size_t i, size_t j, char **map, t_elems elems)
 	if (!map[i + 1] || j_int > ft_strlen(map[i]))
 		return (error_player(elems));
 	if (map[i][j + 1] != '0' && map[i][j + 1] != '1' &&
-		!is_player(map[i][j + 1], elems))
+		!is_player(map[i][j + 1]))
 		return (error_player(elems));
 	if (map[i][j - 1] != '0' && map[i][j - 1] != '1' &&
-		!is_player(map[i][j - 1], elems))
+		!is_player(map[i][j - 1]))
 		return (error_player(elems));
 	if (map[i + 1][j] != '0' && map[i + 1][j] != '1' &&
-		!is_player(map[i + 1][j], elems))
+		!is_player(map[i + 1][j]))
 		return (error_player(elems));
 	if (map[i - 1][j] != '0' && map[i - 1][j] != '1' &&
-		!is_player(map[i - 1][j], elems))
+		!is_player(map[i - 1][j]))
 		return (error_player(elems));
 	elems.found_player = 1;
 	elems.player_x = j;
@@ -73,8 +62,12 @@ t_elems	find_player(char **map, t_elems elems)
 		j = 0;
 		while (map[i][j] && elems.error == 0)
 		{
-			if (is_player(map[i][j], elems))
+			if (is_player(map[i][j]))
+			{
 				elems = check_around_player(i, j, map, elems);
+				if (elems.error == 0)
+					elems.player_dir = map[i][j];
+			}
 			j++;
 		}
 		i++;

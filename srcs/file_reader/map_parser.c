@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:23 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/08 21:59:48 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/19 12:01:48 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_elems	check_single_space(char **str, size_t i, size_t j, t_elems elems)
 	if (elems.error == 1)
 		return (elems);
 	c = str[i][j];
-	if (is_player(c, elems))
+	if (is_player(c))
 		return (elems);
 	if (i == 0 || j == 0)
 		return (elems = check_around(c, elems));
@@ -55,7 +55,7 @@ t_elems	check_all_spaces(char **str, t_elems elems)
 			j++;
 		}
 		if (j > 0 && str[i][j - 1] != ' ' && str[i][j - 1] != '1'
-			&& !is_player(str[i][j - 1], elems))
+			&& !is_player(str[i][j - 1]))
 			return (error_reading(NULL, "Map not enclosed by walls\n", elems));
 		i++;
 	}
