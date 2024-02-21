@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/21 13:53:43 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:51:12 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@
 
 # define WIDTH 800
 # define HEIGHT 800
-# define mapWidth 24 //untextured testing
-# define mapHeight 24 //untextured testing
 # define PROG_NAME "cub3d"
 # define FORWARD 119
 # define BACK 115
@@ -72,6 +70,37 @@ typedef struct s_textures
 	struct s_textures	*next;
 }	t_textures;
 
+typedef struct s_ray
+{
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+	double		time;
+	double		old_time;
+	double		move_speed;
+	double		rotate_speed;
+	double		camera_x;
+	double		raydir_X;
+	double		raydir_y;
+	int			map_x;
+	int			map_y;
+	double		sidedist_s;
+	double		sidedist_y;
+	double		deltadist_x;
+	double		deltadist_y;
+	double		perpwalldist;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+}	t_ray;
+
 typedef struct s_elems
 {
 	t_textures	*textures;
@@ -89,37 +118,8 @@ typedef struct s_elems
 	t_num_mlx	mlx;
 	t_data		floor;
 	t_data		ceiling;
+	t_ray		ray;
 	char		player_dir;
-
-	//untextured_raycaster
-	//We need to initialize and make sure there's no trash value inside before execute raycasting
-	double		posX;
-	double		posY;
-	double		dirX;
-	double		dirY;
-	double		planeX;
-	double		planeY;
-	double		time;
-	double		old_time;
-	double		move_speed;
-	double		rotate_speed;
-	double		cameraX;
-	double		rayDirX;
-	double		rayDirY;
-	int			mapX;
-	int			mapY;
-	double		sideDistX;
-	double		sideDistY;
-	double		deltaDistX;
-	double		deltaDistY;
-	double		perpWallDist;
-	int			stepX;
-	int			stepY;
-	int			hit;
-	int			side;
-	int			line_height;
-	int			draw_start;
-	int			draw_end;
 	int			color;
 	bool		w;
 	bool		s;
