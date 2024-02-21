@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/21 17:34:52 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:43:09 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_elems	get_str_atrib(t_elems elems, char *str)
 	if (node)
 	{
 		node->path = make_path(str);
-		node->img = mlx_xpm_file_to_image(elems.mlx.server, str, &x, &y);
+		node->img = mlx_xpm_file_to_image(elems.mlx.server, node->path, &x, &y);
 		elems = check_textures(elems, node);
 	}
 	return (elems);
