@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/21 15:46:43 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/21 18:07:47 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ void	init_before_raycasting(t_elems *elems)
 	elems->ray.draw_end = 0;
 	elems->color = 0;
 	elems->ray.hit = 0;
-
+	elems->ray.raydir_x = 0; //idk if it's 0
+	elems->ray.raydir_y = 0; //same
+	elems->ray.raydir_x = 0; //same
+	elems->ray.raydir_y = 0; //same//////
 }
 
 t_elems	start_raycasting(t_elems elems)
@@ -102,12 +105,12 @@ t_elems	start_raycasting(t_elems elems)
 	init_before_raycasting(&elems);
 	elems.mlx.window = mlx_new_window(mlx.server, WIDTH, HEIGHT, PROG_NAME);
 
-	elems.textures = calloc(1, sizeof(t_textures)); //ft_calloc
+	/*elems.textures = calloc(1, sizeof(t_textures)); //ft_calloc
 	if (!elems.textures)
 	{
 		elems.error = 1;
 		return (elems);
-	}
+		}*/
 	//mlx_hook(elems.mlx.window, 2, 1L << 0, ft_close_win, &elems.mlx);
 	mlx_hook(elems.mlx.window, 2, 1L << 0, pressed_key, &elems.mlx);
 	//mlx_hook(elems.mlx.window, 3, 1L << 1, key_release, &elems);

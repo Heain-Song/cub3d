@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/21 17:55:37 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:08:50 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ t_elems	file_parsing(char *file)
 int	main(int argc, char **argv)
 {
 	t_elems	elems;
-	t_textures	*placeholder;
 
 	if (argc == 2)
 	{
@@ -44,15 +43,11 @@ int	main(int argc, char **argv)
 		{
 			display_textures_list (elems.textures); //debug
 			print_map(elems.map); //debug
-			//elems = start_window_loop(elems);
-			placeholder = elems.textures;
 			elems = start_raycasting(elems);
-			elems.textures = placeholder;
 			ft_putstrfd("\033[0;32mGood\n\033[0m", 1);
 		}
 		free_elems(elems);
 		clean_mlx(elems.mlx);
-		//free_elems(elems);
 	}
 	else
 		ft_putstrfd("Error\n: Need a map file.\n", 2);
