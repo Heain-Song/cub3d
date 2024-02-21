@@ -6,13 +6,13 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:15:46 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/17 11:32:11 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:08:11 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-void	free_t_textures(t_textures *textures)
+void	free_t_textures(t_textures *textures, t_elems elems)
 {
 	t_textures	*temp;
 
@@ -23,6 +23,10 @@ void	free_t_textures(t_textures *textures)
 	{
 		if (textures->path)
 			free(textures->path);
+		//if (textures->id)
+		//	free(textures->id);
+		if (textures->img)
+			mlx_destroy_image(elems.mlx.server, textures->img);
 		free(textures);
 		textures = temp;
 		if (textures)

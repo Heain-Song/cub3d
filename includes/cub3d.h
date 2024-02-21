@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/21 16:12:47 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/21 16:56:02 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ char		*basic_gnl(int fd, int *read_ammount, int keep_nl);
 int			ft_strlen(char *str);
 char		*ft_strcpy(char *src, char *dest);
 t_textures	*make_text_id(void);
-void		free_t_textures(t_textures *textures);
+void		free_t_textures(t_textures *textures, t_elems elems);
 char		*ft_strdup(char *str);
 int			ft_strncmp(const char *s1, const char *s2, unsigned int n);
 t_elems		element_reader(int fd, t_elems elems);
