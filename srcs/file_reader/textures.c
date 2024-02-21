@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 09:42:09 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/21 17:37:06 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:40:34 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_elems	check_textures(t_elems elems, t_textures *node)
 	str = node->path;
 	is_xpm = 0;
 	x = 0;
-	node->img = NULL;
 	while (str[x] && str[x] != '.')
 		x++;
 	if (!ft_strcmp(str + x, ".xpm"))
