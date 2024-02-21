@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/19 17:02:02 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:53:19 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	init_texture_to_buffer(t_elems *elems)
 	i = 0;
 	while (textures)
 	{
-		elems->texture_int_array[i] = mlx_xpm_file_to_image(elems->mlx.server,
-				textures->path, &x, &y);
+		elems->texture_int_array[i] = mlx_xpm_file_to_image(elems->mlx.server, textures->path, &x, &y);
 		i++;
 		textures = textures->next;
 	}
@@ -33,36 +32,35 @@ void	init_texture_to_buffer(t_elems *elems)
 void	get_plane(t_elems *elems)
 {
 	if (elems->player_dir == 'N')
-		elems->planeX = 0.66;
+		elems->ray.plane_x = 0.66;
 	else if (elems->player_dir == 'S')
-		elems->planeX = -0.66;
+		elems->ray.plane_x = -0.66;
 	else if (elems->player_dir == 'E')
-		elems->planeY = 0.66;
+		elems->ray.plane_y = 0.66;
 	else
-		elems->planeY = -0.66;
+		elems->ray.plane_y = -0.66;
 }
 
 void	get_dir(t_elems *elems)
 {
-	printf("dir: %c\n", elems->player_dir);
 	if (elems->player_dir == 'N')
-		elems->dirY = 1;
+		elems->ray->dir_y = 1;
 	else if (elems->player_dir == 'S')
-		elems->dirY = -1;
+		elems->ray->dir_y = -1;
 	else if (elems->player_dir == 'W')
 	{
-		elems->dirX = 1;
+		elems->ray->dir_x = 1;
 	}
 	else if (elems->player_dir == 'E')
-		elems->dirX = -1;
+		elems->ray->dir_x = -1;
 	else
 		elems->error = 1;
 }
 
 void	init_before_raycasting(t_elems *elems)
 {
-	elems->posX = elems->player_x + 0.5; // x start position
-	elems->posY = elems->player_y + 0.5; // y start position
+	elems->pos_x = elems->player_x + 0.5; // x start position
+	elems->pos_y = elems->player_y + 0.5; // y start position
 	get_dir(elems);
 	//elems->dirX = -1; // initial direction vector x
 	//elems->dirY = 0; // initial direction vector y
@@ -73,7 +71,7 @@ void	init_before_raycasting(t_elems *elems)
 	elems->old_time = 0; //time of previous frame
 	elems->move_speed = 0.05;
 	elems->rotate_speed = 0.05;
-	elems->perpWallDist = 0;
+	elems->perpwalldist = 0;
 	elems->draw_start = 0;
 	elems->draw_end = 0;
 	elems->color = 0;
@@ -125,4 +123,3 @@ t_elems	start_raycasting(t_elems elems)
 	mlx_loop(mlx.server);
 	return(elems);
 }
-
