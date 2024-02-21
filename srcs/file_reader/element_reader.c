@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 23:04:07 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:54:12 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_elems	get_str_atrib(t_elems elems, char *str)
 	if (node)
 	{
 		node->path = make_path(str);
-		elems = check_textures(elems, node->path, node->id);
+		elems = check_textures(elems, node);
 	}
 	return (elems);
 }

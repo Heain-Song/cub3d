@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/19 17:04:27 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/21 13:53:43 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_textures
 {
 	char				*id;
 	char				*path;
+	void				*img;
 	struct s_textures	*next;
 }	t_textures;
 
@@ -166,7 +167,7 @@ t_elems		check_around(char d, t_elems elems);
 int			is_player(char c);
 t_elems		find_player(char **map, t_elems elems);
 t_elems		error_reading(char *temp, char *error, t_elems elems);
-t_elems		check_textures(t_elems elems, char *str, char *node);
+t_elems		check_textures(t_elems elems, t_textures *node);
 t_elems		check_empty_line(char **map, size_t i, t_elems elems);
 t_elems		error_player(t_elems elems);
 t_elems		check_type_in_map(char **str, t_elems elems);
