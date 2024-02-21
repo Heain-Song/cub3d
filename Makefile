@@ -39,9 +39,8 @@ SRCS	=	srcs/main.c								\
 			debug/print_map.c						\
 			debug/loop.c							\
 			debug/print_elems_map.c					\
-			srcs/raycasting/test_untextured.c		\
+			srcs/raycasting/raycasting.c			\
 			srcs/key_hooks/keys.c					\
-			srcs/key_hooks/move.c					\
 
 OBJS	=	${SRCS:.c=.o}
 

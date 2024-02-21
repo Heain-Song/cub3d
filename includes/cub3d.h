@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/21 14:51:12 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/21 16:12:47 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,11 @@ typedef struct s_ray
 	double		move_speed;
 	double		rotate_speed;
 	double		camera_x;
-	double		raydir_X;
+	double		raydir_x;
 	double		raydir_y;
 	int			map_x;
 	int			map_y;
-	double		sidedist_s;
+	double		sidedist_x;
 	double		sidedist_y;
 	double		deltadist_x;
 	double		deltadist_y;
@@ -127,7 +127,8 @@ typedef struct s_elems
 	bool		d;
 	bool		rotate_left;
 	bool		rotate_right;
-	int			*texture_int_array;
+	void		*screenbuffer;
+
 
 
 
@@ -197,9 +198,8 @@ t_elems		init_mlx(t_elems elems);
 void		clean_mlx(t_num_mlx mlx_info);
 void		print_elems_map(t_elems *elems);
 
-//untextured_testing
+//raycasting
 int		main_loop(t_elems *elems);
-void	verLine(t_elems *elems, int x, int y1, int y2, int color);
 void	calc(t_elems *elems);
 
 //key_hooks
