@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/21 14:53:19 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/21 15:21:06 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_texture_to_buffer(t_elems *elems)
 	i = 0;
 	while (textures)
 	{
-		elems->texture_int_array[i] = mlx_xpm_file_to_image(elems->mlx.server, textures->path, &x, &y);
+		elems->texture_int_array[i] = (int *)textures->img;
 		i++;
 		textures = textures->next;
 	}
@@ -44,38 +44,38 @@ void	get_plane(t_elems *elems)
 void	get_dir(t_elems *elems)
 {
 	if (elems->player_dir == 'N')
-		elems->ray->dir_y = 1;
+		elems->ray.dir_y = 1;
 	else if (elems->player_dir == 'S')
-		elems->ray->dir_y = -1;
+		elems->ray.dir_y = -1;
 	else if (elems->player_dir == 'W')
 	{
-		elems->ray->dir_x = 1;
+		elems->ray.dir_x = 1;
 	}
 	else if (elems->player_dir == 'E')
-		elems->ray->dir_x = -1;
+		elems->ray.dir_x = -1;
 	else
 		elems->error = 1;
 }
 
 void	init_before_raycasting(t_elems *elems)
 {
-	elems->pos_x = elems->player_x + 0.5; // x start position
-	elems->pos_y = elems->player_y + 0.5; // y start position
+	elems->ray.pos_x = elems->player_x + 0.5; // x start position
+	elems->ray.pos_y = elems->player_y + 0.5; // y start position
 	get_dir(elems);
 	//elems->dirX = -1; // initial direction vector x
 	//elems->dirY = 0; // initial direction vector y
 	get_plane(elems);
 	//elems->planeX = 0; //the 2d raycaster version of camera plane x
 	//elems->planeY = 0.66; //the 2d raycaster version of camera plane y
-	elems->time = 0; //time of current frame
-	elems->old_time = 0; //time of previous frame
-	elems->move_speed = 0.05;
-	elems->rotate_speed = 0.05;
-	elems->perpwalldist = 0;
-	elems->draw_start = 0;
-	elems->draw_end = 0;
+	elems->ray.time = 0; //time of current frame
+	elems->ray.old_time = 0; //time of previous frame
+	elems->ray.move_speed = 0.05;
+	elems->ray.rotate_speed = 0.05;
+	elems->ray.perpwalldist = 0;
+	elems->ray.draw_start = 0;
+	elems->ray.draw_end = 0;
 	elems->color = 0;
-	elems->hit = 0;
+	elems->ray.hit = 0;
 
 }
 
