@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/21 18:07:47 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/23 11:37:57 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ t_elems	start_raycasting(t_elems elems)
 		return (elems);
 		}*/
 	//mlx_hook(elems.mlx.window, 2, 1L << 0, ft_close_win, &elems.mlx);
-	mlx_hook(elems.mlx.window, 2, 1L << 0, pressed_key, &elems.mlx);
+	mlx_hook(elems.mlx.window, 2, 1L << 0, pressed_key, &elems);
 	//mlx_hook(elems.mlx.window, 3, 1L << 1, key_release, &elems);
 	mlx_hook(elems.mlx.window, 33, 1L << 3, window_destroyer, &elems.mlx);
 	mlx_loop_hook(mlx.server, &main_loop, &elems);
