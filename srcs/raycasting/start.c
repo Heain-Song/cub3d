@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/23 11:37:57 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:33:07 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void	init_before_raycasting(t_elems *elems)
 	elems->ray.raydir_y = 0; //same
 	elems->ray.raydir_x = 0; //same
 	elems->ray.raydir_y = 0; //same//////
+
+
 }
 
 t_elems	start_raycasting(t_elems elems)
@@ -104,7 +106,7 @@ t_elems	start_raycasting(t_elems elems)
 	mlx.server = elems.mlx.server;
 	init_before_raycasting(&elems);
 	elems.mlx.window = mlx_new_window(mlx.server, WIDTH, HEIGHT, PROG_NAME);
-
+	save_texture(&elems);
 	/*elems.textures = calloc(1, sizeof(t_textures)); //ft_calloc
 	if (!elems.textures)
 	{
