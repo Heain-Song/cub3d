@@ -1,7 +1,7 @@
 NAME	= cub3D
 
 CC			= gcc
-CFLAGS 		= -Wall -Wextra -Werror -I ./include -I minilibx -ggdb #-fsanitize=address
+CFLAGS 		= -Wall -Wextra -Werror -I ./include -I minilibx -ggdb -fsanitize=address
 MLXFLAGS	= -Lminilibx -lm -lmlx -lXext -lX11 -lz
 RM			= rm -f
 
@@ -41,6 +41,9 @@ SRCS	=	srcs/main.c								\
 			debug/print_elems_map.c					\
 			srcs/raycasting/raycasting.c			\
 			srcs/key_hooks/keys.c					\
+			srcs/raycasting/draw.c					\
+			srcs/raycasting/import_tex.c			\
+			srcs/utils/ft_strchr.c					\
 
 OBJS	=	${SRCS:.c=.o}
 
@@ -52,7 +55,7 @@ all:		${NAME}
 ${NAME}	:	${OBJS} ${SRCS}
 			make -C ${M_PATH}
 			${CC} ${CFLAGS} ${OBJS} ${MLXFLAGS} ${INCLUDES} -o ${NAME}
-
+			@echo "\033[92m\n$(NAME) is ready! \033[0m"
 clean:
 			${RM} ./*.o
 			${RM} ./*/*.o
