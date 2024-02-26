@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/23 11:34:29 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:58:49 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <unistd.h>
+# include <stddef.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <fcntl.h>
@@ -32,7 +33,10 @@
 # define LEFT 97
 # define ROTATE_RIGHT 65363
 # define ROTATE_LEFT 65361
-
+# define NORTH 0
+# define SOUTH 1
+# define WEST 2
+# define EAST 3
 
 /***************STRUCTURES***************/
 
@@ -99,6 +103,10 @@ typedef struct s_ray
 	int			line_height;
 	int			draw_start;
 	int			draw_end;
+	double		wall_x;
+	int			drawn_len;
+	int			tex_x;
+	int			tex_y;
 }	t_ray;
 
 typedef struct s_elems
@@ -118,6 +126,7 @@ typedef struct s_elems
 	t_num_mlx	mlx;
 	t_data		floor;
 	t_data		ceiling;
+	t_data		screen;
 	t_ray		ray;
 	char		player_dir;
 	int			color;
@@ -128,6 +137,8 @@ typedef struct s_elems
 	bool		rotate_left;
 	bool		rotate_right;
 	void		*screenbuffer;
+	char		*file;
+	t_data		tex[4];
 
 
 
@@ -199,9 +210,18 @@ void		clean_mlx(t_num_mlx mlx_info);
 void		print_elems_map(t_elems *elems);
 
 //raycasting
-int		main_loop(t_elems *elems);
-void	calc(t_elems *elems);
-
+int				main_loop(t_elems *elems);
+void			calc(t_elems *elems);
+void			draw_line(t_elems *elems, int x);
+unsigned int	get_pixel_color(t_data *data, int x, int y);
+//static int		get_w_dir(t_elems *elems);
+void			put_pixel(t_data *data, int y, int x, int color);
+//static void		draw_iteration(t_elems *elems, int x);
+//static void		get_lineinfo(t_elems *elems);
+char	*ft_strchr(const char *s, int c);
+int	save_texture(t_elems *elems);
+bool	load_image(t_elems *elems, char *line, int index);
+bool	is_cardinal_valid(char *line, int index);
 //key_hooks
 int		key_press(int keycode, t_elems *elems);
 int		key_release(int keycode, t_elems *elems);
