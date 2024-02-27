@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_reader.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
+/*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:07:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 22:06:44 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/27 00:01:49 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <cub3d.h>
+
+#include "cub3d.h"
 
 t_elems	error_reading(char *temp, char *error, t_elems elems)
 {
@@ -45,7 +46,7 @@ t_elems	start_reading_map(int fd, t_elems elems)
 
 	temp = skip_to_map(fd);
 	if (temp == NULL)
-		return (error_reading(temp, "Map not found\n", elems));
+		return (error_reading(temp, "Map not found.\n", elems));
 	elems.map = add_to_table(temp, elems.map);
 	free(temp);
 	read = 1;

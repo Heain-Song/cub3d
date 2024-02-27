@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   element_chose.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
+/*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:12:20 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 22:30:37 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/26 23:13:38 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,18 @@ t_elems	check_colors(t_elems elems, int type, int color[3])
 	return (elems);
 }
 
+/*
+str = line
+nb = type
+*/
+
 t_elems	assign_which_elem(char *str, int nb, t_elems elems)
 {
 	while (*str && *str == ' ')
 		str++;
-	if (nb < 4)
+	if (nb < 4) // NSWE
 		elems = get_str_atrib(elems, str);
-	else
+	else //FC
 	{
 		elems = get_nbr_atribs(elems, str);
 		if (elems.error == 1)
@@ -53,6 +58,16 @@ t_elems	assign_which_elem(char *str, int nb, t_elems elems)
 	return (elems);
 }
 
+
+/*
+type = 0 -> NO
+type = 1 -> SO
+type = 2 -> WE
+type = 3 -> EA
+type = 4 -> C
+type = 5 -> F
+
+*/
 int	elem_type(char *temp, char **str)
 {
 	int	i;

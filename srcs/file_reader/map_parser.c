@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:23 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/19 12:01:48 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/26 23:36:27 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_elems	check_map(t_elems elems, char **map)
 	unsigned int	i;
 
 	if (!map || !map[0][0])
-		return (basic_error(elems, "Map not found\n", NULL, NULL));
+		return (basic_error(elems, "Map not found.\n", NULL, NULL));
 	elems = check_type_in_map(map, elems);
 	if (elems.error == 1)
 		return (elems);
@@ -102,7 +102,7 @@ t_elems	check_map(t_elems elems, char **map)
 	}
 	elems = find_player(map, elems);
 	if (elems.found_player == 0 && !elems.error)
-		return (basic_error(elems, "Player not found\n", NULL, NULL));
+		return (basic_error(elems, "Player not found.\n", NULL, NULL));
 	return (elems);
 }
 //need to check for path I guess and check if two players

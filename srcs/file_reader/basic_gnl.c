@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   basic_gnl.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
+/*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:02:02 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/16 18:22:53 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/26 23:22:32 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*add_char_to_str(char *dest, char c)
 	return (temp);
 }
 
-char	*basic_gnl(int fd, int *read_ammount, int keep_nl)
+char	*basic_gnl(int fd, int *read_amount, int keep_nl)
 {
 	char	c;
 	char	*str;
@@ -47,11 +47,11 @@ char	*basic_gnl(int fd, int *read_ammount, int keep_nl)
 	str = NULL;
 	if (fd <= 0)
 		return (NULL);
-	*read_ammount = 1;
-	while (*read_ammount == 1 && c != '\n')
+	*read_amount = 1;
+	while (*read_amount == 1 && c != '\n')
 	{
-		*read_ammount = read(fd, &c, 1);
-		if (*read_ammount > 0 && c != '\n')
+		*read_amount = read(fd, &c, 1);
+		if (*read_amount > 0 && c != '\n')
 			str = add_char_to_str(str, c);
 	}
 	if (keep_nl == 1)

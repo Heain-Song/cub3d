@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/26 15:58:49 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/27 00:24:53 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include <math.h>
+# include <string.h>
 
 /*****************MACROS*****************/
 
@@ -31,6 +32,8 @@
 # define BACK 115
 # define RIGHT 100
 # define LEFT 97
+# define MOVE_SPEED 0.01
+# define ROT_SPEED 0.01
 # define ROTATE_RIGHT 65363
 # define ROTATE_LEFT 65361
 # define NORTH 0
@@ -112,6 +115,13 @@ typedef struct s_ray
 typedef struct s_elems
 {
 	t_textures	*textures;
+	t_num_mlx	mlx;
+	t_data		floor;
+	t_data		ceiling;
+	t_data		img;
+	t_data		screen;
+	t_ray		ray;
+	t_data		tex[4];
 	int			f_colors[3];
 	int			c_colors[3];
 	char		**map;
@@ -123,11 +133,6 @@ typedef struct s_elems
 	double		player_x;
 	double		player_y;
 	int			found_player;
-	t_num_mlx	mlx;
-	t_data		floor;
-	t_data		ceiling;
-	t_data		screen;
-	t_ray		ray;
 	char		player_dir;
 	int			color;
 	bool		w;
@@ -137,8 +142,8 @@ typedef struct s_elems
 	bool		rotate_left;
 	bool		rotate_right;
 	void		*screenbuffer;
-	char		*file;
-	t_data		tex[4];
+	char		*map_file;
+
 
 
 
@@ -150,7 +155,7 @@ typedef struct s_elems
 int			ft_strcmp(const char *s1, const char *s2);
 void		ft_putstrfd(char *str, int fd);
 int			file_checker(char *str);
-char		*basic_gnl(int fd, int *read_ammount, int keep_nl);
+char		*basic_gnl(int fd, int *read_amount, int keep_nl);
 int			ft_strlen(char *str);
 char		*ft_strcpy(char *src, char *dest);
 t_textures	*make_text_id(void);
@@ -167,7 +172,7 @@ t_elems		get_str_atrib(t_elems elems, char *str);
 t_elems		assign_which_elem(char *str, int nb, t_elems elems);
 void		free_elems(t_elems elems);
 char		*skip_and_getnb(char *str, int *nb);
-int			str_check_num_ammount(char *str);
+int			str_check_num_amount(char *str);
 t_elems		start_reading_map(int fd, t_elems elems);
 char		**add_to_table(char *str, char **table);
 t_elems		check_map(t_elems elems, char **map);
@@ -194,8 +199,8 @@ int			ft_close_win(int keycode, t_num_mlx *mlx);
 int			hook_event(t_num_mlx *mlx);
 
 //raycasting//
-t_elems		start_raycasting(t_elems elems);
-void		init_before_raycasting(t_elems *elems);
+t_elems		raycast(t_elems elems);
+void		get_position(t_elems *elems);
 void		get_dir(t_elems *elems);
 void		get_plane(t_elems *elems);
 

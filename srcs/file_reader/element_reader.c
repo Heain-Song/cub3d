@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   element_reader.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
+/*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/21 17:43:09 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:07:17 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,13 @@ char	*make_path(char *str)
 	return (temp);
 }
 
+/*in case of NSWE, get_str_atrib().... except making path, there's no need of this function*/
+
 t_elems	get_str_atrib(t_elems elems, char *str)
 {
 	t_textures	*node;
-	int			x;
-	int			y;
+	//int			x;
+	//int			y;
 
 	node = which_elem(elems.textures, str);
 	if (node && node->path)
@@ -54,8 +56,8 @@ t_elems	get_str_atrib(t_elems elems, char *str)
 	if (node)
 	{
 		node->path = make_path(str);
-		node->img = mlx_xpm_file_to_image(elems.mlx.server, node->path, &x, &y);
-		elems = check_textures(elems, node);
+		//node->img = mlx_xpm_file_to_image(elems.mlx.server, node->path, &x, &y); // later in load_image();
+		//elems = check_textures(elems, node); // later in load_image();
 	}
 	return (elems);
 }
@@ -85,14 +87,14 @@ t_elems	get_nbr_atribs(t_elems elems, char *str)
 t_elems	element_reader(int fd, t_elems elems)
 {
 	char		*temp;
-	int			read_ammount;
+	int			read_amount;
 	int			type;
 
 	if (fd <= 0)
 		return (save_error(elems));
 	while (!elems.is_full)
 	{
-		temp = basic_gnl(fd, &read_ammount, 0);
+		temp = basic_gnl(fd, &read_amount, 0);
 		if (temp)
 		{
 			type = elem_type(temp, elems.elem_names);
@@ -103,7 +105,7 @@ t_elems	element_reader(int fd, t_elems elems)
 			free(temp);
 		}
 		elems = check_elems(elems);
-		if (read_ammount <= 0 && !elems.is_full)
+		if (read_amount <= 0 && !elems.is_full)
 			return (error_reading(NULL, "not enough element in file\n",
 					elems));
 	}

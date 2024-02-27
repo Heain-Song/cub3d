@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   elems.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
+/*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 09:51:56 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/21 16:56:37 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/26 23:03:24 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <cub3d.h>
+
+#include "cub3d.h"
 
 t_elems	make_names(t_elems struct_elem)
 {

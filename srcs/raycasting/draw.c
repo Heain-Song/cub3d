@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:08:10 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/25 19:18:08 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/26 21:51:45 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,10 @@ static void	draw_iteration(t_elems *elems, int x)
 				(double)elems->ray.line_height * (double)(128));
 		if (y >= elems->ray.draw_start && y < elems->ray.draw_end)
 		{
-
 			put_pixel(&(elems->screen), x, y, \
 			get_pixel_color(&(elems->tex[get_w_dir(elems)]), \
 			elems->ray.tex_x, elems->ray.tex_y));
 			elems->ray.drawn_len++;
-			// w_dir = get_w_dir(elems);
-			// pixel_color = get_pixel_color(&(elems->tex[w_dir]));
-			// put_pixel(&(elems->screen), x, y, pixel_color, elems->ray.tex_x, elems->ray.tex_y);
-			// elems->ray.drawn_len++;
 		}
 		else if (y < HEIGHT / 2)
 			put_pixel(&(elems->screen), x, y, c_color);

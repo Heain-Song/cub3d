@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   str_utils_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
+/*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:49:50 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/16 17:21:29 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/26 23:23:08 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <cub3d.h>
 
-int	str_check_num_ammount(char *str)
+#include "cub3d.h"
+
+int	str_check_num_amount(char *str)
 {
 	int	nb;
 	int	auth;

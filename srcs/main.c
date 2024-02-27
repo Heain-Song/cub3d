@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/21 18:08:50 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:06:05 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_elems	file_parsing(char *file)
 	int		fd;
 
 	elems = init_elems();
-	elems = init_mlx(elems);
+	//elems = init_mlx(elems); // moving to raycasting
 	fd = file_checker(file);
 	if (fd < 0)
 		return (save_error(elems));
@@ -41,9 +41,13 @@ int	main(int argc, char **argv)
 		elems = file_parsing(argv[1]);
 		if (elems.error == 0)
 		{
+			printf("----------------------------\n"); //debug
 			display_textures_list (elems.textures); //debug
+			printf("----------------------------\n");//debug
 			print_map(elems.map); //debug
-			elems = start_raycasting(elems);
+			printf("----------------------------\n");//debug
+			elems.map_file = argv[1];
+			elems = raycast(elems);
 			ft_putstrfd("\033[0;32mGood\n\033[0m", 1);
 		}
 		free_elems(elems);

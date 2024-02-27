@@ -1,7 +1,7 @@
 NAME	= cub3D
 
 CC			= gcc
-CFLAGS 		= -Wall -Wextra -Werror -I ./include -I minilibx -ggdb -fsanitize=address
+CFLAGS 		= -Wall -Wextra -Werror -I ./include -I minilibx -ggdb -g3 -fsanitize=address
 MLXFLAGS	= -Lminilibx -lm -lmlx -lXext -lX11 -lz
 RM			= rm -f
 
