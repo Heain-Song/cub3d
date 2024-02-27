@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 19:35:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/27 14:20:06 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/27 14:32:21 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,21 @@ int	save_texture(t_elems *elems)
 	index = 0;
 	read = 1;
 	fd = open(elems->map_file, O_RDONLY);
-	line = (char *)1;
-	printf("-----------------------------------------------------line: %s\n", line);
-	while (line && index < 4)
+	line = basic_gnl(fd, &read, 0);
+	//printf("-----------------------------------------------------line: %s\n", line);
+	while (line && index < 3)
 	{
 		printf("line 1 : %s\n", line);
-		line = basic_gnl(fd, &read, 0);
-		printf("line 2 : %s\n", line);
-		*(ft_strchr(line, '\n')) = '\0';
+		//line = basic_gnl(fd, &read, 0);
+		//printf("line 2 : %s\n", line);
+		//*(ft_strchr(line, '\n')) = '\0';
 		if (load_image(elems, line, index) || elems->tex[index].img == NULL)
 			{
 				elems->error = 1;
 				return (1);
 			}
 		free(line);
+		line = basic_gnl(fd, &read, 0);
 		index++;
 	}
 	line = basic_gnl(fd, &read, 0);
