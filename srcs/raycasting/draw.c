@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:08:10 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/27 15:46:51 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/27 16:51:41 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	put_pixel(t_data *data, int y, int x, int color)
 
 	if (x < 0 || y < 0 || x > WIDTH || y > HEIGHT)
 		return ;
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->addr + (x * data->line_length + y * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
 
