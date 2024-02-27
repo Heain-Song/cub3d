@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/27 14:06:05 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/27 15:05:31 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 			print_map(elems.map); //debug
 			printf("----------------------------\n");//debug
 			elems.map_file = argv[1];
-			elems = raycast(elems);
+			elems = launch_game(elems);
 			ft_putstrfd("\033[0;32mGood\n\033[0m", 1);
 		}
 		free_elems(elems);

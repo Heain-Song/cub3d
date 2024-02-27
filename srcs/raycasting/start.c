@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/27 14:14:35 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/27 15:33:28 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	get_position(t_elems *elems)
 	elems->ray.pos_y = elems->player_y + 0.5; // y start position
 }
 
-t_elems	raycast(t_elems elems)
+t_elems	launch_game(t_elems elems)
 {
 	elems = init_mlx(elems);
 	save_texture(&elems);

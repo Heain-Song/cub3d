@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:08:10 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/26 21:51:45 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/27 15:46:51 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ static void	draw_iteration(t_elems *elems, int x)
 		if (y >= elems->ray.draw_start && y < elems->ray.draw_end)
 		{
 			put_pixel(&(elems->screen), x, y, \
-			get_pixel_color(&(elems->tex[get_w_dir(elems)]), \
-			elems->ray.tex_x, elems->ray.tex_y));
+			get_pixel_color(&(elems->tex[get_w_dir(elems)]), elems->ray.tex_x, elems->ray.tex_y));
+			//get_pixel_color(&elems->tex[2], elems->ray.tex_x, elems->ray.tex_y);
 			elems->ray.drawn_len++;
 		}
 		else if (y < HEIGHT / 2)
@@ -79,12 +79,11 @@ static void	draw_iteration(t_elems *elems, int x)
 
 static void get_lineinfo(t_elems *elems)
 {
-	if (elems->ray.side == 0)
-		elems->ray.wall_x = elems->player_y +
-				elems->ray.perpwalldist * elems->ray.raydir_y;
-	else
-		elems->ray.wall_x = elems->player_x +
-				elems->ray.perpwalldist * elems->ray.raydir_x;
+	if (elems->ray.side == 0) //side hit VERTICAL
+		elems->ray.wall_x = elems->player_y + elems->ray.perpwalldist * elems->ray.raydir_y;
+	else //side hit HORIZONTAL
+		elems->ray.wall_x = elems->player_x + elems->ray.perpwalldist * elems->ray.raydir_x;
+
 	elems->ray.wall_x -= floor(elems->ray.wall_x);
 	elems->ray.tex_x = (int)(elems->ray.wall_x * (double)(128));
 	elems->ray.line_height = (int)(HEIGHT / elems->ray.perpwalldist);

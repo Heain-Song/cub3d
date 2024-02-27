@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:19:42 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/27 14:13:44 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/27 15:04:06 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ t_elems	init_mlx(t_elems elems)
 			&elems.img.endian);
 	if (!elems.img.addr)
 		return (error_reading(NULL, "mlx img addr failed to create.\n", elems));
+	mlx_put_image_to_window(elems.mlx.server, elems.mlx.window, elems.img.img, 0, 0);
 	return (elems);
 }

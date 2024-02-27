@@ -6,13 +6,13 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 19:35:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/27 14:34:07 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:59:22 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	is_cardinal_valid(char *line, int index)
+/*bool	is_cardinal_valid(char *line, int index)
 {
 	if ((index == 0 && ft_strncmp(line, "NO ", 3) == 0))
 		return (1);
@@ -23,15 +23,14 @@ bool	is_cardinal_valid(char *line, int index)
 	if ((index == 3 && ft_strncmp(line, "EA ", 3) == 0))
 		return (1);
 	return (0);
-}
+}*/
 
 bool	load_image(t_elems *elems, char *line, int index)
 {
 	int	w;
 	int	h;
 
-	elems->tex[index].img = mlx_xpm_file_to_image(elems->mlx.server,
-		ft_strchr(line, ' ') + 1, &w, &h);
+	elems->tex[index].img = mlx_xpm_file_to_image(elems->mlx.server, ft_strchr(line, ' ') + 1, &w, &h);
 	if (!elems->tex[index].img)
 		return (1);
 	elems->tex[index].addr = \
@@ -39,11 +38,11 @@ bool	load_image(t_elems *elems, char *line, int index)
 		&(elems->tex[index].bits_per_pixel), \
 		&(elems->tex[index].line_length), \
 		&(elems->tex[index].endian));
-	/*if (w != 128 || h != 128)
+	if (w != 128 || h != 128)
 	{
-		mlx_destroy_image(elems->mlx, elems->tex[index].img);
+		mlx_destroy_image(elems->mlx.server, elems->tex[index].img);
 		return (1);
-	}*/
+	}
 	return (0);
 }
 
@@ -58,11 +57,8 @@ int	save_texture(t_elems *elems)
 	read = 1;
 	fd = open(elems->map_file, O_RDONLY);
 	line = basic_gnl(fd, &read, 0);
-	//printf("-----------------------------------------------------line: %s\n", line);
 	while (line && index < 4)
 	{
-		printf("line 1 : %s\n", line);
-		//line = basic_gnl(fd, &read, 0);
 		//printf("line 2 : %s\n", line);
 		//*(ft_strchr(line, '\n')) = '\0';
 		if (load_image(elems, line, index) || elems->tex[index].img == NULL)

@@ -6,15 +6,11 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:49:29 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/26 21:53:00 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/27 16:30:52 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
-
-
 
 void	get_perpwalldist(t_elems *elems)
 {
@@ -24,23 +20,33 @@ void	get_perpwalldist(t_elems *elems)
 		/*****Jump to next map square, OR in x-direction, OR in y-direction*****/
 		if (elems->ray.sidedist_x < elems->ray.sidedist_y)
 		{
+			printf("---------------------------------------------if (elems->ray.sidedist_x < elems->ray.sidedist_y)\n");
 			elems->ray.sidedist_x += elems->ray.deltadist_x;
 			elems->ray.map_x += elems->ray.step_x;
-			elems->ray.side = 0; //HORIZONTAL side hit (x)
+			elems->ray.side = 0;
 		}
 		else
 		{
+			printf("--------------------------------------------------else\n");
 			elems->ray.sidedist_y += elems->ray.deltadist_y;
 			elems->ray.map_y += elems->ray.step_y;
-			elems->ray.side = 1; //VERTICAL side hit (y)
+			elems->ray.side = 1;
 		}
 		//**********Check if ray has hit a wall**********//
-		if ((elems->ray.map_x < WIDTH) && (elems->ray.map_y < HEIGHT) && (elems->map[elems->ray.map_y][elems->ray.map_x]== '1'))
+		//if ((elems->ray.map_x < WIDTH) && (elems->ray.map_y < HEIGHT) && (elems->map[elems->ray.map_y][elems->ray.map_x]== '1'))
+		printf("ray.map_x in get_perp() : %d\n", elems->ray.map_x);
+		printf("ray.map_y in get_perp() : %d\n", elems->ray.map_y);
+		printf("before if, map[%d][%d]: %c\n", elems->ray.map_y, elems->ray.map_x,elems->map[elems->ray.map_y][elems->ray.map_x]);
+		if (elems->map[elems->ray.map_y][elems->ray.map_x] == '1' && (elems->ray.map_x < WIDTH && elems->ray.map_y < HEIGHT)) // heapbuffer-overflow...........
+		{
+			printf("after if, map[%d][%d]: %c\n", elems->ray.map_y, elems->ray.map_x,elems->map[elems->ray.map_y][elems->ray.map_x]);
 			elems->ray.hit = 1;
+			printf("rayhit: %d!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n", elems->ray.hit);
+		}
 	}
-	if (elems->ray.side == 0)
+	if (elems->ray.side == 0) //HORIZONTAL
 		elems->ray.perpwalldist = (elems->ray.sidedist_x - elems->ray.deltadist_x);
-	else
+	else //VERTICAL
 		elems->ray.perpwalldist = (elems->ray.sidedist_y - elems->ray.deltadist_y);
 }
 
@@ -66,16 +72,18 @@ void	get_sidedist(t_elems *elems)
 		elems->ray.step_y = 1;
 		elems->ray.sidedist_y = (elems->ray.map_y + 1.0 - elems->ray.pos_y) * elems->ray.deltadist_y;
 	}
+	printf("map_x in get_side(): %d\n", elems->ray.map_x);
+	printf("map_y in get_side(): %d\n", elems->ray.map_y);
 }
 
 void	get_deltadist(t_elems *elems)
 {
 	if (elems->ray.raydir_x == 0)
-		elems->ray.deltadist_x = 2147483647;
+		elems->ray.deltadist_x = 9999999;
 	else
 		elems->ray.deltadist_x = fabs(1 / elems->ray.raydir_x);
 	if (elems->ray.raydir_y == 0)
-		elems->ray.deltadist_y = 2147483647;
+		elems->ray.deltadist_y = 9999999;
 	else
 		elems->ray.deltadist_y = fabs(1 / elems->ray.raydir_y);
 }
@@ -83,18 +91,24 @@ void	get_deltadist(t_elems *elems)
 void	get_camerax(t_elems *elems, int x)
 {
 	elems->ray.camera_x = 2 * x / (double)WIDTH - 1;
-	//printf("\tray.camera_x: %f\n", elems->ray.camera_x);
 	elems->ray.raydir_x= elems->ray.dir_x + elems->ray.plane_x * elems->ray.camera_x;
-	//printf("\tray.raydir_x: %f\n", elems->ray.raydir_x);
 	elems->ray.raydir_y = elems->ray.dir_y + elems->ray.plane_y * elems->ray.camera_x;
-	//printf("\tray.raydir_y: %f\n", elems->ray.raydir_y);
-	elems->ray.map_x = (int)elems->ray.pos_x;
-	//printf("\tray.map_x: %d\n", elems->ray.map_x);
-	elems->ray.map_y = (int)elems->ray.pos_y;
-	//printf("\tray.map_y: %d\n", elems->ray.map_y);
 }
 
-void	calc(t_elems *elems)
+void	get_dist(t_elems *elems)
+{
+	elems->ray.map_x = (int)elems->ray.pos_x;
+	printf("map_x in get_dist(): %d\n", elems->ray.map_x);
+	elems->ray.map_y = (int)elems->ray.pos_y;
+	printf("map_y in get_dist(): %d\n",elems->ray.map_y);
+	// elems->ray.map_x = (int)elems->ray.player_x;
+	// elems->ray.map_y = (int)elems->ray.player_y;
+	get_deltadist(elems);
+	get_sidedist(elems);
+	get_perpwalldist(elems);
+}
+
+void	raycast(t_elems *elems)
 {
 	int	x;
 
@@ -102,9 +116,7 @@ void	calc(t_elems *elems)
 	while (x++ < WIDTH)
 	{
 		get_camerax(elems, x);
-		get_deltadist(elems);
-		get_sidedist(elems);
-		get_perpwalldist(elems);
+		get_dist(elems);
 		draw_line(elems, x);
 		/*****Calculate height of line to draw on screen*****/
 		elems->ray.line_height = (int)(1.5 * HEIGHT / elems->ray.perpwalldist);
@@ -121,17 +133,12 @@ void	calc(t_elems *elems)
 
 int	main_loop(t_elems *elems)
 {
-	if (!elems->mlx.server || !elems->mlx.window)
-	{
-		elems->error = 0;
-		return (-1);
-	}
 	elems->screen.img = mlx_new_image(elems->mlx.server, WIDTH, HEIGHT);
 	elems->screen.addr = mlx_get_data_addr(elems->screen.img,
 			&elems->screen.bits_per_pixel,
 			&elems->screen.line_length,
 			&elems->screen.endian);
-	calc(elems);
+	raycast(elems);
 	mlx_put_image_to_window(elems->mlx.server, elems->mlx.window, elems->screen.img, -1, 0);
 	mlx_destroy_image(elems->mlx.server, elems->screen.img);
 	return (-1); //???? why -1

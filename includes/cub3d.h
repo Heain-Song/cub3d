@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/27 00:24:53 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/27 15:25:05 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,7 @@ int			ft_close_win(int keycode, t_num_mlx *mlx);
 int			hook_event(t_num_mlx *mlx);
 
 //raycasting//
-t_elems		raycast(t_elems elems);
+t_elems		launch_game(t_elems elems);
 void		get_position(t_elems *elems);
 void		get_dir(t_elems *elems);
 void		get_plane(t_elems *elems);
@@ -226,7 +226,9 @@ void			put_pixel(t_data *data, int y, int x, int color);
 char	*ft_strchr(const char *s, int c);
 int	save_texture(t_elems *elems);
 bool	load_image(t_elems *elems, char *line, int index);
-bool	is_cardinal_valid(char *line, int index);
+//bool	is_cardinal_valid(char *line, int index);
+void	get_dist(t_elems *elems);
+
 //key_hooks
 int		key_press(int keycode, t_elems *elems);
 int		key_release(int keycode, t_elems *elems);
