@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:04:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/23 11:36:28 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:49:37 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,22 @@ int	window_destroyer(t_num_mlx *mlx)
 int	pressed_key(int keycode, t_elems *elems)
 {
 	if (keycode == 65364 || keycode == 115)
-		elems->ray.pos_y += -0.5;
+	{
+		//elems->ray.map_y += 1;
+		elems->ray.pos_y += 0.5;
+	}
 	//back function
 	if (keycode == 65362 || keycode == 119)
-		elems->ray.pos_y += 0.5;
+	{
+		//elems->ray.map_y += -1;
+		 elems->ray.pos_y += -0.5;
+	}
 	//forward function
-	if (keycode == 65361 || keycode == 97)
+	/*if (keycode == 65361 || keycode == 97)
 		elems->ray.pos_x += -0.5;
 	//left function
 	if (keycode == 65363 || keycode == 100)
-		elems->ray.pos_x += -0.5;
+	elems->ray.pos_x += -0.5;*/
 	//right function
 	if (keycode == 65307)
 	{
