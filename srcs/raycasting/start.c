@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/27 19:29:55 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/27 19:38:14 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	get_plane(t_elems *elems)
 {
-	if (elems->player_dir == 'N')
+	if (elems->player_dir == 'S')
 		elems->ray.plane_x = 0.66;
-	else if (elems->player_dir == 'S')
+	else if (elems->player_dir == 'N')
 		elems->ray.plane_x = -0.66;
-	else if (elems->player_dir == 'W')
-		elems->ray.plane_y = -0.66;
 	else if (elems->player_dir == 'E')
+		elems->ray.plane_y = -0.66;
+	else if (elems->player_dir == 'W')
 		elems->ray.plane_y = 0.66;
 	else
 		return ;
