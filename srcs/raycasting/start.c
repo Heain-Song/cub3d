@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/27 17:15:07 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/27 18:46:30 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	get_dir(t_elems *elems)
 void	get_position(t_elems *elems)
 {
 	elems->ray.pos_x = elems->player_x + 0.5; // x start position
-	elems->ray.pos_y = elems->player_y + 0.5; // y start position
+	elems->ray.pos_y = elems->player_y; // y start position
 }
 
 t_elems	launch_game(t_elems elems)
