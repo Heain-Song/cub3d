@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:08:10 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/27 16:51:41 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:25:39 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static int	get_w_dir(t_elems *elems)
 	int		w_dir;
 
 	if (elems->ray.side == 1 && elems->ray.raydir_y > 0)
-		w_dir = SOUTH;
-	if (elems->ray.side == 1 && elems->ray.raydir_y < 0)
 		w_dir = NORTH;
+	if (elems->ray.side == 1 && elems->ray.raydir_y < 0)
+		w_dir = SOUTH;
 	if (elems->ray.side == 0 && elems->ray.raydir_x > 0)
-		w_dir = WEST;
-	if (elems->ray.side == 0 && elems->ray.raydir_x < 0)
 		w_dir = EAST;
+	if (elems->ray.side == 0 && elems->ray.raydir_x < 0)
+		w_dir = WEST;
 	return (w_dir);
 }
 
@@ -44,6 +44,7 @@ void	put_pixel(t_data *data, int y, int x, int color)
 	if (x < 0 || y < 0 || x > WIDTH || y > HEIGHT)
 		return ;
 	dst = data->addr + (x * data->line_length + y * (data->bits_per_pixel / 8));
+	//dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
 
