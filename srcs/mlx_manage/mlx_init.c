@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:19:42 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/27 15:04:06 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/28 01:17:15 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_elems	init_mlx(t_elems elems)
 	elems.mlx.window = mlx_new_window(elems.mlx.server, WIDTH, HEIGHT, PROG_NAME);
 	if (!elems.mlx.window)
 		return (error_reading(NULL, "mlx window failed to create.\n", elems));
-	elems.img.img = mlx_new_image(elems.mlx.server, WIDTH, HEIGHT);
+	/*elems.img.img = mlx_new_image(elems.mlx.server, WIDTH, HEIGHT);
 	if (!elems.img.img)
 		return (error_reading(NULL, "mlx img failed to create.\n", elems));
 	elems.img.addr = mlx_get_data_addr(elems.img.img,
@@ -29,6 +29,6 @@ t_elems	init_mlx(t_elems elems)
 			&elems.img.endian);
 	if (!elems.img.addr)
 		return (error_reading(NULL, "mlx img addr failed to create.\n", elems));
-	mlx_put_image_to_window(elems.mlx.server, elems.mlx.window, elems.img.img, 0, 0);
+		mlx_put_image_to_window(elems.mlx.server, elems.mlx.window, elems.img.img, 0, 0);*/
 	return (elems);
 }
