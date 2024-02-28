@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:49:29 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/28 00:40:32 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:54:13 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,9 @@ int	main_loop(t_elems *elems)
 			&elems->screen.bits_per_pixel,
 			&elems->screen.line_length,
 			&elems->screen.endian);
+	//elems->ray.dir_y = elems->player_y + elems->ray.plane_y * elems->ray.camera_x;
+	//elems->ray.dir_x = elems->player_x + elems->ray.plane_x * elems->ray.camera_x;
+
 	raycast(elems);
 	mlx_put_image_to_window(elems->mlx.server, elems->mlx.window, elems->screen.img, -1, 0);
 	mlx_destroy_image(elems->mlx.server, elems->screen.img);
