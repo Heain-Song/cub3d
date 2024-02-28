@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/28 01:39:51 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/28 12:19:49 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	get_plane(t_elems *elems)
 	else
 		return ;
 }
-
 void	get_dir(t_elems *elems)
 {
 	elems->ray.dir_y = 0;
@@ -44,12 +43,22 @@ void	get_dir(t_elems *elems)
 		return ;
 }
 
+// void	get_position(t_elems *elems)
+// {
+// 	elems->player_x += 0.5; //just to fix camera at start to be in center
+// 	elems->ray.pos_x = elems->player_x;// x start position
+// 	//elems->player_x += 0.5;
+// 	elems->player_y += 0.75;
+// 	elems->ray.pos_y = elems->player_y; // y start position;
+// 	//elems->player_y += -0.75;
+// }
+
 void	get_position(t_elems *elems)
 {
-	elems->player_x += 0.5; //just to fix camera at start to be in center
+	elems->player_x += 0; //just to fix camera at start to be in center
 	elems->ray.pos_x = elems->player_x;// x start position
 	//elems->player_x += 0.5;
-	elems->player_y += 0.75;
+	elems->player_y += 0;
 	elems->ray.pos_y = elems->player_y; // y start position;
 	//elems->player_y += -0.75;
 }
