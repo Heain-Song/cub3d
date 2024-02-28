@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:12:20 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/26 23:13:38 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/28 17:17:20 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	elem_type(char *temp, char **str)
 
 	length = 3;
 	i = 0;
+	printf("---------------------temp: %s\n",temp);
 	while (*temp && *temp == ' ')
 		temp++;
 	while (str[i])

@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/28 12:37:18 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/28 17:25:25 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ t_textures	*which_elem(t_textures *textures, char *temp)
 {
 	while (textures)
 	{
+		printf("ft_strncmp: %d\n", ft_strncmp(textures->id, temp, 2));
+		printf("textures->id: %s\n", textures->id);
+		printf("temp: %s\n", temp);
 		if (!ft_strncmp(textures->id, temp, 2))
 			return (textures);
 		textures = textures->next;
@@ -93,13 +96,15 @@ t_elems	element_reader(int fd, t_elems elems)
 	while (!elems.is_full)
 	{
 		temp = basic_gnl(fd, &read_amount, 0);
+		printf("temp: %s\n",temp);
 		if (temp)
 		{
-			type = elem_type(temp, elems.elem_names);
+			type = elem_type(temp, elems.elem_names); //what is this type??
+			printf("type: %d\n", type);
 			if (type == -1)
 				return (basic_error(elems, "invalid info in between elements\n",
 						NULL, temp));
-			elems = assign_which_elem(temp, type, elems);
+			elems = assign_which_elem(temp, type, elems); //NSWE...
 			free(temp);
 		}
 		elems = check_elems(elems);
