@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:15:46 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/28 00:44:44 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/28 01:47:34 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_textures	*make_id_text(t_textures *textures, char *str)
 	if (!textures)
 	{
 		textures = malloc(sizeof(t_textures));
+		textures->img = NULL;
 		textures->next = NULL;
 		textures->id = str;
 		textures->path = NULL;
@@ -51,6 +52,7 @@ t_textures	*make_id_text(t_textures *textures, char *str)
 	node = malloc(sizeof(t_textures));
 	node->next = NULL;
 	node->path = NULL;
+	node->img = NULL;
 	node->id = str;
 	temp->next = node;
 	return (textures);
