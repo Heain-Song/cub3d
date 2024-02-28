@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:04:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/28 00:05:54 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/28 02:11:25 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,17 @@ int	window_destroyer(t_num_mlx *mlx)
 
 int	pressed_key(int keycode, t_elems *elems)
 {
-	//int y;
-	//int x;
+	int y;
+	int x;
 	double back_dir_x;
 	double back_plane_x;
 	
-
+	y = elems->player_y - elems->ray.dir_y * 0.1;
+	x = elems->player_x + elems->ray.dir_x * 0.1;
 	if (keycode == 65364 || keycode == 115)
 	{
+		if (elems->map[y][x] == '1')
+			return (0);
 		elems->player_y -= elems->ray.dir_y * 0.1;
 		elems->player_x += elems->ray.dir_x * 0.1;
 		elems->ray.pos_y = elems->player_y;
@@ -37,6 +40,10 @@ int	pressed_key(int keycode, t_elems *elems)
 	//back function
 	if (keycode == 65362 || keycode == 119)
 	{
+		y = elems->player_y + elems->ray.dir_y * 0.1;
+		x = elems->player_x - elems->ray.dir_x * 0.1;
+		if (elems->map[y][x] == '1')
+			return (0);
 		elems->player_y += elems->ray.dir_y * 0.1;
 		elems->player_x -= elems->ray.dir_x * 0.1;
 		elems->ray.pos_y = elems->player_y;
