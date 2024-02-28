@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:08:10 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/27 17:25:39 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/28 12:24:04 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static int	get_w_dir(t_elems *elems)
 	if (elems->ray.side == 1 && elems->ray.raydir_y < 0)
 		w_dir = SOUTH;
 	if (elems->ray.side == 0 && elems->ray.raydir_x > 0)
-		w_dir = EAST;
-	if (elems->ray.side == 0 && elems->ray.raydir_x < 0)
 		w_dir = WEST;
+	if (elems->ray.side == 0 && elems->ray.raydir_x < 0)
+		w_dir = EAST;
 	return (w_dir);
 }
 
