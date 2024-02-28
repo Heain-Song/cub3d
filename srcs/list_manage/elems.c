@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 09:51:56 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/26 23:03:24 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/28 01:09:09 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,15 @@ t_elems	make_names(t_elems struct_elem)
 void	free_elems(t_elems elems)
 {
 	int	i;
+	t_elems *server;
 
+	server = elems.mlx.server;
+	i = 0;
+	while (i < 4)
+	{
+		mlx_destroy_image(server, elems.tex[i].img);
+		i++;
+	}
 	i = 0;
 	while (elems.elem_names[i])
 		free(elems.elem_names[i++]);
