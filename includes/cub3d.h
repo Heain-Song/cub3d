@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/28 13:08:42 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:58:40 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_ray
 	int			drawn_len;
 	int			tex_x;
 	int			tex_y;
+	double		current_angle;
 }	t_ray;
 
 typedef struct s_elems
