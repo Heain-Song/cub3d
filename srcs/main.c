@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/27 15:05:31 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/28 18:02:37 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@ t_elems	file_parsing(char *file)
 	int		fd;
 
 	elems = init_elems();
-	//elems = init_mlx(elems); // moving to raycasting
+	elems = init_mlx(elems); // moving to raycasting
+	elems.loaded_textures = 0;
 	fd = file_checker(file);
 	if (fd < 0)
 		return (save_error(elems));
 	elems.textures = make_text_id();
 	elems = element_reader(fd, elems);
+	if (elems.error == 1)
+		return (elems);
 	elems = start_reading_map(fd, elems);
 	if (!elems.textures)
 		return (save_error(elems));
