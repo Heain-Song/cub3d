@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/27 15:25:05 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/28 13:08:42 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct s_ray
 
 typedef struct s_elems
 {
+	int			loaded_textures;
 	t_textures	*textures;
 	t_num_mlx	mlx;
 	t_data		floor;

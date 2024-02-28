@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 09:51:56 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/28 01:09:09 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/28 13:10:09 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ void	free_elems(t_elems elems)
 
 	server = elems.mlx.server;
 	i = 0;
-	while (i < 4)
+	while (i < elems.loaded_textures)
 	{
-		mlx_destroy_image(server, elems.tex[i].img);
+		if (elems.tex[i].img)
+			mlx_destroy_image(server, elems.tex[i].img);
 		i++;
 	}
 	i = 0;
