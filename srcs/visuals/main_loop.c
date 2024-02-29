@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:04:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/29 11:51:42 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:56:46 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ int	pressed_key(int keycode, t_elems *elems)
 		elems->ray.current_angle += 0.1;
 		back_plane_x = elems->ray.plane_x;
 		back_dir_x = elems->ray.dir_x;
-		elems->ray.dir_x = elems->ray.dir_x * cos(-0.1) - elems->ray.dir_y * sin(-0.1);
-		elems->ray.dir_y = back_dir_x * sin(-0.1) + elems->ray.dir_y * cos(-0.1);
-		elems->ray.plane_x = elems->ray.plane_x * cos(-0.1) - elems->ray.plane_y * sin(-0.1);
-		elems->ray.plane_y = back_plane_x * sin(-0.1) + elems->ray.plane_y * cos(-0.1);  
+		elems->ray.dir_x = elems->ray.dir_x * cos(0.1) - elems->ray.dir_y * sin(0.1);
+		elems->ray.dir_y = back_dir_x * sin(0.1) + elems->ray.dir_y * cos(0.1);
+		elems->ray.plane_x = elems->ray.plane_x * cos(0.1) - elems->ray.plane_y * sin(0.1);
+		elems->ray.plane_y = back_plane_x * sin(0.1) + elems->ray.plane_y * cos(0.1);  
 		//elems->ray.plane_y += -0.1;
 		//elems->ray.plane_x += 0.1;
 		//elems->ray.pos_x += -0.5;
@@ -75,10 +75,10 @@ int	pressed_key(int keycode, t_elems *elems)
 		elems->ray.current_angle -= 0.1;
 		back_plane_x = elems->ray.plane_x;
 		back_dir_x = elems->ray.dir_x;
-		elems->ray.dir_x = elems->ray.dir_x * cos(0.1) - elems->ray.dir_y * sin(0.1);
-		elems->ray.dir_y = back_dir_x * sin(0.1) + elems->ray.dir_y * cos(0.1);
-		elems->ray.plane_x = elems->ray.plane_x * cos(0.1) - elems->ray.plane_y * sin(0.1);
-		elems->ray.plane_y = back_plane_x * sin(0.1) + elems->ray.plane_y * cos(0.1);  
+		elems->ray.dir_x = elems->ray.dir_x * cos(-0.1) - elems->ray.dir_y * sin(-0.1);
+		elems->ray.dir_y = back_dir_x * sin(-0.1) + elems->ray.dir_y * cos(-0.1);
+		elems->ray.plane_x = elems->ray.plane_x * cos(-0.1) - elems->ray.plane_y * sin(-0.1);
+		elems->ray.plane_y = back_plane_x * sin(-0.1) + elems->ray.plane_y * cos(-0.1);  
 		//elems-
 		//elems->ray.plane_y += 0.1;
 		//elems->ray.plane_x += 0.1;
