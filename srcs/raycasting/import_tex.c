@@ -6,19 +6,19 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 19:35:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 12:15:51 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/29 17:56:33 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	load_image(t_elems *elems, char *line, int index)
+bool	load_image(t_elems *elems, t_textures *current, int index)
 {
 	int	w;
 	int	h;
 
 	elems->tex[index].img = mlx_xpm_file_to_image(elems->mlx.server,
-			ft_strchr(line, ' ') + 1, &w, &h);
+			current->path, &w, &h);
 	if (!elems->tex[index].img)
 		return (1);
 	elems->tex[index].addr = \
@@ -34,36 +34,38 @@ bool	load_image(t_elems *elems, char *line, int index)
 	return (0);
 }
 
+static int	get_cardinal_dir(char *id)
+{
+	if (!ft_strcmp(id, "NO"))
+		return (0);
+	else if (!ft_strcmp(id, "SO"))
+		return (1);
+	else if (!ft_strcmp(id, "WE"))
+		return (2);
+	else if (!ft_strcmp(id, "EA"))
+		return (3);
+	return (-1);
+}
+
 int	save_texture(t_elems *elems)
 {
-	int		index;
-	char	*line;
-	int		fd;
-	int		read;
+	int			index;
+	t_textures	*current;
+	int			cardinal_dir;
 
 	index = 0;
-	read = 1;
-	fd = open(elems->map_file, O_RDONLY);
-	line = basic_gnl(fd, &read, 0);
-	index = 0;
-	while (line && index < 4)
+	current = elems->textures;
+	while (index < 4)
 	{
-		if (load_image(elems, line, index) || elems->tex[index].img == NULL)
+		cardinal_dir = get_cardinal_dir(current->id);
+		if (load_image(elems, current, cardinal_dir) == 1 || cardinal_dir == -1)
 		{
-			elems->loaded_textures = index;
 			elems->error = 1;
+			basic_error(*elems, "texture loading error\n", NULL, NULL);
 			return (1);
 		}
-		free(line);
-		line = basic_gnl(fd, &read, 0);
+		current = current->next;
 		index++;
-	}
-	elems->loaded_textures = index;
-	line = basic_gnl(fd, &read, 0);
-	while (line)
-	{
-		free(line);
-		line = basic_gnl(fd, &read, 0);
 	}
 	return (0);
 }
