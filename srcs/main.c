@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:35:13 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 21:39:53 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 23:43:42 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_elems	file_parsing(char *file)
 
 	elems = init_elems();
 	elems = init_mlx(elems);
-	elems.loaded_textures = 0;
+	elems.loaded_textures = -1;
 	fd = file_checker(file);
 	if (fd < 0)
 		return (save_error(elems));
@@ -42,9 +42,11 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		elems = file_parsing(argv[1]);
-		save_texture(&elems);
 		if (elems.error == 0)
+		{
+			save_texture(&elems);
 			elems = launch_game(elems);
+		}
 		free_elems(elems);
 		clean_mlx(elems.mlx);
 	}
