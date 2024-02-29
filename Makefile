@@ -40,6 +40,7 @@ SRCS	=	srcs/main.c								\
 			srcs/raycasting/raycasting.c			\
 			srcs/key_hooks/keys.c					\
 			srcs/raycasting/draw.c					\
+			srcs/raycasting/draw_2.c				\
 			srcs/raycasting/import_tex.c			\
 			srcs/utils/ft_strchr.c					\
 			srcs/raycasting/get_dist.c				\
