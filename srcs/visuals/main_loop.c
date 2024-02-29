@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:04:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/29 11:56:46 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:16:38 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	pressed_key(int keycode, t_elems *elems)
 	double back_dir_x;
 	double back_plane_x;
 	
-	y = elems->player_y + elems->ray.dir_y * 0.1;
-	x = elems->player_x - elems->ray.dir_x * 0.1;
 	if (keycode == 65364 || keycode == 115)
 	{
+		y = elems->ray.pos_y - elems->ray.dir_y * 0.1;
+		x = elems->player_x - elems->ray.dir_x * 0.1;
 		if (elems->map[y][x] == '1')
 			return (0);
 		//elems->ray.pos_x += 0.1;
@@ -44,7 +44,7 @@ int	pressed_key(int keycode, t_elems *elems)
 	if (keycode == 65362 || keycode == 119)
 	{
 		//printf("dir_x = %f pos_x = %f", elems->player_x, elems->ray.pos_x);
-		y = elems->player_y - elems->ray.dir_y * 0.1;
+		y = elems->ray.pos_y + elems->ray.dir_y * 0.1;
 		x = elems->player_x + elems->ray.dir_x * 0.1;
 		if (elems->map[y][x] == '1')
 			return (0);
