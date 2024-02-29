@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 18:19:01 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:50:57 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	get_plane(t_elems *elems)
 	else if (elems->player_dir == 'N')
 		elems->ray.plane_x = -0.66;
 	else if (elems->player_dir == 'E')
-		elems->ray.plane_y = -0.66;
-	else if (elems->player_dir == 'W')
 		elems->ray.plane_y = 0.66;
+	else if (elems->player_dir == 'W')
+		elems->ray.plane_y = -0.66;
 	else
 		return ;
 }
@@ -56,7 +56,6 @@ void	get_position(t_elems *elems)
 
 t_elems	launch_game(t_elems elems)
 {
-	save_texture(&elems);
 	get_position(&elems);
 	get_dir(&elems);
 	get_plane(&elems);
