@@ -6,13 +6,13 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 13:08:30 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/29 20:52:57 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 23:04:44 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-void	move_plus(t_elems *elems) //rename
+void	move_plus(t_elems *elems)
 {
 	int	x;
 	int	y;
