@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 15:02:12 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:47:27 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,4 +248,6 @@ void	move_minus(t_elems *elems);
 void	move_plus(t_elems *elems);
 void	move_right(t_elems *elems);
 void	move_left(t_elems *elems);
+int		wall_check_move_up(t_elems *elems);
+void	center_cam(t_elems *elems);
 #endif
