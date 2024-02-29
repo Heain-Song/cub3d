@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 13:08:30 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/29 14:52:23 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:25:41 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	move_right(t_elems *elems)
 {
 	elems->ray.pos_y += elems->ray.dir_x * 0.1;
 	elems->ray.pos_x += elems->ray.dir_y * 0.1;
-	elems->player_x += elems->ray.dir_x * 0.1;
+	elems->player_x -= elems->ray.dir_y * 0.1;
 	elems->player_y = elems->ray.pos_y;
 }
 
@@ -45,7 +45,7 @@ void	move_left(t_elems *elems)
 {
 	elems->ray.pos_y -= elems->ray.dir_x * 0.1;
 	elems->ray.pos_x -= elems->ray.dir_y * 0.1;
-	elems->player_x -= elems->ray.dir_x * 0.1;
+	elems->player_x += elems->ray.dir_y * 0.1;
 	elems->player_y = elems->ray.pos_y;
 
 }
