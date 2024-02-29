@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:14:16 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/11 09:46:31 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 21:12:43 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ int	ft_atoi(const char *str)
 		str++;
 	}
 	nb = 0;
-	while (*str && ft_isdigit(*str))
+	while (*str && *str != ',')
 	{
+		if (!ft_isdigit(*str) && *str != ',')
+			return (-1);
 		nb = nb * 10 + *str - '0';
 		str++;
 	}
