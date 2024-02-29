@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:49:29 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 12:34:56 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/29 21:48:51 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ void	raycast(t_elems *elems)
 		get_camerax(elems, x);
 		get_dist(elems);
 		draw_line(elems, x);
-		/*****Calculate height of line to draw on screen*****/
 		elems->ray.line_height = (int)(1.5 * HEIGHT / elems->ray.perpwalldist);
-		/*****Calculate lowest and highest pixel to fill in current stripe*****/
 		elems->ray.draw_start = -elems->ray.line_height / 2 + HEIGHT / 2;
 		if (elems->ray.draw_start < 0)
 			elems->ray.draw_start = 0;
@@ -52,8 +50,6 @@ int	main_loop(t_elems *elems)
 			&elems->screen.bits_per_pixel,
 			&elems->screen.line_length,
 			&elems->screen.endian);
-	//elems->ray.dir_y = elems->player_y + elems->ray.plane_y * elems->ray.camera_x;
-	//elems->ray.dir_x = elems->player_x + elems->ray.plane_x * elems->ray.camera_x;
 	raycast(elems);
 	mlx_put_image_to_window(elems->mlx.server,
 		elems->mlx.window, elems->screen.img, -1, 0);
