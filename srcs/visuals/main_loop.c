@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:04:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/29 13:24:32 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:55:06 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,38 @@ int	pressed_key(int keycode, t_elems *elems)
 	if (keycode == 65362 || keycode == 119)
 		move_minus(elems);
 	//forward function
-	if (keycode == 65361 || keycode == 97)
-		rot_minus(elems);
+	if (keycode == 97)
+	{
+		 if (elems->player_dir == 'E' || elems->player_dir == 'W')
+			 move_left(elems);
+		 else
+			 move_right(elems);
+	}
+	
+	if (keycode == 100)
+	{
+		if (elems->player_dir == 'E' || elems->player_dir == 'W')
+			move_right(elems);
+		else
+			move_left(elems);
+	}
+	if (keycode == 65361)
+	{
+		if (elems->player_dir == 'E' || elems->player_dir == 'W')
+			rot_minus(elems);
+		else
+			rot_plus (elems);
+	}
 	//left function
-	if (keycode == 65363 || keycode == 100)
-		rot_plus(elems);
+	//if (key_code == 100)
+//		left
+	if (keycode == 65363)
+	{
+		if (elems->player_dir == 'E' || elems->player_dir == 'W')
+			rot_plus(elems);
+		else
+			rot_minus(elems);
+	}
 	//right function
 	if (keycode == 65307)
 	{
