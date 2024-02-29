@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 19:35:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 17:56:33 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/29 19:19:46 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,13 @@ int	save_texture(t_elems *elems)
 		cardinal_dir = get_cardinal_dir(current->id);
 		if (load_image(elems, current, cardinal_dir) == 1 || cardinal_dir == -1)
 		{
+			elems->loaded_textures = index;
 			elems->error = 1;
 			basic_error(*elems, "texture loading error\n", NULL, NULL);
 			return (1);
 		}
 		current = current->next;
+		elems->loaded_textures = index;
 		index++;
 	}
 	return (0);
