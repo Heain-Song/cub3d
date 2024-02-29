@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 18:18:46 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:49:37 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,14 +221,10 @@ int				main_loop(t_elems *elems);
 void			calc(t_elems *elems);
 void			draw_line(t_elems *elems, int x);
 unsigned int	get_pixel_color(t_data *data, int x, int y);
-//static int		get_w_dir(t_elems *elems);
 void			put_pixel(t_data *data, int y, int x, int color);
-//static void		draw_iteration(t_elems *elems, int x);
-//static void		get_lineinfo(t_elems *elems);
 char	*ft_strchr(const char *s, int c);
 int	save_texture(t_elems *elems);
-bool	load_image(t_elems *elems, char *line, int index);
-//bool	is_cardinal_valid(char *line, int index);
+bool	load_image(t_elems *elems, t_textures *current, int index);
 void	get_dist(t_elems *elems);
 
 //key_hooks
