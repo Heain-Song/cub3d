@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/28 17:04:54 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:47:01 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	get_dir(t_elems *elems)
 	else if (elems->player_dir == 'N')
 		elems->ray.dir_y = -1;
 	else if (elems->player_dir == 'E')
-		elems->ray.dir_x = 1;
-	else if (elems->player_dir == 'W')
 		elems->ray.dir_x = -1;
+	else if (elems->player_dir == 'W')
+		elems->ray.dir_x = 1;
 	else
 		return ;
 }
