@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:02:06 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/01/22 23:29:49 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/03/01 00:48:19 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -20,11 +20,16 @@ int	file_error(char *str)
 
 int	check_file_name(char *file_name)
 {
-	while (*file_name && *file_name != '.')
-		file_name++;
-	if (!file_name)
+	int	i;
+
+	i = 0;
+	while (file_name[i])
+		i++;
+	while (file_name[i] != '.' && i != 0)
+		i--;
+	if (i == 0)
 		return (-1);
-	if (ft_strcmp(file_name, ".cub"))
+	if (ft_strcmp(file_name + i, ".cub"))
 		return (-1);
 	return (0);
 }
