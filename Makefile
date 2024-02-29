@@ -45,6 +45,8 @@ SRCS	=	srcs/main.c								\
 			srcs/raycasting/import_tex.c			\
 			srcs/utils/ft_strchr.c					\
 			srcs/raycasting/get_dist.c				\
+			srcs/movement_move.c					\
+
 
 OBJS	=	${SRCS:.c=.o}
 
