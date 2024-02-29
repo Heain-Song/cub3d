@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 17:10:02 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:19:01 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_elems	launch_game(t_elems elems)
 	get_position(&elems);
 	get_dir(&elems);
 	get_plane(&elems);
-	center_cam(&elems);
+	//center_cam(&elems);
 	//mlx_hook(elems.mlx.window, 2, 1L << 0, ft_close_win, &elems.mlx);
 	mlx_hook(elems.mlx.window, 2, 1L << 0, pressed_key, &elems);
 	//mlx_hook(elems.mlx.window, 3, 1L << 1, key_release, &elems);
