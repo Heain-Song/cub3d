@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:56:57 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/29 18:17:50 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:53:26 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -52,7 +52,7 @@ int	wall_check_move_left(t_elems *elems)
 
 int	wall_check_move_right(t_elems *elems)
 {
-		int	x;
+	int	x;
 	int	y;
 
 	y = elems->ray.pos_y + elems->ray.dir_x * 0.13;
