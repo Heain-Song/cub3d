@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:04:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/29 14:55:06 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:52:10 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,35 +29,35 @@ int	pressed_key(int keycode, t_elems *elems)
 	//forward function
 	if (keycode == 97)
 	{
-		 if (elems->player_dir == 'E' || elems->player_dir == 'W')
-			 move_left(elems);
-		 else
-			 move_right(elems);
+		//if (elems->player_dir == 'E' || elems->player_dir == 'W')
+		move_right(elems);
+			 //else
+		//	 move_right(elems);
 	}
 	
 	if (keycode == 100)
 	{
-		if (elems->player_dir == 'E' || elems->player_dir == 'W')
-			move_right(elems);
-		else
-			move_left(elems);
+		//if (elems->player_dir == 'E' || elems->player_dir == 'W')
+		move_left(elems);
+			//else
+			//move_left(elems);
 	}
 	if (keycode == 65361)
 	{
-		if (elems->player_dir == 'E' || elems->player_dir == 'W')
-			rot_minus(elems);
-		else
-			rot_plus (elems);
+		//if (elems->player_dir == 'E' || elems->player_dir == 'W')
+			rot_plus(elems);
+			//	else
+			//rot_minus(elems);
 	}
 	//left function
 	//if (key_code == 100)
 //		left
 	if (keycode == 65363)
 	{
-		if (elems->player_dir == 'E' || elems->player_dir == 'W')
-			rot_plus(elems);
-		else
+		//if (elems->player_dir == 'E' || elems->player_dir == 'W')
 			rot_minus(elems);
+			//else
+			//	rot_plus(elems);
 	}
 	//right function
 	if (keycode == 65307)
