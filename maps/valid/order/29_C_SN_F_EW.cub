@@ -1,12 +1,12 @@
 C 225,30,0
 
-SO textures/wall_2.xpm
-NO textures/wall_1.xpm
+SO ./textures/texture_s.xpm
+NO ./textures/texture_n.xpm
 
 F 220,100,0
 
-EA textures/wall_4.xpm
-WE textures/wall_3.xpm
+EA ./textures/texture_e.xpm
+WE ./textures/texture_w.xpm
 
         1111111111111111111111111
         1000000000110000000000001
