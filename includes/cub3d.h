@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 21:37:25 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 21:50:39 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,6 @@ void		print_elems_map(t_elems *elems);
 
 //raycasting
 int				main_loop(t_elems *elems);
-void			calc(t_elems *elems);
 void			draw_line(t_elems *elems, int x);
 unsigned int	get_pixel_color(t_data *data, int x, int y);
 void			put_pixel(t_data *data, int y, int x, int color);
