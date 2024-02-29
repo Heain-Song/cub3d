@@ -1,7 +1,7 @@
 NAME	= cub3D
 
 CC			= gcc
-CFLAGS 		= -Wall -Wextra -Werror -I ./include -I minilibx -ggdb
+CFLAGS 		= -Wall -Wextra -Werror -I ./include -I minilibx
 MLXFLAGS	= -Lminilibx -lm -lmlx -lXext -lX11 -lz
 RM			= rm -f
 
