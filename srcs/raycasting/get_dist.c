@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 12:22:21 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 12:22:50 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/29 18:03:29 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	get_perpwalldist(t_elems *elems)
 		}
 		//**********Check if ray has hit a wall**********//
 		//if ((elems->ray.map_x < WIDTH) && (elems->ray.map_y < HEIGHT) && (elems->map[elems->ray.map_y][elems->ray.map_x]== '1'))
-		printf("ray.map_x in get_perp() : %d\n", elems->ray.map_x);
+/* 		printf("ray.map_x in get_perp() : %d\n", elems->ray.map_x);
 		printf("ray.map_y in get_perp() : %d\n", elems->ray.map_y);
-		printf("before if, map[%d][%d]: %c\n", elems->ray.map_y, elems->ray.map_x,elems->map[elems->ray.map_y][elems->ray.map_x]);
+		printf("before if, map[%d][%d]: %c\n", elems->ray.map_y, elems->ray.map_x,elems->map[elems->ray.map_y][elems->ray.map_x]); */
 		if (elems->map[elems->ray.map_y][elems->ray.map_x] == '1' && (elems->ray.map_x < WIDTH && elems->ray.map_y < HEIGHT)) // heapbuffer-overflow...........
 		{
-			printf("after if, map[%d][%d]: %c\n", elems->ray.map_y, elems->ray.map_x,elems->map[elems->ray.map_y][elems->ray.map_x]);
+/* 			printf("after if, map[%d][%d]: %c\n", elems->ray.map_y, elems->ray.map_x,elems->map[elems->ray.map_y][elems->ray.map_x]); */
 			elems->ray.hit = 1;
 		}
 	}
@@ -49,7 +49,7 @@ void	get_perpwalldist(t_elems *elems)
 
 void	get_sidedist(t_elems *elems)
 {
-	if (elems->ray.raydir_x >= 0)
+	if (elems->ray.raydir_x > 0)
 	{
 		elems->ray.step_x = -1;
 		elems->ray.sidedist_x = (elems->ray.pos_x - elems->ray.map_x) * elems->ray.deltadist_x;
@@ -74,11 +74,11 @@ void	get_sidedist(t_elems *elems)
 void	get_deltadist(t_elems *elems)
 {
 	if (elems->ray.raydir_x == 0)
-		elems->ray.deltadist_x = 0;
+		elems->ray.deltadist_x = 999999999;
 	else
 		elems->ray.deltadist_x = fabs(1 / elems->ray.raydir_x);
 	if (elems->ray.raydir_y == 0)
-		elems->ray.deltadist_y = 0;
+		elems->ray.deltadist_y = 999999999;
 	else
 		elems->ray.deltadist_y = fabs(1 / elems->ray.raydir_y);
 }
