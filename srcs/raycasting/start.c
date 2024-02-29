@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 11:47:01 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:19:15 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	get_plane(t_elems *elems)
 	else
 		return ;
 }
+
 void	get_dir(t_elems *elems)
 {
 	elems->ray.dir_y = 0;
@@ -43,16 +44,6 @@ void	get_dir(t_elems *elems)
 		return ;
 }
 
-// void	get_position(t_elems *elems)
-// {
-// 	elems->player_x += 0.5; //just to fix camera at start to be in center
-// 	elems->ray.pos_x = elems->player_x;// x start position
-// 	//elems->player_x += 0.5;
-// 	elems->player_y += 0.75;
-// 	elems->ray.pos_y = elems->player_y; // y start position;
-// 	//elems->player_y += -0.75;
-// }
-
 void	get_position(t_elems *elems)
 {
 	elems->player_x += 0; //just to fix camera at start to be in center
@@ -65,7 +56,6 @@ void	get_position(t_elems *elems)
 
 t_elems	launch_game(t_elems elems)
 {
-	//elems = init_mlx(elems);
 	save_texture(&elems);
 	get_position(&elems);
 	get_dir(&elems);
@@ -77,5 +67,5 @@ t_elems	launch_game(t_elems elems)
 	mlx_hook(elems.mlx.window, 33, 1L << 3, window_destroyer, &elems.mlx);
 	mlx_loop_hook(elems.mlx.server, &main_loop, &elems);
 	mlx_loop(elems.mlx.server);
-	return(elems);
+	return (elems);
 }

@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/28 16:58:40 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:12:06 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define WIDTH 800
 # define HEIGHT 800
-# define PROG_NAME "cub3d"
+# define PROG "cub3d"
 # define FORWARD 119
 # define BACK 115
 # define RIGHT 100

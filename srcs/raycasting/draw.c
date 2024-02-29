@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:08:10 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/28 12:24:04 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/29 12:21:27 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ unsigned int	get_pixel_color(t_data *data, int x, int y)
 
 	if (x < 0 || y < 0 || x > WIDTH || y > HEIGHT)
 		return (0);
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->addr +
+			(y * data->line_length + x * (data->bits_per_pixel / 8));
 	return (*(unsigned int *)dst);
 }
 
@@ -43,8 +44,8 @@ void	put_pixel(t_data *data, int y, int x, int color)
 
 	if (x < 0 || y < 0 || x > WIDTH || y > HEIGHT)
 		return ;
-	dst = data->addr + (x * data->line_length + y * (data->bits_per_pixel / 8));
-	//dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->addr +
+			(x * data->line_length + y * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
 
@@ -56,8 +57,10 @@ static void	draw_iteration(t_elems *elems, int x)
 	//int	w_dir;
 	//unsigned int pixel_color;
 
-	f_color = get_colors(0, elems->f_colors[0], elems->f_colors[1], elems->f_colors[2]);
-	c_color = get_colors(0, elems->c_colors[0], elems->c_colors[1], elems->c_colors[2]);
+	f_color = get_colors(0, elems->f_colors[0],
+			elems->f_colors[1], elems->f_colors[2]);
+	c_color = get_colors(0, elems->c_colors[0],
+			elems->c_colors[1], elems->c_colors[2]);
 	y = 0;
 	while (y < HEIGHT)
 	{
@@ -84,7 +87,6 @@ static void get_lineinfo(t_elems *elems)
 		elems->ray.wall_x = elems->player_y + elems->ray.perpwalldist * elems->ray.raydir_y;
 	else //side hit HORIZONTAL
 		elems->ray.wall_x = elems->player_x + elems->ray.perpwalldist * elems->ray.raydir_x;
-
 	elems->ray.wall_x -= floor(elems->ray.wall_x);
 	elems->ray.tex_x = (int)(elems->ray.wall_x * (double)(128));
 	elems->ray.line_height = (int)(HEIGHT / elems->ray.perpwalldist);
@@ -99,7 +101,6 @@ static void get_lineinfo(t_elems *elems)
 	if (elems->ray.draw_end >= HEIGHT)
 		elems->ray.draw_end = HEIGHT - 1;
 }
-
 
 void	draw_line(t_elems *elems, int x)
 {

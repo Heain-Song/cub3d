@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 09:51:56 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/28 13:10:09 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:10:48 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ t_elems	make_names(t_elems struct_elem)
 
 void	free_elems(t_elems elems)
 {
-	int	i;
-	t_elems *server;
+	int		i;
+	t_elems	*server;
 
 	server = elems.mlx.server;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:12:20 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/28 18:25:37 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/29 12:09:54 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ t_elems	assign_which_elem(char *str, int nb, t_elems elems)
 {
 	while (*str && *str == ' ')
 		str++;
-	if (nb < 4) // NSWE
+	if (nb < 4)
 		elems = get_str_atrib(elems, str);
-	else //FC
+	else
 	{
 		elems = get_nbr_atribs(elems, str);
 		if (elems.error == 1)
@@ -57,8 +57,6 @@ t_elems	assign_which_elem(char *str, int nb, t_elems elems)
 	}
 	return (elems);
 }
-
-
 /*
 type = 0 -> NO
 type = 1 -> SO
@@ -66,8 +64,8 @@ type = 2 -> WE
 type = 3 -> EA
 type = 4 -> C
 type = 5 -> F
-
 */
+
 int	elem_type(char *temp, char **str)
 {
 	int	i;
@@ -75,7 +73,6 @@ int	elem_type(char *temp, char **str)
 
 	length = 3;
 	i = 0;
-	//printf("temp in elem_type(): %s\n",temp);
 	while (*temp && *temp == ' ')
 		temp++;
 	while (str[i])
