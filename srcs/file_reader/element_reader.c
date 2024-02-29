@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/29 12:10:06 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/29 21:30:15 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ t_elems	get_str_atrib(t_elems elems, char *str)
 			return (basic_error(elems, node->id, ": invalid path.\n", NULL));
 		node->img = mlx_xpm_file_to_image(elems.mlx.server, node->path, &x, &y);
 		if (!node->img)
-			return (basic_error(elems, node->id, ": invalid texture. \n", NULL));
+			return (basic_error(elems, node->id, ": invalid texture. \n"
+					, NULL));
 		elems = check_textures(elems, node);
 	}
 	return (elems);
