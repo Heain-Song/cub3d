@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:04:21 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/29 12:16:38 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:24:32 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,70 +21,17 @@ int	window_destroyer(t_num_mlx *mlx)
 
 int	pressed_key(int keycode, t_elems *elems)
 {
-	int y;
-	int x;
-	double back_dir_x;
-	double back_plane_x;
-	
 	if (keycode == 65364 || keycode == 115)
-	{
-		y = elems->ray.pos_y - elems->ray.dir_y * 0.1;
-		x = elems->player_x - elems->ray.dir_x * 0.1;
-		if (elems->map[y][x] == '1')
-			return (0);
-		//elems->ray.pos_x += 0.1;
-		elems->ray.pos_y -= elems->ray.dir_y * 0.1;
-		elems->ray.pos_x += elems->ray.dir_x * 0.1;
-		elems->player_x -= elems->ray.dir_x * 0.1;
-		elems->player_y = elems->ray.pos_y;
-		//elems->player_x -= 0.1;
-		//elems->player_x = elems->ray.pos_x;
-	}
+		move_plus(elems);
 	//back function
 	if (keycode == 65362 || keycode == 119)
-	{
-		//printf("dir_x = %f pos_x = %f", elems->player_x, elems->ray.pos_x);
-		y = elems->ray.pos_y + elems->ray.dir_y * 0.1;
-		x = elems->player_x + elems->ray.dir_x * 0.1;
-		if (elems->map[y][x] == '1')
-			return (0);
-		elems->ray.pos_y += elems->ray.dir_y * 0.1;
-		elems->ray.pos_x -= elems->ray.dir_x * 0.1;
-		elems->player_y = elems->ray.pos_y;
-		elems->player_x += elems->ray.dir_x * 0.1;
-		//printf("dir_x = %f pos_x = %f", elems->player_x, elems->ray.pos_x);
-	}
+		move_minus(elems);
 	//forward function
 	if (keycode == 65361 || keycode == 97)
-	{
-		elems->ray.current_angle += 0.1;
-		back_plane_x = elems->ray.plane_x;
-		back_dir_x = elems->ray.dir_x;
-		elems->ray.dir_x = elems->ray.dir_x * cos(0.1) - elems->ray.dir_y * sin(0.1);
-		elems->ray.dir_y = back_dir_x * sin(0.1) + elems->ray.dir_y * cos(0.1);
-		elems->ray.plane_x = elems->ray.plane_x * cos(0.1) - elems->ray.plane_y * sin(0.1);
-		elems->ray.plane_y = back_plane_x * sin(0.1) + elems->ray.plane_y * cos(0.1);  
-		//elems->ray.plane_y += -0.1;
-		//elems->ray.plane_x += 0.1;
-		//elems->ray.pos_x += -0.5;
-		//elems->player_x += -0.5;
-	}
+		rot_minus(elems);
 	//left function
 	if (keycode == 65363 || keycode == 100)
-	{
-		elems->ray.current_angle -= 0.1;
-		back_plane_x = elems->ray.plane_x;
-		back_dir_x = elems->ray.dir_x;
-		elems->ray.dir_x = elems->ray.dir_x * cos(-0.1) - elems->ray.dir_y * sin(-0.1);
-		elems->ray.dir_y = back_dir_x * sin(-0.1) + elems->ray.dir_y * cos(-0.1);
-		elems->ray.plane_x = elems->ray.plane_x * cos(-0.1) - elems->ray.plane_y * sin(-0.1);
-		elems->ray.plane_y = back_plane_x * sin(-0.1) + elems->ray.plane_y * cos(-0.1);  
-		//elems-
-		//elems->ray.plane_y += 0.1;
-		//elems->ray.plane_x += 0.1;
-		//elems->ray.pos_x += 0.5;
-		//	elems->player_x += 0.5;
-	}
+		rot_plus(elems);
 	//right function
 	if (keycode == 65307)
 	{
