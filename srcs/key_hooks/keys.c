@@ -6,42 +6,37 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 17:32:00 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/18 17:42:01 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/29 21:19:52 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int key_press(int keycode, t_elems *elems)
+int	window_destroyer(t_num_mlx *mlx)
 {
-	if (keycode == FORWARD)
-		elems->w = true;
-	if (keycode == BACK)
-		elems->s = true;
-	if (keycode == LEFT)
-		elems->a = true;
-	if (keycode == RIGHT)
-		elems->d = true;
-	if (keycode == ROTATE_LEFT)
-		elems->rotate_left = true;
-	if (keycode == ROTATE_RIGHT)
-		elems->rotate_right = true;
-	return (0);
+	mlx_destroy_window(mlx->server, mlx->window);
+	mlx->window = NULL;
+	return (-1);
 }
 
-int key_release(int keycode, t_elems *elems)
+int	pressed_key(int keycode, t_elems *elems)
 {
-	if (keycode == FORWARD)
-		elems->w = false;
-	if (keycode == BACK)
-		elems->s = false;
-	if (keycode == LEFT)
-		elems->a = false;
-	if (keycode == RIGHT)
-		elems->d = false;
-	if (keycode == ROTATE_LEFT)
-		elems->rotate_left = false;
-	if (keycode == ROTATE_RIGHT)
-		elems->rotate_right = false;
+	if (keycode == 65364 || keycode == 115)
+		move_plus(elems);
+	if (keycode == 65362 || keycode == 119)
+		move_minus(elems);
+	if (keycode == 97)
+		move_right(elems);
+	if (keycode == 100)
+		move_left(elems);
+	if (keycode == 65361)
+		rot_plus(elems);
+	if (keycode == 65363)
+		rot_minus(elems);
+	if (keycode == 65307)
+	{
+		window_destroyer(&elems->mlx);
+		return (-1);
+	}
 	return (0);
 }

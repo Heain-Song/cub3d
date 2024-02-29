@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 18:49:37 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/29 21:25:30 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,12 +193,11 @@ t_elems		check_type_in_map(char **str, t_elems elems);
 t_elems		color_checker(t_elems elems, char *str);
 t_elems		start_window_loop(t_elems elems);
 int			get_colors(int t, int r, int g, int b);
-t_elems		make_background(t_elems elems);
 
 //visuals
 int			window_destroyer(t_num_mlx *mlx);
 int			ft_close_win(int keycode, t_num_mlx *mlx);
-int			hook_event(t_num_mlx *mlx);
+//int			hook_event(t_num_mlx *mlx);
 
 //raycasting//
 t_elems		launch_game(t_elems elems);
@@ -228,14 +227,6 @@ bool	load_image(t_elems *elems, t_textures *current, int index);
 void	get_dist(t_elems *elems);
 
 //key_hooks
-int		key_press(int keycode, t_elems *elems);
-int		key_release(int keycode, t_elems *elems);
-int		is_wall(char c);
-bool	key_w(t_elems *elems, bool reload);
-bool	key_s(t_elems *elems, bool reload);
-bool	key_d(t_elems *elems, bool reload);
-bool	key_a(t_elems *elems, bool reload);
-int		move(t_elems *elems);
 
 int 	pressed_key(int keycode, t_elems *elems);
 void 	rot_plus(t_elems *elems);
