@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 09:42:09 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/28 18:22:53 by hesong           ###   ########.fr       */
+/*   Updated: 2024/02/29 21:40:36 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ t_elems	check_textures(t_elems elems, t_textures *node)
 		is_xpm = 1;
 	if (!is_xpm)
 		return (basic_error(elems, node->id, ": not .xpm file.\n", NULL));
-	//mlx_destroy_image(elems.mlx.server, check_image);
 	return (elems);
 }
