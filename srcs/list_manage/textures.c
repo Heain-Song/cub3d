@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:15:46 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/28 01:47:34 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/03/01 12:52:49 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,31 @@ void	free_t_textures(t_textures *textures, t_elems elems)
 	}
 }
 
+t_textures	*make_first_text(t_textures *textures, char *str)
+{
+	textures = malloc(sizeof(t_textures));
+	if (!textures)
+		return (NULL);
+	textures->img = NULL;
+	textures->next = NULL;
+	textures->id = str;
+	textures->path = NULL;
+	return (textures);
+}
+
 t_textures	*make_id_text(t_textures *textures, char *str)
 {
 	t_textures	*temp;
 	t_textures	*node;
 
 	if (!textures)
-	{
-		textures = malloc(sizeof(t_textures));
-		textures->img = NULL;
-		textures->next = NULL;
-		textures->id = str;
-		textures->path = NULL;
-		return (textures);
-	}
+		return (make_first_text(textures, str));
 	temp = textures;
 	while (temp->next)
 		temp = temp->next;
 	node = malloc(sizeof(t_textures));
+	if (!node)
+		return (NULL);
 	node->next = NULL;
 	node->path = NULL;
 	node->img = NULL;
