@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:13 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/29 21:30:15 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:14:41 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,19 +71,9 @@ t_elems	get_nbr_atribs(t_elems elems, char *str)
 	if (elems.error == 1)
 		return (elems);
 	if (str[0] == 'C' && str[1] == ' ' && elems.did_c == 0)
-	{
-		str = skip_and_getnb(str, &elems.c_colors[0]);
-		str = skip_and_getnb(str, &elems.c_colors[1]);
-		str = skip_and_getnb(str, &elems.c_colors[2]);
-		elems.did_c = 1;
-	}
+		return (make_colors_c(elems, str));
 	if (str[0] == 'F' && str[1] == ' ' && elems.did_f == 0)
-	{
-		str = skip_and_getnb(str, &elems.f_colors[0]);
-		str = skip_and_getnb(str, &elems.f_colors[1]);
-		str = skip_and_getnb(str, &elems.f_colors[2]);
-		elems.did_f = 1;
-	}
+		return (make_colors_f(elems, str));
 	return (elems);
 }
 

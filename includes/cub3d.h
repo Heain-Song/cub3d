@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 22:26:25 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:09:52 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,8 @@ int				get_colors(int t, int r, int g, int b);
 void			draw_iteration(t_elems *elems, int x);
 void			get_lineinfo(t_elems *elems);
 void			get_f_c_colors(int *f_colors, int *c_colors, t_elems *elems);
+t_elems			make_colors_f(t_elems elems, char *str);
+t_elems			make_colors_c(t_elems elems, char *str);
 
 //visuals
 int				window_destroyer(t_num_mlx *mlx);
