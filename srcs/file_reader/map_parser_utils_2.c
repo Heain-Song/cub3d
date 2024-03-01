@@ -6,7 +6,7 @@
 /*   By: ede-siga <ede-siga@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:02:58 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/03/01 15:07:13 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/03/01 16:11:29 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <cub3d.h>
@@ -32,6 +32,29 @@ t_elems	check_all_chars(t_elems elems, char **map)
 			x++;
 		}
 		y++;
+	}
+	return (elems);
+}
+
+t_elems	check_map_last(t_elems elems, char **map)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	x = 0;
+	if (!map)
+		return (elems);
+	while (map[y])
+		y++;
+	if (y > 0)
+		y -= 2;
+	while (map[y][x])
+	{
+		if (map[y][x] != ' ' && map[y][x] != '1' && map[y][x] != '\n')
+			return (basic_error(elems, "Map not enclosed by walls",
+					NULL, NULL));
+		x++;
 	}
 	return (elems);
 }
