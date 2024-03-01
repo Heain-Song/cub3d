@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:49:50 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/03/01 13:03:59 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/02/29 21:12:03 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ char	*skip_and_getnb(char *str, int *nb)
 	*nb = ft_atoi(str);
 	if (*str == '-')
 		str++;
-	if (*str == ' ')
-		return (NULL);
 	while (*str && (*str >= '0' && *str <= '9'))
 		str++;
 	return (str);
@@ -74,8 +72,6 @@ char	*ft_strdup(char *str)
 	i = 0;
 	size = ft_strlen(str);
 	dest = malloc(sizeof(char) * size + 1);
-	if (dest)
-		return (NULL);
 	while (str[i])
 	{
 		dest[i] = str[i];
