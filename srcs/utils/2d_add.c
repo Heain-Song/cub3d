@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:40:18 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/26 23:29:49 by hesong           ###   ########.fr       */
+/*   Updated: 2024/03/01 12:57:41 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char	**add_to_table(char *str, char **table)
 	while (table[i])
 		i++;
 	temp = malloc(sizeof(char *) * (i + 2));
+	if (!temp)
+		return (NULL);
 	i = 0;
 	while (table[i])
 	{
