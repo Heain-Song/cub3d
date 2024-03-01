@@ -26,6 +26,7 @@ SRCS	=	srcs/main.c								\
 			srcs/file_reader/map_parser.c			\
 			srcs/errors_print/error_input_file.c	\
 			srcs/file_reader/map_parser_utils.c		\
+			srcs/file_reader/map_parser_utils_2.c	\
 			srcs/mlx_manage/mlx_init.c				\
 			srcs/mlx_manage/mlx_cleaner.c			\
 			srcs/file_reader/textures.c				\

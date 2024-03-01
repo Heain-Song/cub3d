@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:23 by ede-siga          #+#    #+#             */
-/*   Updated: 2024/02/26 23:36:27 by hesong           ###   ########.fr       */
+/*   Updated: 2024/03/01 15:03:44 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ t_elems	check_map(t_elems elems, char **map)
 	if (elems.error == 1)
 		return (elems);
 	i = 0;
+	elems = check_all_chars(elems, map);
 	elems = check_all_spaces(map, elems);
 	while (map[i] && elems.error == 0)
 	{

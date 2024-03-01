@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/03/01 14:09:52 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:06:13 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ int				str_check_num_amount(char *str);
 t_elems			start_reading_map(int fd, t_elems elems);
 char			**add_to_table(char *str, char **table);
 t_elems			check_map(t_elems elems, char **map);
+t_elems			check_all_chars(t_elems elems, char **map);
 t_elems			error_node(t_textures *node, t_elems elems);
 t_elems			basic_error(t_elems elems, char *error,
 					char *attrib, char *to_free);
