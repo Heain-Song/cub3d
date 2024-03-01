@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 17:32:00 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 21:19:52 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:38:20 by ede-siga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	window_destroyer(t_num_mlx *mlx)
 
 int	pressed_key(int keycode, t_elems *elems)
 {
-	if (keycode == 65364 || keycode == 115)
+	if (keycode == 115)
 		move_plus(elems);
-	if (keycode == 65362 || keycode == 119)
+	if (keycode == 119)
 		move_minus(elems);
 	if (keycode == 97)
 		move_right(elems);
