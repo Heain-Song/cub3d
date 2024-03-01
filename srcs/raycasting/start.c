@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:55:16 by hesong            #+#    #+#             */
-/*   Updated: 2024/02/29 21:47:09 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/03/01 16:16:22 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	get_position(t_elems *elems)
 
 t_elems	launch_game(t_elems elems)
 {
+	if (elems.error == 1)
+		return (elems);
 	get_position(&elems);
 	get_dir(&elems);
 	get_plane(&elems);
