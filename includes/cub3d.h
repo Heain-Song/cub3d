@@ -6,7 +6,7 @@
 /*   By: hesong <hesong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 07:53:34 by hesong            #+#    #+#             */
-/*   Updated: 2024/03/01 16:02:28 by ede-siga         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:37:51 by hesong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@
 # define ROTATE_LEFT 65361
 # define NORTH 0
 # define SOUTH 1
-# define WEST 2
-# define EAST 3
+# define EAST 2
+# define WEST 3
 
 /***************STRUCTURES***************/
 
